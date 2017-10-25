@@ -13,18 +13,18 @@ import org.json.JSONObject;
 /**
  * Use this class as the backend for SGA Connect.
  * If this software were being developed for production,
- * this class would be fetching information from a database.
- * But this stores data in a plaintext file. This class can
- * do basically everything the user can do, create and petitions,
- * polls, bulletin posts, and message threads, get users by
- * role and by dorm, and get a list of all polls and petitions.
- * 
- * For new items, create an object of their type and then use the
- * save() method to add them to the prefs file.
+ this class would be fetching information from a database.
+ But this stores data in a plaintext file. This class can
+ do basically everything the user can do, create and petitions,
+ polls, bulletin posts, and message threads, get users by
+ role and by dorm, and get a list of all polls and petitions.
+ 
+ For new items, create an object of their type and then use the
+ save() method to add them to the backend file.
  * 
  * @author josephstewart
  */
-public class Prefs {
+public class Backend {
     
     private static final int STUDENT_COUNT = 100;
     private static final int SENATOR_COUNT = 10;
@@ -62,47 +62,47 @@ public class Prefs {
     };
     
     private final String dirname = "sgaconnect";
-    private final String filename = "prefs.txt";
-    private File prefsFile;
-    private JSONObject prefs;
+    private final String filename = "backend.txt";
+    private File backendFile;
+    private JSONObject backend;
     
     /**
      * Creates a new preferences object to act
      * as the 'backend' of SGA Connect
      * @throws IOException 
      */
-    public Prefs() throws IOException {
+    public Backend() throws IOException {
         
-        //locate prefs file on users System
+        //locate backend file on users System
         File directory = new File(FileSystemView.getFileSystemView().getHomeDirectory(),dirname);
         
         if (!directory.exists()) {
             directory.mkdirs();
         }
         
-        prefsFile = new File(directory,filename);
+        backendFile = new File(directory,filename);
         
-        if (prefsFile.isFile()) {
-            BufferedReader reader = new BufferedReader(new FileReader(prefsFile));
+        if (backendFile.isFile()) {
+            BufferedReader reader = new BufferedReader(new FileReader(backendFile));
             String fileContents = "";
             String line;
             while((line=reader.readLine())!= null) {
                 fileContents = fileContents + " " + line;
             }
             reader.close();
-            prefs = new JSONObject(fileContents);
+            backend = new JSONObject(fileContents);
         } else {
-            prefs = createNewPrefs();
-            PrintWriter writer = new PrintWriter(prefsFile);
-            writer.print(prefs.toString());
+            backend = createNewBackend();
+            PrintWriter writer = new PrintWriter(backendFile);
+            writer.print(backend.toString());
             writer.close();
         }
         
-        JSONArray users = prefs.getJSONArray("users");
-        JSONArray polls = prefs.getJSONArray("polls");
-        JSONArray petitions = prefs.getJSONArray("petitions");
-        JSONArray messageThreads = prefs.getJSONArray("messageThreads");
-        JSONArray bulletin = prefs.getJSONArray("bulletin");
+        JSONArray users = backend.getJSONArray("users");
+        JSONArray polls = backend.getJSONArray("polls");
+        JSONArray petitions = backend.getJSONArray("petitions");
+        JSONArray messageThreads = backend.getJSONArray("messageThreads");
+        JSONArray bulletin = backend.getJSONArray("bulletin");
         
         this.users = new ArrayList<User>();
         this.polls = new ArrayList<Poll>();
@@ -132,10 +132,10 @@ public class Prefs {
         
     }
     
-    private JSONObject createNewPrefs() {
+    private JSONObject createNewBackend() {
         
         /*
-            PREFS SCHEMA
+            BACKEND SCHEMA
             ============
         
             {
@@ -236,7 +236,7 @@ public class Prefs {
         
         
         
-        JSONObject mainPrefs = new JSONObject();
+        JSONObject mainBackend = new JSONObject();
         JSONArray users = new JSONArray();
         JSONArray polls = new JSONArray();
         JSONArray petitions = new JSONArray();
@@ -288,19 +288,19 @@ public class Prefs {
         bulletin.put(post.toJSON());
         bulletin.put(post2.toJSON());
         
-        mainPrefs.put("users", users);
-        mainPrefs.put("polls", polls);
-        mainPrefs.put("petitions",petitions);
-        mainPrefs.put("messageThreads",messageThreads);
-        mainPrefs.put("bulletin", bulletin);
+        mainBackend.put("users", users);
+        mainBackend.put("polls", polls);
+        mainBackend.put("petitions",petitions);
+        mainBackend.put("messageThreads",messageThreads);
+        mainBackend.put("bulletin", bulletin);
         
-        return mainPrefs;
+        return mainBackend;
     }
     
     private void writeToFile() {
         try {
-            PrintWriter writer = new PrintWriter(prefsFile);
-            writer.println(prefs.toString());
+            PrintWriter writer = new PrintWriter(backendFile);
+            writer.println(backend.toString());
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -476,7 +476,7 @@ public class Prefs {
      * @param userId user to check for
      * @return all message threads that involve user
      */
-    public MessageThread[] getMessageAllMessageThreads(int userId) {
+    public MessageThread[] getAllMessageThreads(int userId) {
         ArrayList<MessageThread> threads = new ArrayList<MessageThread>();
         
         for (int i = 0; i < messageThreads.size(); i++) {
@@ -567,6 +567,10 @@ public class Prefs {
         return maxId + 1;
     }
     
+    public BulletinPost[] getBulletinPosts() {
+        return bulletin.toArray(new BulletinPost[0]);
+    }
+    
     /**
      * Saves a user object to the text file
      * @param user user to be saved
@@ -589,7 +593,7 @@ public class Prefs {
             users.put(this.users.get(i).toJSON());
         }
         
-        prefs.put("users", users);
+        backend.put("users", users);
         
         writeToFile();
     }
@@ -616,7 +620,7 @@ public class Prefs {
             polls.put(this.polls.get(i).toJSON());
         }
         
-        prefs.put("polls", polls);
+        backend.put("polls", polls);
         
         writeToFile();
     }
@@ -643,7 +647,7 @@ public class Prefs {
             petitions.put(this.petitions.get(i).toJSON());
         }
         
-        prefs.put("petitions", petitions);
+        backend.put("petitions", petitions);
         
         writeToFile();
     }
@@ -670,7 +674,7 @@ public class Prefs {
             messageThreads.put(this.messageThreads.get(i).toJSON());
         }
         
-        prefs.put("messageThreads", messageThreads);
+        backend.put("messageThreads", messageThreads);
         
         writeToFile();
     }

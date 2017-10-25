@@ -61,7 +61,7 @@ public class User {
     public User(int id, int role) {
         Random rn = new Random();
         
-        String dorms[] = Prefs.getDorms();
+        String dorms[] = Backend.getDorms();
         
         this.id = id;
         name = "User " + id;
@@ -124,13 +124,13 @@ public class User {
     public String getRoom() {return room;}
     public String getDorm() {return dorm;}
     public int getYear() {return year;}
-    public String getYearString() {return Prefs.getYears()[year];}
+    public String getYearString() {return Backend.getYears()[year];}
     public String getMajor() {return major;}
     public String getNetID() {return netID;}
     public String getPassword() {return password;}
     public String getEmail() {return email;}
     public int getRole() {return role;}
-    public String getRoleString() {return Prefs.getRoles()[role];}
+    public String getRoleString() {return Backend.getRoles()[role];}
     
     public void setRole(int role) {
         
@@ -141,7 +141,7 @@ public class User {
     }
     
     public String toString() {
-        return name + " - " + Prefs.getYears()[year] + " " + major + " major (" + dorm + ")";
+        return name + " - " + Backend.getYears()[year] + " " + major + " major (" + dorm + ") " + "[" + Backend.getRoles()[role].toUpperCase() + "]";
     }
     
 }

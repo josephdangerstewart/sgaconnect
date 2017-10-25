@@ -39,6 +39,8 @@ public class BulletinPost {
         return obj;
     }
     
+    public String toString() {return body;}
+    
     public int getUserID() {return userID;}
     public String getBody() {return body;}
     public long getTimestamp() {return timestamp;}
