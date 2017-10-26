@@ -132,6 +132,7 @@ public class LogInView extends javax.swing.JPanel {
         Backend backend = MainFrame.getBackend();
         
         if (backend.logIn(usernameField.getText(), new String(passwordField.getPassword())) != null) {
+            StudentMainView.getInstance().setUser(backend.getLoggedInUser());
             MainFrame.getMainFrame().changeView("mainView");
         }
     }//GEN-LAST:event_loginButtonActionPerformed
