@@ -6,6 +6,7 @@
 package sgaconnect;
 
 import java.awt.CardLayout;
+import sgaconnect.backend.Fonts;
 
 /**
  *
@@ -13,10 +14,13 @@ import java.awt.CardLayout;
  */
 public class MainFrame extends javax.swing.JFrame {
 
+    private static Fonts fonts;
+    
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
+        fonts = new Fonts();
         initComponents();
     }
 
@@ -87,6 +91,14 @@ public class MainFrame extends javax.swing.JFrame {
                 new MainFrame().setVisible(true);
             }
         });
+    }
+    
+    public static Fonts getFonts() {
+        return fonts;
+    }
+    
+    public static void changeView(String card) {
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
