@@ -27,52 +27,70 @@ public class MainView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        sidebar1 = new sgaconnect.Sidebar();
-        header1 = new sgaconnect.Header();
+        headerContainer = new javax.swing.JPanel();
+        sidebarContainer = new javax.swing.JPanel();
+        sidebar = new sgaconnect.Sidebar();
+        viewportContainer = new javax.swing.JPanel();
 
-        javax.swing.GroupLayout sidebar1Layout = new javax.swing.GroupLayout(sidebar1);
-        sidebar1.setLayout(sidebar1Layout);
-        sidebar1Layout.setHorizontalGroup(
-            sidebar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 115, Short.MAX_VALUE)
+        headerContainer.setBackground(new java.awt.Color(0, 255, 255));
+        headerContainer.setForeground(new java.awt.Color(51, 204, 255));
+
+        javax.swing.GroupLayout headerContainerLayout = new javax.swing.GroupLayout(headerContainer);
+        headerContainer.setLayout(headerContainerLayout);
+        headerContainerLayout.setHorizontalGroup(
+            headerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 720, Short.MAX_VALUE)
         );
-        sidebar1Layout.setVerticalGroup(
-            sidebar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 402, Short.MAX_VALUE)
+        headerContainerLayout.setVerticalGroup(
+            headerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 82, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout header1Layout = new javax.swing.GroupLayout(header1);
-        header1.setLayout(header1Layout);
-        header1Layout.setHorizontalGroup(
-            header1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        sidebarContainer.setBackground(new java.awt.Color(153, 255, 51));
+        sidebarContainer.setLayout(new java.awt.CardLayout());
+
+        javax.swing.GroupLayout sidebarLayout = new javax.swing.GroupLayout(sidebar);
+        sidebar.setLayout(sidebarLayout);
+        sidebarLayout.setHorizontalGroup(
+            sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 114, Short.MAX_VALUE)
         );
-        header1Layout.setVerticalGroup(
-            header1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 72, Short.MAX_VALUE)
+        sidebarLayout.setVerticalGroup(
+            sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 392, Short.MAX_VALUE)
         );
+
+        sidebarContainer.add(sidebar, "card2");
+
+        viewportContainer.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(header1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(headerContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(sidebar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 605, Short.MAX_VALUE))
+                .addComponent(sidebarContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(sidebar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(headerContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sidebarContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, 0)
+                        .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private sgaconnect.Header header1;
-    private sgaconnect.Sidebar sidebar1;
+    private javax.swing.JPanel headerContainer;
+    private sgaconnect.Sidebar sidebar;
+    private javax.swing.JPanel sidebarContainer;
+    private javax.swing.JPanel viewportContainer;
     // End of variables declaration//GEN-END:variables
 }
