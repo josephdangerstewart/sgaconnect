@@ -28,40 +28,44 @@ public class MainView extends javax.swing.JPanel {
     private void initComponents() {
 
         headerContainer = new javax.swing.JPanel();
+        header1 = new sgaconnect.Header();
         sidebarContainer = new javax.swing.JPanel();
-        sidebar = new sgaconnect.Sidebar();
+        sidebar1 = new sgaconnect.Sidebar();
         viewportContainer = new javax.swing.JPanel();
         studentMainView2 = new sgaconnect.StudentMainView();
 
         headerContainer.setBackground(new java.awt.Color(0, 255, 255));
         headerContainer.setForeground(new java.awt.Color(51, 204, 255));
 
+        javax.swing.GroupLayout header1Layout = new javax.swing.GroupLayout(header1);
+        header1.setLayout(header1Layout);
+        header1Layout.setHorizontalGroup(
+            header1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 727, Short.MAX_VALUE)
+        );
+        header1Layout.setVerticalGroup(
+            header1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 93, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout headerContainerLayout = new javax.swing.GroupLayout(headerContainer);
         headerContainer.setLayout(headerContainerLayout);
         headerContainerLayout.setHorizontalGroup(
             headerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 727, Short.MAX_VALUE)
+            .addGroup(headerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(header1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         headerContainerLayout.setVerticalGroup(
             headerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 82, Short.MAX_VALUE)
+            .addGap(0, 93, Short.MAX_VALUE)
+            .addGroup(headerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(header1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         sidebarContainer.setBackground(new java.awt.Color(153, 255, 51));
         sidebarContainer.setLayout(new java.awt.CardLayout());
-
-        javax.swing.GroupLayout sidebarLayout = new javax.swing.GroupLayout(sidebar);
-        sidebar.setLayout(sidebarLayout);
-        sidebarLayout.setHorizontalGroup(
-            sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 114, Short.MAX_VALUE)
-        );
-        sidebarLayout.setVerticalGroup(
-            sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 392, Short.MAX_VALUE)
-        );
-
-        sidebarContainer.add(sidebar, "card2");
+        sidebarContainer.add(sidebar1, "card3");
 
         viewportContainer.setBackground(new java.awt.Color(255, 251, 234));
         viewportContainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -76,24 +80,24 @@ public class MainView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(sidebarContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(headerContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sidebarContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(sidebarContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+                    .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private sgaconnect.Header header1;
     private javax.swing.JPanel headerContainer;
-    private sgaconnect.Sidebar sidebar;
+    private sgaconnect.Sidebar sidebar1;
     private javax.swing.JPanel sidebarContainer;
     private sgaconnect.StudentMainView studentMainView2;
     private javax.swing.JPanel viewportContainer;
