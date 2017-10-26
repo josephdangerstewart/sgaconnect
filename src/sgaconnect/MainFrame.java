@@ -6,7 +6,12 @@
 package sgaconnect;
 
 import java.awt.CardLayout;
-import sgaconnect.backend.Fonts;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import sgaconnect.backend.Backend;
 
 /**
  *
@@ -14,14 +19,15 @@ import sgaconnect.backend.Fonts;
  */
 public class MainFrame extends javax.swing.JFrame {
 
-    private static Fonts fonts;
+    private static MainFrame thisObj;
+    private static Backend backend;
     
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
-        fonts = new Fonts();
         initComponents();
+        thisObj = this;
     }
 
     /**
@@ -84,21 +90,34 @@ public class MainFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainFrame().setVisible(true);
-            }
-        });
+        try {
+            backend = new Backend();
+            
+            /* Create and display the form */
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new MainFrame().setVisible(true);
+                }
+            });
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "There was an error loading the"
+                    + " backend", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
     
-    public static Fonts getFonts() {
-        return fonts;
+    public void changeView(String card) {
+        CardLayout layout = (CardLayout)mainPanelChanger.getLayout();
+        layout.show(mainPanelChanger, card);
     }
     
-    public static void changeView(String card) {
-        
+    public static MainFrame getMainFrame() {
+        return thisObj;
+    }
+    
+    public static Backend getBackend() {
+        return backend;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

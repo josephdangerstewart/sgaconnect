@@ -36,6 +36,8 @@ public class Backend {
     private ArrayList<MessageThread> messageThreads;
     private ArrayList<BulletinPost> bulletin;
     
+    private User loggedInUser;
+    
     private static final String DORMS[] = {
         "Hart",
         "Stewart",
@@ -350,10 +352,18 @@ public class Backend {
     public User logIn(String netID, String password) {
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getNetID().equals(netID) && users.get(i).getPassword().equals(password)) {
-                return users.get(i);
+                this.loggedInUser = users.get(i);
+                return loggedInUser;
             }
         }
         return null;
+    }
+    
+    /**
+     * @return the user that is currently logged in
+     */
+    public User getLoggedInUser() {
+        return loggedInUser;
     }
     
     /**
