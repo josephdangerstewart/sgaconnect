@@ -31,6 +31,7 @@ public class MainView extends javax.swing.JPanel {
         sidebarContainer = new javax.swing.JPanel();
         sidebar = new sgaconnect.Sidebar();
         viewportContainer = new javax.swing.JPanel();
+        studentMainView2 = new sgaconnect.StudentMainView();
 
         headerContainer.setBackground(new java.awt.Color(0, 255, 255));
         headerContainer.setForeground(new java.awt.Color(51, 204, 255));
@@ -39,7 +40,7 @@ public class MainView extends javax.swing.JPanel {
         headerContainer.setLayout(headerContainerLayout);
         headerContainerLayout.setHorizontalGroup(
             headerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         headerContainerLayout.setVerticalGroup(
             headerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -62,7 +63,10 @@ public class MainView extends javax.swing.JPanel {
 
         sidebarContainer.add(sidebar, "card2");
 
+        viewportContainer.setBackground(new java.awt.Color(255, 251, 234));
+        viewportContainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         viewportContainer.setLayout(new java.awt.CardLayout());
+        viewportContainer.add(studentMainView2, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -91,6 +95,7 @@ public class MainView extends javax.swing.JPanel {
     private javax.swing.JPanel headerContainer;
     private sgaconnect.Sidebar sidebar;
     private javax.swing.JPanel sidebarContainer;
+    private sgaconnect.StudentMainView studentMainView2;
     private javax.swing.JPanel viewportContainer;
     // End of variables declaration//GEN-END:variables
 }

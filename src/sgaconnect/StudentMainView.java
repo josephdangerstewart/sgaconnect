@@ -11,13 +11,20 @@ package sgaconnect;
  */
 public class StudentMainView extends javax.swing.JPanel {
 
+    private static StudentMainView thisObj;
+    
     /**
      * Creates new form StudentMainView
      */
     public StudentMainView() {
+        this.thisObj = this;
         initComponents();
     }
 
+    public static StudentMainView getInstance() {
+        return thisObj;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,19 +34,108 @@ public class StudentMainView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        senatorPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        recentActivityPanel = new javax.swing.JPanel();
+
+        setBackground(new java.awt.Color(255, 251, 234));
+
+        senatorPanel.setBackground(new java.awt.Color(255, 251, 234));
+        senatorPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Your Senator", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Print Clearly", 0, 24))); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        jLabel1.setText("Name:");
+
+        jLabel2.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        jLabel2.setText("Email:");
+
+        jLabel3.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        jLabel3.setText("Room:");
+
+        jLabel4.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        jLabel4.setText("Major:");
+
+        jLabel5.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        jLabel5.setText("Year:");
+
+        javax.swing.GroupLayout senatorPanelLayout = new javax.swing.GroupLayout(senatorPanel);
+        senatorPanel.setLayout(senatorPanelLayout);
+        senatorPanelLayout.setHorizontalGroup(
+            senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(senatorPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addContainerGap(533, Short.MAX_VALUE))
+        );
+        senatorPanelLayout.setVerticalGroup(
+            senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, senatorPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addContainerGap())
+        );
+
+        recentActivityPanel.setBackground(new java.awt.Color(255, 251, 234));
+        recentActivityPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Recent Activity", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Print Clearly", 0, 24))); // NOI18N
+
+        javax.swing.GroupLayout recentActivityPanelLayout = new javax.swing.GroupLayout(recentActivityPanel);
+        recentActivityPanel.setLayout(recentActivityPanelLayout);
+        recentActivityPanelLayout.setHorizontalGroup(
+            recentActivityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        recentActivityPanelLayout.setVerticalGroup(
+            recentActivityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 180, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 606, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(recentActivityPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(senatorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 392, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(senatorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(recentActivityPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel recentActivityPanel;
+    private javax.swing.JPanel senatorPanel;
     // End of variables declaration//GEN-END:variables
 }
