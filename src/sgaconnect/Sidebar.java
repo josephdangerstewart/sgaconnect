@@ -75,11 +75,13 @@ public class Sidebar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
-        // TODO add your handling code here:
+        StudentMainScreen.getInstance().setUser(MainFrame.getBackend().getLoggedInUser());
+        MainView.getInstance().changeView("studentMainScreen");
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void petitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_petitionButtonActionPerformed
-        // TODO add your handling code here:
+        PetitionMainScreen.getInstance().init();
+        MainView.getInstance().changeView("petitionMainScreen");
     }//GEN-LAST:event_petitionButtonActionPerformed
 
 

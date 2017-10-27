@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import sgaconnect.backend.Backend;
+import sgaconnect.backend.Petition;
 
 /**
  *

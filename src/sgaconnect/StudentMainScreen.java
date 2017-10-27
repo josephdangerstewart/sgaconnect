@@ -16,9 +16,9 @@ import sgaconnect.backend.User;
  *
  * @author josephs12
  */
-public class StudentMainView extends javax.swing.JPanel {
+public class StudentMainScreen extends javax.swing.JPanel {
 
-    private static StudentMainView thisObj;
+    private static StudentMainScreen thisObj;
     
     private User[] senators;
     int index;
@@ -30,7 +30,7 @@ public class StudentMainView extends javax.swing.JPanel {
     /**
      * Creates new form StudentMainView
      */
-    public StudentMainView() {
+    public StudentMainScreen() {
         this.thisObj = this;
         initComponents();
         recentActivityTable.getTableHeader().setFont(new Font("Open Sans",Font.PLAIN,12));
@@ -52,7 +52,7 @@ public class StudentMainView extends javax.swing.JPanel {
         System.out.println("Navigating to " + type + " " + id);
     }
 
-    public static StudentMainView getInstance() {
+    public static StudentMainScreen getInstance() {
         return thisObj;
     }
     
@@ -69,6 +69,7 @@ public class StudentMainView extends javax.swing.JPanel {
             senatorRoomDisplay.setText(senators[index].getDorm() + " " + senators[index].getRoom());
             senatorMajorDisplay.setText(senators[index].getMajor());
             senatorYearDisplay.setText(senators[index].getYearString());
+            indexDisplay.setText((index + 1) + "/"+senators.length);
         }
     }
     
@@ -95,6 +96,7 @@ public class StudentMainView extends javax.swing.JPanel {
         senatorYearDisplay = new javax.swing.JLabel();
         nextButton = new javax.swing.JButton();
         previousButton = new javax.swing.JButton();
+        indexDisplay = new javax.swing.JLabel();
         recentActivityPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         recentActivityTable = new javax.swing.JTable();
@@ -152,6 +154,9 @@ public class StudentMainView extends javax.swing.JPanel {
             }
         });
 
+        indexDisplay.setFont(new java.awt.Font("Open Sans", 0, 10)); // NOI18N
+        indexDisplay.setText("0/0");
+
         javax.swing.GroupLayout senatorPanelLayout = new javax.swing.GroupLayout(senatorPanel);
         senatorPanel.setLayout(senatorPanelLayout);
         senatorPanelLayout.setHorizontalGroup(
@@ -178,18 +183,20 @@ public class StudentMainView extends javax.swing.JPanel {
                         .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(senatorYearDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                             .addComponent(senatorMajorDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(previousButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
+                    .addGroup(senatorPanelLayout.createSequentialGroup()
+                        .addComponent(previousButton)
+                        .addGap(143, 143, 143)
+                        .addComponent(indexDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, senatorPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addContainerGap())
-                    .addComponent(nextButton, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(nextButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         senatorPanelLayout.setVerticalGroup(
             senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, senatorPanelLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addGap(0, 25, Short.MAX_VALUE)
                 .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(senatorPanelLayout.createSequentialGroup()
                         .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -217,7 +224,8 @@ public class StudentMainView extends javax.swing.JPanel {
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(previousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(previousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(indexDisplay)))))
         );
 
         recentActivityPanel.setBackground(new java.awt.Color(255, 251, 234));
@@ -271,11 +279,11 @@ public class StudentMainView extends javax.swing.JPanel {
         recentActivityPanel.setLayout(recentActivityPanelLayout);
         recentActivityPanelLayout.setHorizontalGroup(
             recentActivityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
         );
         recentActivityPanelLayout.setVerticalGroup(
             recentActivityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -335,6 +343,7 @@ public class StudentMainView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel indexDisplay;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

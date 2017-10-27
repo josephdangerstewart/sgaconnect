@@ -5,17 +5,31 @@
  */
 package sgaconnect;
 
+import java.awt.CardLayout;
+
 /**
  *
  * @author josephs12
  */
 public class MainView extends javax.swing.JPanel {
-
+    
+    private static MainView thisObj;
+    
     /**
      * Creates new form MainView
      */
     public MainView() {
         initComponents();
+        thisObj = this;
+    }
+    
+    public static MainView getInstance() {
+        return thisObj;
+    }
+    
+    public void changeView(String card) {
+        CardLayout layout = (CardLayout)viewportContainer.getLayout();
+        layout.show(viewportContainer, card);
     }
 
     /**
@@ -32,7 +46,9 @@ public class MainView extends javax.swing.JPanel {
         sidebarContainer = new javax.swing.JPanel();
         sidebar1 = new sgaconnect.Sidebar();
         viewportContainer = new javax.swing.JPanel();
-        studentMainView2 = new sgaconnect.StudentMainView();
+        studentMainView2 = new sgaconnect.StudentMainScreen();
+        petitionMainScreen1 = new sgaconnect.PetitionMainScreen();
+        petitionViewScreen1 = new sgaconnect.PetitionViewScreen();
 
         headerContainer.setBackground(new java.awt.Color(0, 255, 255));
         headerContainer.setForeground(new java.awt.Color(51, 204, 255));
@@ -45,7 +61,7 @@ public class MainView extends javax.swing.JPanel {
         );
         header1Layout.setVerticalGroup(
             header1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 93, Short.MAX_VALUE)
+            .addGap(0, 75, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout headerContainerLayout = new javax.swing.GroupLayout(headerContainer);
@@ -58,7 +74,7 @@ public class MainView extends javax.swing.JPanel {
         );
         headerContainerLayout.setVerticalGroup(
             headerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 93, Short.MAX_VALUE)
+            .addGap(0, 75, Short.MAX_VALUE)
             .addGroup(headerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(header1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -70,7 +86,9 @@ public class MainView extends javax.swing.JPanel {
         viewportContainer.setBackground(new java.awt.Color(255, 251, 234));
         viewportContainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         viewportContainer.setLayout(new java.awt.CardLayout());
-        viewportContainer.add(studentMainView2, "card2");
+        viewportContainer.add(studentMainView2, "studentMainScreen");
+        viewportContainer.add(petitionMainScreen1, "petitionMainScreen");
+        viewportContainer.add(petitionViewScreen1, "petitionViewScreen");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -88,8 +106,8 @@ public class MainView extends javax.swing.JPanel {
                 .addComponent(headerContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sidebarContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
-                    .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)))
+                    .addComponent(sidebarContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -97,9 +115,11 @@ public class MainView extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private sgaconnect.Header header1;
     private javax.swing.JPanel headerContainer;
+    private sgaconnect.PetitionMainScreen petitionMainScreen1;
+    private sgaconnect.PetitionViewScreen petitionViewScreen1;
     private sgaconnect.Sidebar sidebar1;
     private javax.swing.JPanel sidebarContainer;
-    private sgaconnect.StudentMainView studentMainView2;
+    private sgaconnect.StudentMainScreen studentMainView2;
     private javax.swing.JPanel viewportContainer;
     // End of variables declaration//GEN-END:variables
 }
