@@ -102,7 +102,7 @@ public class StudentMainView extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 251, 234));
 
         senatorPanel.setBackground(new java.awt.Color(255, 251, 234));
-        senatorPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Your Senator", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Print Clearly", 0, 24), new java.awt.Color(153, 150, 148))); // NOI18N
+        senatorPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Your Senator(s)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Print Clearly", 0, 24), new java.awt.Color(153, 150, 148))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
         jLabel1.setText("Name:");
