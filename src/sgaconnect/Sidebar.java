@@ -29,10 +29,12 @@ public class Sidebar extends javax.swing.JPanel {
 
         homeButton = new javax.swing.JButton();
         petitionButton = new javax.swing.JButton();
+        pollsButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 150, 148));
 
-        homeButton.setBackground(new java.awt.Color(142, 15, 22));
+        homeButton.setBackground(new java.awt.Color(221, 209, 199));
         homeButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/HomeImage1.png"))); // NOI18N
         homeButton.setText("Home");
@@ -42,7 +44,7 @@ public class Sidebar extends javax.swing.JPanel {
             }
         });
 
-        petitionButton.setBackground(new java.awt.Color(142, 15, 22));
+        petitionButton.setBackground(new java.awt.Color(221, 209, 199));
         petitionButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         petitionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/PetitionImage.png"))); // NOI18N
         petitionButton.setText("Petitions");
@@ -52,25 +54,43 @@ public class Sidebar extends javax.swing.JPanel {
             }
         });
 
+        pollsButton.setBackground(new java.awt.Color(221, 209, 199));
+        pollsButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        pollsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/PollsIcon.png"))); // NOI18N
+        pollsButton.setLabel("Polls");
+        pollsButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        pollsButton.setMinimumSize(new java.awt.Dimension(125, 51));
+
+        jButton1.setBackground(new java.awt.Color(221, 209, 199));
+        jButton1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/NewsletterIcon1.png"))); // NOI18N
+        jButton1.setText("Newsletter");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(petitionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pollsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(petitionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(20, 20, 20)
                 .addComponent(homeButton)
                 .addGap(18, 18, 18)
                 .addComponent(petitionButton)
-                .addContainerGap(256, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(pollsButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(136, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -87,6 +107,8 @@ public class Sidebar extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton homeButton;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton petitionButton;
+    private javax.swing.JButton pollsButton;
     // End of variables declaration//GEN-END:variables
 }
