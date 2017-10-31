@@ -30,6 +30,8 @@ public class Sidebar extends javax.swing.JPanel {
         homeButton = new javax.swing.JButton();
         petitionButton = new javax.swing.JButton();
         pollsButton = new javax.swing.JButton();
+        newsletterButton = new javax.swing.JButton();
+        bulletinButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 150, 148));
@@ -38,6 +40,9 @@ public class Sidebar extends javax.swing.JPanel {
         homeButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/HomeImage1.png"))); // NOI18N
         homeButton.setText("Home");
+        homeButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        homeButton.setMinimumSize(new java.awt.Dimension(125, 51));
+        homeButton.setPreferredSize(new java.awt.Dimension(125, 51));
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeButtonActionPerformed(evt);
@@ -60,11 +65,26 @@ public class Sidebar extends javax.swing.JPanel {
         pollsButton.setLabel("Polls");
         pollsButton.setMaximumSize(new java.awt.Dimension(125, 51));
         pollsButton.setMinimumSize(new java.awt.Dimension(125, 51));
+        pollsButton.setPreferredSize(new java.awt.Dimension(125, 51));
 
-        jButton1.setBackground(new java.awt.Color(221, 209, 199));
+        newsletterButton.setBackground(new java.awt.Color(221, 209, 199));
+        newsletterButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        newsletterButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/NewsletterIcon1.png"))); // NOI18N
+        newsletterButton.setText("Newsletter");
+        newsletterButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        newsletterButton.setMinimumSize(new java.awt.Dimension(125, 51));
+        newsletterButton.setPreferredSize(new java.awt.Dimension(125, 51));
+
+        bulletinButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        bulletinButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/BulletinIcon.png"))); // NOI18N
+        bulletinButton.setText("Bulletin");
+        bulletinButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        bulletinButton.setMinimumSize(new java.awt.Dimension(125, 51));
+        bulletinButton.setPreferredSize(new java.awt.Dimension(125, 51));
+
         jButton1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/NewsletterIcon1.png"))); // NOI18N
-        jButton1.setText("Newsletter");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/MailIcon.png"))); // NOI18N
+        jButton1.setText("Messages");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -73,24 +93,30 @@ public class Sidebar extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(newsletterButton, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                     .addComponent(pollsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(petitionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bulletinButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(homeButton)
-                .addGap(18, 18, 18)
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 12, Short.MAX_VALUE)
                 .addComponent(petitionButton)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 12, Short.MAX_VALUE)
                 .addComponent(pollsButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(newsletterButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(bulletinButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -106,8 +132,10 @@ public class Sidebar extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bulletinButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton newsletterButton;
     private javax.swing.JButton petitionButton;
     private javax.swing.JButton pollsButton;
     // End of variables declaration//GEN-END:variables
