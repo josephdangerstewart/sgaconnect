@@ -27,19 +27,108 @@ public class SidebarPresident extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        homePresidentButton = new javax.swing.JButton();
+        messagesPresidentButton = new javax.swing.JButton();
+        bulletinPresidentButton = new javax.swing.JButton();
+        pollsPresidentButton = new javax.swing.JButton();
+        petitionPresidentButton = new javax.swing.JButton();
+        newsletterPresidentButton = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(137, 110, 88));
+
+        homePresidentButton.setBackground(new java.awt.Color(221, 209, 199));
+        homePresidentButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        homePresidentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/HomeImage1.png"))); // NOI18N
+        homePresidentButton.setText("Home");
+        homePresidentButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        homePresidentButton.setMinimumSize(new java.awt.Dimension(125, 51));
+        homePresidentButton.setPreferredSize(new java.awt.Dimension(125, 51));
+
+        messagesPresidentButton.setBackground(new java.awt.Color(221, 209, 199));
+        messagesPresidentButton.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        messagesPresidentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/MailPres.png"))); // NOI18N
+        messagesPresidentButton.setText("Messages");
+        messagesPresidentButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        messagesPresidentButton.setMinimumSize(new java.awt.Dimension(125, 51));
+        messagesPresidentButton.setPreferredSize(new java.awt.Dimension(125, 51));
+
+        bulletinPresidentButton.setBackground(new java.awt.Color(221, 209, 199));
+        bulletinPresidentButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        bulletinPresidentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/BulletinIcon.png"))); // NOI18N
+        bulletinPresidentButton.setText("Bulletin");
+        bulletinPresidentButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        bulletinPresidentButton.setMinimumSize(new java.awt.Dimension(125, 51));
+        bulletinPresidentButton.setPreferredSize(new java.awt.Dimension(125, 51));
+
+        pollsPresidentButton.setBackground(new java.awt.Color(221, 209, 199));
+        pollsPresidentButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        pollsPresidentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/PollsIconBW.png"))); // NOI18N
+        pollsPresidentButton.setText("Polls");
+        pollsPresidentButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        pollsPresidentButton.setMinimumSize(new java.awt.Dimension(125, 51));
+        pollsPresidentButton.setPreferredSize(new java.awt.Dimension(125, 51));
+
+        petitionPresidentButton.setBackground(new java.awt.Color(221, 209, 199));
+        petitionPresidentButton.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        petitionPresidentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/PetitionsBW2.png"))); // NOI18N
+        petitionPresidentButton.setText("Petitions");
+        petitionPresidentButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        petitionPresidentButton.setMinimumSize(new java.awt.Dimension(125, 51));
+        petitionPresidentButton.setPreferredSize(new java.awt.Dimension(125, 51));
+
+        newsletterPresidentButton.setBackground(new java.awt.Color(221, 209, 199));
+        newsletterPresidentButton.setFont(new java.awt.Font("Open Sans", 0, 8)); // NOI18N
+        newsletterPresidentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/NewsletterPres2.png"))); // NOI18N
+        newsletterPresidentButton.setText("Newsletter");
+        newsletterPresidentButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        newsletterPresidentButton.setMinimumSize(new java.awt.Dimension(125, 51));
+        newsletterPresidentButton.setPreferredSize(new java.awt.Dimension(125, 51));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(newsletterPresidentButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(petitionPresidentButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pollsPresidentButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bulletinPresidentButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(homePresidentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(messagesPresidentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(homePresidentButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(messagesPresidentButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bulletinPresidentButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pollsPresidentButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(petitionPresidentButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(newsletterPresidentButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(57, Short.MAX_VALUE))
         );
+
+        homePresidentButton.getAccessibleContext().setAccessibleName("Home");
+        bulletinPresidentButton.getAccessibleContext().setAccessibleName("Bulletin");
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bulletinPresidentButton;
+    private javax.swing.JButton homePresidentButton;
+    private javax.swing.JButton messagesPresidentButton;
+    private javax.swing.JButton newsletterPresidentButton;
+    private javax.swing.JButton petitionPresidentButton;
+    private javax.swing.JButton pollsPresidentButton;
     // End of variables declaration//GEN-END:variables
 }
