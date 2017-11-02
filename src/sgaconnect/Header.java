@@ -27,34 +27,21 @@ public class Header extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        sgaLogoButton = new javax.swing.JButton();
-
         setBackground(new java.awt.Color(163, 42, 52));
-
-        sgaLogoButton.setBackground(new java.awt.Color(221, 209, 199));
-        sgaLogoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/littleSGAlogo2.png"))); // NOI18N
-        sgaLogoButton.setBorder(null);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(sgaLogoButton)
-                .addContainerGap(833, Short.MAX_VALUE))
+            .addGap(0, 964, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(sgaLogoButton)
-                .addContainerGap(28, Short.MAX_VALUE))
+            .addGap(0, 102, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton sgaLogoButton;
     // End of variables declaration//GEN-END:variables
 }
