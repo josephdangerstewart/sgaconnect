@@ -144,6 +144,13 @@
             </Constraint>
           </Constraints>
         </Component>
+        <Component class="sgaconnect.PetitionCreationScreen" name="petitionCreationScreen1">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="petitionCreationScreen"/>
+            </Constraint>
+          </Constraints>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

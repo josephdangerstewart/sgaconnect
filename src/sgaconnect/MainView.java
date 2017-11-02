@@ -50,6 +50,7 @@ public class MainView extends javax.swing.JPanel {
         petitionMainScreen1 = new sgaconnect.PetitionMainScreen();
         petitionViewScreen1 = new sgaconnect.PetitionViewScreen();
         senatorMessagesScreen1 = new sgaconnect.SenatorMessagesScreen();
+        petitionCreationScreen1 = new sgaconnect.PetitionCreationScreen();
 
         headerContainer.setBackground(new java.awt.Color(0, 255, 255));
         headerContainer.setForeground(new java.awt.Color(51, 204, 255));
@@ -91,6 +92,7 @@ public class MainView extends javax.swing.JPanel {
         viewportContainer.add(petitionMainScreen1, "petitionMainScreen");
         viewportContainer.add(petitionViewScreen1, "petitionViewScreen");
         viewportContainer.add(senatorMessagesScreen1, "senatorMessagesScreen");
+        viewportContainer.add(petitionCreationScreen1, "petitionCreationScreen");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -117,6 +119,7 @@ public class MainView extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private sgaconnect.Header header1;
     private javax.swing.JPanel headerContainer;
+    private sgaconnect.PetitionCreationScreen petitionCreationScreen1;
     private sgaconnect.PetitionMainScreen petitionMainScreen1;
     private sgaconnect.PetitionViewScreen petitionViewScreen1;
     private sgaconnect.SenatorMessagesScreen senatorMessagesScreen1;

@@ -112,6 +112,11 @@ public class PetitionMainScreen extends javax.swing.JPanel {
 
         jButton1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jButton1.setText("Create New");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
         jLabel3.setText("Select One or");
@@ -165,6 +170,11 @@ public class PetitionMainScreen extends javax.swing.JPanel {
             //Do nothing
         }
     }//GEN-LAST:event_petitionsTableMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        PetitionCreationScreen.getInstance().init();
+        MainView.getInstance().changeView("petitionCreationScreen");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
