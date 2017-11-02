@@ -90,6 +90,11 @@ public class Sidebar extends javax.swing.JPanel {
         messagesButton.setMaximumSize(new java.awt.Dimension(125, 51));
         messagesButton.setMinimumSize(new java.awt.Dimension(125, 51));
         messagesButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        messagesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                messagesButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -134,6 +139,10 @@ public class Sidebar extends javax.swing.JPanel {
         PetitionMainScreen.getInstance().init();
         MainView.getInstance().changeView("petitionMainScreen");
     }//GEN-LAST:event_petitionButtonActionPerformed
+
+    private void messagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButtonActionPerformed
+        MainView.getInstance().changeView("senatorMessagesScreen");
+    }//GEN-LAST:event_messagesButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

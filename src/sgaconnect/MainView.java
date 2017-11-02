@@ -49,6 +49,7 @@ public class MainView extends javax.swing.JPanel {
         studentMainView2 = new sgaconnect.StudentMainScreen();
         petitionMainScreen1 = new sgaconnect.PetitionMainScreen();
         petitionViewScreen1 = new sgaconnect.PetitionViewScreen();
+        senatorMessagesScreen1 = new sgaconnect.SenatorMessagesScreen();
 
         headerContainer.setBackground(new java.awt.Color(0, 255, 255));
         headerContainer.setForeground(new java.awt.Color(51, 204, 255));
@@ -89,6 +90,7 @@ public class MainView extends javax.swing.JPanel {
         viewportContainer.add(studentMainView2, "studentMainScreen");
         viewportContainer.add(petitionMainScreen1, "petitionMainScreen");
         viewportContainer.add(petitionViewScreen1, "petitionViewScreen");
+        viewportContainer.add(senatorMessagesScreen1, "senatorMessagesScreen");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -107,7 +109,7 @@ public class MainView extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(sidebarContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)))
+                    .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -117,6 +119,7 @@ public class MainView extends javax.swing.JPanel {
     private javax.swing.JPanel headerContainer;
     private sgaconnect.PetitionMainScreen petitionMainScreen1;
     private sgaconnect.PetitionViewScreen petitionViewScreen1;
+    private sgaconnect.SenatorMessagesScreen senatorMessagesScreen1;
     private sgaconnect.Sidebar sidebar1;
     private javax.swing.JPanel sidebarContainer;
     private sgaconnect.StudentMainScreen studentMainView2;
