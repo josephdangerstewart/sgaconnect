@@ -34,7 +34,7 @@ public class Sidebar extends javax.swing.JPanel {
         bulletinButton = new javax.swing.JButton();
         messagesButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(153, 150, 148));
+        setBackground(new java.awt.Color(137, 110, 88));
 
         homeButton.setBackground(new java.awt.Color(221, 209, 199));
         homeButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
