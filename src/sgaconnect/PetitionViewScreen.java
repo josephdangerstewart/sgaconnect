@@ -42,7 +42,7 @@ public class PetitionViewScreen extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel)signers.getModel();
         model.setRowCount(signerIDs.size());
         for (int i = 0; i < model.getRowCount(); i++) {
-            model.setValueAt(signerIDs.get(i), i, 0);
+            model.setValueAt(MainFrame.getBackend().getUserByID(signerIDs.get(i)).getName(), i, 0);
         }
     }
 
@@ -108,7 +108,15 @@ public class PetitionViewScreen extends javax.swing.JPanel {
             new String [] {
                 "Signers"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         signers.setFillsViewportHeight(true);
         signers.setSelectionBackground(new java.awt.Color(221, 209, 199));
         signers.setSelectionForeground(new java.awt.Color(10, 10, 10));
@@ -221,7 +229,11 @@ public class PetitionViewScreen extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        if (petition.getCreatorID() != MainFrame.getBackend().getLoggedInUser().getID()) {
+            petition.sign(MainFrame.getBackend().getLoggedInUser().getID());
+            MainFrame.getBackend().save(petition);
+            init(petition);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -238,7 +250,6 @@ public class PetitionViewScreen extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
