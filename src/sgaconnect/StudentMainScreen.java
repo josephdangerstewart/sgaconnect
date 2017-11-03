@@ -35,6 +35,7 @@ public class StudentMainScreen extends javax.swing.JPanel {
         initComponents();
         recentActivityTable.getTableHeader().setFont(new Font("Open Sans",Font.PLAIN,12));
         initTable();
+        
     }
     
     private void initTable() {
@@ -50,6 +51,10 @@ public class StudentMainScreen extends javax.swing.JPanel {
     
     private void navigateToEvent(String type, int id) {
         System.out.println("Navigating to " + type + " " + id);
+        if (type.equals("PETITION")) {
+            PetitionViewScreen.getInstance().init(MainFrame.getBackend().getPetitionByID(id));
+            MainView.getInstance().changeView("petitionViewScreen");
+        }
     }
 
     public static StudentMainScreen getInstance() {
@@ -255,6 +260,7 @@ public class StudentMainScreen extends javax.swing.JPanel {
             }
         });
         recentActivityTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        recentActivityTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         recentActivityTable.setFillsViewportHeight(true);
         recentActivityTable.setGridColor(new java.awt.Color(255, 251, 234));
         recentActivityTable.setRowSelectionAllowed(false);
