@@ -137,7 +137,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="sgaconnect.SenatorMessagesScreen" name="senatorMessagesScreen1">
+        <Component class="sgaconnect.SenatorMessagesMain" name="senatorMessagesScreen1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="senatorMessagesScreen"/>

@@ -11,32 +11,34 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import org.json.JSONObject;
 
 /**
  *
  * @author josephs12
  */
-public class SenatorMessagesScreen extends javax.swing.JPanel {
+public class SenatorMessagesMain extends javax.swing.JPanel {
 
-    private static SenatorMessagesScreen thisObj;
+    private static SenatorMessagesMain thisObj;
     
     private JSONObject[] petitions;
     
     /**
      * Creates new form PetitionMainScreen
      */
-    public SenatorMessagesScreen() {
+    public SenatorMessagesMain() {
         initComponents();
         thisObj = this;
     }
     
-    public static SenatorMessagesScreen getInstance() {
+    public static SenatorMessagesMain getInstance() {
         return thisObj;
     }
     
     public void init() {
         //JComboBox comboBox = new JComboBox();
+        AutoCompleteDecorator.decorate(StudentNames);
     }
     
     /**
@@ -68,7 +70,6 @@ public class SenatorMessagesScreen extends javax.swing.JPanel {
         SendButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/MessageSend.png"))); // NOI18N
         SendButton.setText("Send");
         SendButton.setMaximumSize(new java.awt.Dimension(125, 51));
-        SendButton.setMinimumSize(new java.awt.Dimension(105, 49));
         SendButton.setPreferredSize(new java.awt.Dimension(125, 51));
         SendButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,9 +92,17 @@ public class SenatorMessagesScreen extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "Title 1", "Title 2"
+                "Student", "Message"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTable1.setFillsViewportHeight(true);
         jTable1.setInheritsPopupMenu(true);
@@ -124,7 +133,7 @@ public class SenatorMessagesScreen extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jSeparator1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(CreateMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
+                        .addComponent(CreateMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(SendButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -139,13 +148,13 @@ public class SenatorMessagesScreen extends javax.swing.JPanel {
                 .addComponent(MessagesLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ToLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(StudentNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
