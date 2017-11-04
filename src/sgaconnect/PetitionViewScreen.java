@@ -44,6 +44,10 @@ public class PetitionViewScreen extends javax.swing.JPanel {
         for (int i = 0; i < model.getRowCount(); i++) {
             model.setValueAt(MainFrame.getBackend().getUserByID(signerIDs.get(i)).getName(), i, 0);
         }
+        
+        if (MainFrame.getBackend().getLoggedInUser().getRole() != 0) {
+            this.remove(signButton);
+        }
     }
 
     /**
@@ -68,7 +72,7 @@ public class PetitionViewScreen extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
+        signButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 251, 234));
 
@@ -179,10 +183,10 @@ public class PetitionViewScreen extends javax.swing.JPanel {
 
         commentScrollPane.setViewportView(jPanel3);
 
-        jButton2.setText("Sign Petition");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        signButton.setText("Sign Petition");
+        signButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                signButtonActionPerformed(evt);
             }
         });
 
@@ -199,9 +203,9 @@ public class PetitionViewScreen extends javax.swing.JPanel {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton2)))
+                                .addComponent(signButton)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(title)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -216,30 +220,30 @@ public class PetitionViewScreen extends javax.swing.JPanel {
                     .addComponent(jButton1)
                     .addComponent(title))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(signButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(commentScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)))
+                        .addComponent(commentScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(12, 12, 12))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (petition.getCreatorID() != MainFrame.getBackend().getLoggedInUser().getID()) {
-            petition.sign(MainFrame.getBackend().getLoggedInUser().getID());
-            MainFrame.getBackend().save(petition);
-            init(petition);
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         PetitionMainScreen.getInstance().init();
         MainView.getInstance().changeView("petitionMainScreen");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signButtonActionPerformed
+        if (petition.getCreatorID() != MainFrame.getBackend().getLoggedInUser().getID()) {
+            petition.sign(MainFrame.getBackend().getLoggedInUser());
+            MainFrame.getBackend().save(petition);
+            init(petition);
+        }
+    }//GEN-LAST:event_signButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -247,7 +251,6 @@ public class PetitionViewScreen extends javax.swing.JPanel {
     private javax.swing.JTextField commentField;
     private javax.swing.JScrollPane commentScrollPane;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel3;
@@ -255,6 +258,7 @@ public class PetitionViewScreen extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton signButton;
     private javax.swing.JTable signers;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables

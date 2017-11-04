@@ -98,6 +98,17 @@ public class Petition {
     public void setBody(String body) {this.body = body;}
     public void setScope(String scope) {this.scope = scope;}
     
+    public void sign(User user) {
+        if (user.getRole() == 0)
+        {
+            int userID = user.getID();
+            for (int i = 0; i < signerIDs.size(); i++) {
+                if (userID == signerIDs.get(i)) return;
+            }
+            signerIDs.add(userID);
+        }
+    }
+    
     public void sign(int userID) {
         for (int i = 0; i < signerIDs.size(); i++) {
             if (userID == signerIDs.get(i)) return;

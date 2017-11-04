@@ -43,6 +43,11 @@ public class PetitionMainScreen extends javax.swing.JPanel {
             model.setValueAt(petitions[row].getString("title"),row,1);
             model.setValueAt(petitions[row].getInt("signerCount"), row, 2);
         }
+        
+        if (MainFrame.getBackend().getLoggedInUser().getRole() != 0) {
+            this.remove(createNewButton);
+            selectOneLabel.setText("Select one");
+        }
     }
 
     private void navigateToPetition(int id) {
@@ -64,8 +69,8 @@ public class PetitionMainScreen extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         petitionsTable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        createNewButton = new javax.swing.JButton();
+        selectOneLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 251, 234));
 
@@ -96,6 +101,7 @@ public class PetitionMainScreen extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        petitionsTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         petitionsTable.setFillsViewportHeight(true);
         petitionsTable.setInheritsPopupMenu(true);
         petitionsTable.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
@@ -110,16 +116,16 @@ public class PetitionMainScreen extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(petitionsTable);
 
-        jButton1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        jButton1.setText("Create New");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        createNewButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        createNewButton.setText("Create New");
+        createNewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                createNewButtonActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        jLabel3.setText("Select One or");
+        selectOneLabel.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        selectOneLabel.setText("Select One or ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -137,9 +143,9 @@ public class PetitionMainScreen extends javax.swing.JPanel {
                                 .addComponent(jLabel2))
                             .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)))
+                                .addComponent(selectOneLabel)
+                                .addGap(0, 0, 0)
+                                .addComponent(createNewButton)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -151,11 +157,11 @@ public class PetitionMainScreen extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel3))
+                    .addComponent(createNewButton)
+                    .addComponent(selectOneLabel))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -171,18 +177,18 @@ public class PetitionMainScreen extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_petitionsTableMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void createNewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewButtonActionPerformed
         PetitionCreationScreen.getInstance().init();
         MainView.getInstance().changeView("petitionCreationScreen");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_createNewButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton createNewButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable petitionsTable;
+    private javax.swing.JLabel selectOneLabel;
     // End of variables declaration//GEN-END:variables
 }
