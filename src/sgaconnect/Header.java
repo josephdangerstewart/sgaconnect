@@ -43,6 +43,7 @@ public class Header extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Steelfish Outline", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 251, 234));
         jLabel2.setText("SGA Connect");
