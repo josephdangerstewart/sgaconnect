@@ -5,17 +5,43 @@
  */
 package sgaconnect;
 
+import java.awt.Point;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import org.json.JSONObject;
+
 /**
  *
  * @author josephs12
  */
 public class PollMainScreen extends javax.swing.JPanel {
-
+    
+    private static PollMainScreen thisObj;
+    private JSONObject[] polls;
+    
     /**
      * Creates new form PollMainScreen
      */
     public PollMainScreen() {
         initComponents();
+        thisObj = this;
+    }
+    
+    public static PollMainScreen getInstance() {
+        return thisObj;
+    }
+    
+    public void init() {
+        JSONObject[] allPolls = MainFrame.getBackend().getAllPolls();
+        this.polls = allPolls;
+        
+        DefaultTableModel model = (DefaultTableModel)pollsTable.getModel();
+        model.setRowCount(allPolls.length);
+        
+        for (int i = 0; i < allPolls.length; i++ ) {
+            model.setValueAt(allPolls[i].getString("creator"), i, 0);
+            model.setValueAt(allPolls[i].getString("question"), i, 1);
+        }
     }
 
     /**
@@ -27,19 +53,115 @@ public class PollMainScreen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        pollsTable = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 251, 234));
+
+        jLabel1.setFont(new java.awt.Font("Steelfish Outline", 1, 54)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(163, 22, 33));
+        jLabel1.setText("Polls");
+
+        pollsTable.setBackground(new java.awt.Color(221, 209, 199));
+        pollsTable.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        pollsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null}
+            },
+            new String [] {
+                "Creator", "Question"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        pollsTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pollsTable.setFillsViewportHeight(true);
+        pollsTable.setSelectionBackground(new java.awt.Color(221, 209, 199));
+        pollsTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        pollsTable.setShowVerticalLines(false);
+        pollsTable.getTableHeader().setReorderingAllowed(false);
+        pollsTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pollsTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(pollsTable);
+        if (pollsTable.getColumnModel().getColumnCount() > 0) {
+            pollsTable.getColumnModel().getColumn(0).setResizable(false);
+            pollsTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+        }
+
+        jLabel2.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        jLabel2.setText("Select One or ");
+
+        jButton1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        jButton1.setText("Create New");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 581, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, 0)
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 411, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jButton1))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void pollsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pollsTableMouseClicked
+        try {
+            JTable source = (JTable)evt.getSource();
+            Point point = evt.getPoint();
+            int row = source.rowAtPoint(point);
+            navigateToPoll(polls[row].getInt("id"));
+        } catch (Exception e) {
+            //Do nothing
+        }
+    }//GEN-LAST:event_pollsTableMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable pollsTable;
     // End of variables declaration//GEN-END:variables
+
+    private void navigateToPoll(int id) {
+        System.out.println("Navigating to POLL " + id);
+    }
 }

@@ -82,6 +82,7 @@ public class PetitionMainScreen extends javax.swing.JPanel {
         jLabel2.setText("raise your voice");
 
         petitionsTable.setBackground(new java.awt.Color(221, 209, 199));
+        petitionsTable.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         petitionsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -107,8 +108,9 @@ public class PetitionMainScreen extends javax.swing.JPanel {
         petitionsTable.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         petitionsTable.setMinimumSize(new java.awt.Dimension(60, 62));
         petitionsTable.setSelectionBackground(new java.awt.Color(221, 209, 199));
-        petitionsTable.setSelectionForeground(new java.awt.Color(142, 15, 22));
+        petitionsTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
         petitionsTable.setShowVerticalLines(false);
+        petitionsTable.getTableHeader().setReorderingAllowed(false);
         petitionsTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 petitionsTableMouseClicked(evt);
@@ -124,7 +126,7 @@ public class PetitionMainScreen extends javax.swing.JPanel {
             }
         });
 
-        selectOneLabel.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        selectOneLabel.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         selectOneLabel.setText("Select One or ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

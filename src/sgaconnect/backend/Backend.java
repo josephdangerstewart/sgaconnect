@@ -512,8 +512,9 @@ public class Backend {
         
         for (int i = 0; i< polls.size(); i++) {
             JSONObject obj = new JSONObject();
+            User user = getUserByID(polls.get(i).getCreatorId());
             obj.put("question",polls.get(i).getQuestion());
-            obj.put("creator",getUserByID(polls.get(i).getCreatorId()).getName());
+            obj.put("creator",user.getName() + " [" + user.getDorm() + "]");
             obj.put("id", polls.get(i).getID());
             objects[i] = obj;
         }

@@ -66,6 +66,11 @@ public class Sidebar extends javax.swing.JPanel {
         pollsButton.setMaximumSize(new java.awt.Dimension(125, 51));
         pollsButton.setMinimumSize(new java.awt.Dimension(125, 51));
         pollsButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        pollsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pollsButtonActionPerformed(evt);
+            }
+        });
 
         newsletterButton.setBackground(new java.awt.Color(221, 209, 199));
         newsletterButton.setFont(new java.awt.Font("Open Sans", 0, 9)); // NOI18N
@@ -143,6 +148,11 @@ public class Sidebar extends javax.swing.JPanel {
     private void messagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButtonActionPerformed
         MainView.getInstance().changeView("senatorMessagesScreen");
     }//GEN-LAST:event_messagesButtonActionPerformed
+
+    private void pollsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pollsButtonActionPerformed
+        PollMainScreen.getInstance().init();
+        MainView.getInstance().changeView("pollMainScreen");
+    }//GEN-LAST:event_pollsButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -108,6 +108,7 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
         jTable1.setInheritsPopupMenu(true);
         jTable1.setSelectionBackground(jTable1.getBackground());
         jTable1.setShowVerticalLines(false);
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
         ToLabel.setText("To:");
