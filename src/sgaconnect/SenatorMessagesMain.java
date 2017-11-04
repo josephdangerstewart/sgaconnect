@@ -11,7 +11,6 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import org.json.JSONObject;
 
 /**
@@ -37,8 +36,6 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
     }
     
     public void init() {
-        //JComboBox comboBox = new JComboBox();
-        AutoCompleteDecorator.decorate(StudentNames);
     }
     
     /**
