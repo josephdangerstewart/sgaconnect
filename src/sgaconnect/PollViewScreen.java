@@ -122,12 +122,16 @@ public class PollViewScreen extends javax.swing.JPanel {
         
         DefaultTableModel model = (DefaultTableModel) resultsTable.getModel();
         
-        model.setColumnCount(options.size());
+        model.setRowCount(options.size());
         
         for (int i = 0; i < options.size(); i++) {
             model.setValueAt(options.get(i), i, 0);
             model.setValueAt(breakdown[i],i,1);
-            model.setValueAt(toPercent((double)breakdown[i]/(double)responseCount),i,2);
+            try {
+                model.setValueAt(toPercent((double)breakdown[i]/(double)responseCount),i,2);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         
         setMajority(options,breakdown,responseCount);

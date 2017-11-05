@@ -148,7 +148,7 @@ public class PollMainScreen extends javax.swing.JPanel {
             int row = source.rowAtPoint(point);
             navigateToPoll(polls[row].getInt("id"));
         } catch (Exception e) {
-            //Do nothing
+            e.printStackTrace();
         }
     }//GEN-LAST:event_pollsTableMouseClicked
 
