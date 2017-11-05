@@ -67,9 +67,54 @@ public class PollViewScreen extends javax.swing.JPanel {
         layout.show(this,"creatorView");
         if (user.getID() != poll.getCreatorId()) {
             tabPane.remove(editPanel);
+        } else {
+            setEditPanel();
+            
         }
         setShowing(false);
         setResultsTable();
+    }
+    
+    private void setEditPanel() {
+        questionField.setText(poll.getQuestion());
+        lockPoll.setSelected(poll.isLocked());
+        
+        ArrayList<String> options = poll.getOptions();
+        
+        DefaultTableModel model = (DefaultTableModel) optionsTable.getModel();
+        model.setRowCount(options.size());
+        
+        for (int i = 0; i < options.size(); i++) {
+            model.setValueAt(options.get(i), i, 0);
+        }
+    }
+    
+    private void addOption() {
+        DefaultTableModel model = (DefaultTableModel) optionsTable.getModel();
+        model.addRow(new String[] {"option" + (model.getRowCount()+1)});
+    }
+    
+    private void removeOption() {
+        DefaultTableModel model = (DefaultTableModel) optionsTable.getModel();
+        int selectedRow = optionsTable.getSelectedRow();
+        
+        if (selectedRow != -1) {
+            model.removeRow(selectedRow);
+        }
+    }
+    
+    private void save() {
+        poll.removeAllOptions();
+        poll.setQuestion(questionField.getText());
+        poll.setLocked(lockPoll.isSelected());
+        
+        DefaultTableModel model = (DefaultTableModel) optionsTable.getModel();
+        
+        for (int i = 0; i < model.getRowCount(); i++) {
+            poll.addOption((String)model.getValueAt(i, 0));
+        }
+        
+        MainFrame.getBackend().save(poll);
     }
     
     private void setResultsTable() {
@@ -149,7 +194,11 @@ public class PollViewScreen extends javax.swing.JPanel {
             }
         }
         
-        majorityLabel.setText("Majority: \"" + options.get(maxIndex) + "\" " + toPercent((double)breakdown[maxIndex]/(double)responseCount));
+        try {
+            majorityLabel.setText("Majority: \"" + options.get(maxIndex) + "\" " + toPercent((double)breakdown[maxIndex]/(double)responseCount));
+        } catch (Exception e) {
+            majorityLabel.setText("Majority: ERR");
+        }
     }
     
     private String toPercent(double num) {
@@ -254,12 +303,11 @@ public class PollViewScreen extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         questionField = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel6 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jButton6 = new javax.swing.JButton();
+        optionsTable = new javax.swing.JTable();
+        addOption = new javax.swing.JButton();
+        removeButton = new javax.swing.JButton();
+        lockPoll = new javax.swing.JCheckBox();
+        saveButton = new javax.swing.JButton();
         responsesPanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         groupComboBox = new javax.swing.JComboBox<>();
@@ -459,8 +507,11 @@ public class PollViewScreen extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jLabel5.setText("Question");
 
-        jTable1.setBackground(new java.awt.Color(221, 209, 199));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        questionField.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+
+        optionsTable.setBackground(new java.awt.Color(221, 209, 199));
+        optionsTable.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        optionsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -468,22 +519,39 @@ public class PollViewScreen extends javax.swing.JPanel {
                 {null}
             },
             new String [] {
-                "Option"
+                "Options (Double click to edit)"
             }
         ));
-        jTable1.setFillsViewportHeight(true);
-        jScrollPane2.setViewportView(jTable1);
+        optionsTable.setFillsViewportHeight(true);
+        jScrollPane2.setViewportView(optionsTable);
 
-        jLabel6.setText("Options");
+        addOption.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        addOption.setText("Add");
+        addOption.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addOptionActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Add");
+        removeButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        removeButton.setText("Remove");
+        removeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeButtonActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Remove");
+        lockPoll.setBackground(new java.awt.Color(255, 251, 234));
+        lockPoll.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        lockPoll.setText("Lock this poll");
 
-        jCheckBox1.setBackground(new java.awt.Color(255, 251, 234));
-        jCheckBox1.setText("Lock this poll");
-
-        jButton6.setText("Save Poll");
+        saveButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        saveButton.setText("Save Poll");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout editPanelLayout = new javax.swing.GroupLayout(editPanel);
         editPanel.setLayout(editPanelLayout);
@@ -496,22 +564,18 @@ public class PollViewScreen extends javax.swing.JPanel {
                     .addGroup(editPanelLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBox1))
+                        .addComponent(lockPoll))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editPanelLayout.createSequentialGroup()
-                        .addGap(0, 118, Short.MAX_VALUE)
-                        .addGroup(editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(editPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(editPanelLayout.createSequentialGroup()
-                                .addGroup(editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, editPanelLayout.createSequentialGroup()
-                                        .addComponent(jButton3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton4)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                                .addComponent(jButton6)))))
+                        .addGap(0, 174, Short.MAX_VALUE)
+                        .addComponent(addOption)
+                        .addGap(149, 149, 149)
+                        .addComponent(removeButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                        .addComponent(saveButton))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         editPanelLayout.setVerticalGroup(
@@ -520,23 +584,20 @@ public class PollViewScreen extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jCheckBox1))
+                    .addComponent(lockPoll))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(questionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(editPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4))
+                            .addComponent(addOption)
+                            .addComponent(removeButton))
                         .addGap(56, 56, 56))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6)
+                        .addComponent(saveButton)
                         .addContainerGap())))
         );
 
@@ -741,40 +802,51 @@ public class PollViewScreen extends javax.swing.JPanel {
         backPollButton.setCursor(click);
     }//GEN-LAST:event_backPollButtonMouseMoved
 
+    private void addOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addOptionActionPerformed
+        addOption();
+    }//GEN-LAST:event_addOptionActionPerformed
+
+    private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+        removeOption();
+    }//GEN-LAST:event_removeButtonActionPerformed
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        save();
+    }//GEN-LAST:event_saveButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addOption;
     private javax.swing.JButton backButton;
     private javax.swing.JButton backPollButton;
     private javax.swing.JPanel creatorView;
     private javax.swing.JPanel editPanel;
     private javax.swing.JComboBox<String> groupComboBox;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JCheckBox lockPoll;
     private javax.swing.JPanel lockedView;
     private javax.swing.JLabel majorityLabel;
     private javax.swing.ButtonGroup optionGroup;
+    private javax.swing.JTable optionsTable;
     private javax.swing.JLabel pollID;
     private javax.swing.JTextArea question;
     private javax.swing.JTextField questionField;
     private javax.swing.JPanel radioContainer;
+    private javax.swing.JButton removeButton;
     private javax.swing.JPanel respondView;
     private javax.swing.JPanel responsesPanel;
     private javax.swing.JTable resultsTable;
+    private javax.swing.JButton saveButton;
     private javax.swing.JComboBox<String> showingComboBox;
     private javax.swing.JLabel showingLabel;
     private javax.swing.JButton submitButton;

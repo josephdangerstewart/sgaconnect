@@ -624,7 +624,7 @@ public class Backend {
      * @return the next available poll id for a new poll
      */
     public int getNextPollId() {
-        int maxId = Integer.MAX_VALUE;
+        int maxId = Integer.MIN_VALUE;
         
         for (int i = 0; i < polls.size(); i++) {
             if (polls.get(i).getID() > maxId) {

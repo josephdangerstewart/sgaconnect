@@ -66,7 +66,6 @@ public class PetitionMainScreen extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         petitionsTable = new javax.swing.JTable();
         createNewButton = new javax.swing.JButton();
@@ -77,9 +76,6 @@ public class PetitionMainScreen extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Steelfish Outline", 1, 54)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(142, 15, 22));
         jLabel1.setText("Petitions");
-
-        jLabel2.setFont(new java.awt.Font("Print Clearly", 0, 24)); // NOI18N
-        jLabel2.setText("raise your voice");
 
         petitionsTable.setBackground(new java.awt.Color(221, 209, 199));
         petitionsTable.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
@@ -140,27 +136,22 @@ public class PetitionMainScreen extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel2))
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(selectOneLabel)
-                                .addGap(0, 0, 0)
-                                .addComponent(createNewButton)))
+                        .addComponent(selectOneLabel)
+                        .addGap(0, 0, 0)
+                        .addComponent(createNewButton)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createNewButton)
@@ -189,7 +180,6 @@ public class PetitionMainScreen extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createNewButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable petitionsTable;
     private javax.swing.JLabel selectOneLabel;

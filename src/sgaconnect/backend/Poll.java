@@ -108,6 +108,10 @@ public class Poll {
         this.options.remove(index);
     }
     
+    public void removeAllOptions() {
+        this.options.clear();
+    }
+    
     public boolean hasResponded(User user) {
         int signerID = user.getID();
         for (int i = 0; i < responses.size(); i++) {
