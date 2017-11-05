@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/josephs12/sgaconnect/src/sgaconnect/backend/Backend.java</file>
-            <file>file:/C:/Users/josephs12/sgaconnect/src/sgaconnect/backend/Poll.java</file>
-            <file>file:/C:/Users/josephs12/sgaconnect/src/sgaconnect/PollViewScreen.java</file>
-            <file>file:/C:/Users/josephs12/sgaconnect/src/sgaconnect/backend/Petition.java</file>
+            <file>file:/C:/Users/Tsuna/Desktop/sgaconnect/src/sgaconnect/LogInView.java</file>
+            <file>file:/C:/Users/Tsuna/Desktop/sgaconnect/src/sgaconnect/StudentMainScreen.java</file>
+            <file>file:/C:/Users/Tsuna/Desktop/sgaconnect/src/sgaconnect/PetitionCreationScreen.java</file>
+            <file>file:/C:/Users/Tsuna/Desktop/sgaconnect/src/sgaconnect/PetitionMainScreen.java</file>
+            <file>file:/C:/Users/Tsuna/Desktop/sgaconnect/src/sgaconnect/PetitionViewScreen.java</file>
         </group>
     </open-files>
 </project-private>

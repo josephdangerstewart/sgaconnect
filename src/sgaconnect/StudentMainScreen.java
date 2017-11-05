@@ -6,6 +6,7 @@
 package sgaconnect;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Point;
 import javax.swing.JTable;
@@ -144,7 +145,13 @@ public class StudentMainScreen extends javax.swing.JPanel {
         senatorYearDisplay.setText("Undefined");
 
         nextButton.setFont(new java.awt.Font("Open Sans", 0, 10)); // NOI18N
+        nextButton.setMnemonic('x');
         nextButton.setText("Next");
+        nextButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                nextButtonMouseMoved(evt);
+            }
+        });
         nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextButtonActionPerformed(evt);
@@ -152,7 +159,13 @@ public class StudentMainScreen extends javax.swing.JPanel {
         });
 
         previousButton.setFont(new java.awt.Font("Open Sans", 0, 10)); // NOI18N
+        previousButton.setMnemonic('r');
         previousButton.setText("Previous");
+        previousButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                previousButtonMouseMoved(evt);
+            }
+        });
         previousButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 previousButtonActionPerformed(evt);
@@ -346,6 +359,21 @@ public class StudentMainScreen extends javax.swing.JPanel {
             //Do nothing
         }
     }//GEN-LAST:event_recentActivityTableMouseClicked
+
+    private void previousButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_previousButtonMouseMoved
+        // TODO add your handling code here:
+        
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        previousButton.setCursor(click);
+    }//GEN-LAST:event_previousButtonMouseMoved
+
+    private void nextButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        nextButton.setCursor(click);
+    }//GEN-LAST:event_nextButtonMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

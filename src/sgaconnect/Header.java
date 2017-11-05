@@ -39,6 +39,9 @@ public class Header extends javax.swing.JPanel {
         setBackground(new java.awt.Color(163, 42, 52));
 
         sgaLogoHomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/SGALOGOsmaller.png"))); // NOI18N
+        sgaLogoHomeButton.setMaximumSize(new java.awt.Dimension(52, 61));
+        sgaLogoHomeButton.setMinimumSize(new java.awt.Dimension(52, 61));
+        sgaLogoHomeButton.setPreferredSize(new java.awt.Dimension(52, 61));
         sgaLogoHomeButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 sgaLogoHomeButtonMouseMoved(evt);
@@ -79,8 +82,8 @@ public class Header extends javax.swing.JPanel {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(sgaLogoHomeButton))))
-                .addContainerGap(30, Short.MAX_VALUE))
+                            .addComponent(sgaLogoHomeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         sgaLogoHomeButton.getAccessibleContext().setAccessibleName("Home");

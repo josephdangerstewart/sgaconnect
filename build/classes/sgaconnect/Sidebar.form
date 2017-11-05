@@ -67,6 +67,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/sgaconnect/resources/Images/HomeImage1.png"/>
         </Property>
+        <Property name="mnemonic" type="int" value="104"/>
         <Property name="text" type="java.lang.String" value="Home"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[125, 51]"/>
@@ -79,6 +80,7 @@
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="homeButtonMouseMoved"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="homeButtonActionPerformed"/>
       </Events>
     </Component>
@@ -93,9 +95,11 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/sgaconnect/resources/Images/PetitionsBW2.png"/>
         </Property>
+        <Property name="mnemonic" type="int" value="112"/>
         <Property name="text" type="java.lang.String" value="Petitions"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="petitionButtonMouseMoved"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="petitionButtonActionPerformed"/>
       </Events>
     </Component>
@@ -110,6 +114,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/sgaconnect/resources/Images/PollsIconBW.png"/>
         </Property>
+        <Property name="mnemonic" type="int" value="115"/>
         <Property name="label" type="java.lang.String" value="Polls"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[125, 51]"/>
@@ -122,6 +127,7 @@
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="pollsButtonMouseMoved"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pollsButtonActionPerformed"/>
       </Events>
     </Component>
@@ -136,6 +142,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/sgaconnect/resources/Images/NewsletterPres2.png"/>
         </Property>
+        <Property name="mnemonic" type="int" value="110"/>
         <Property name="text" type="java.lang.String" value="Newsletter"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[125, 51]"/>
@@ -147,6 +154,9 @@
           <Dimension value="[125, 51]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="newsletterButtonMouseMoved"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bulletinButton">
       <Properties>
@@ -159,6 +169,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/sgaconnect/resources/Images/BulletinIcon.png"/>
         </Property>
+        <Property name="mnemonic" type="int" value="98"/>
         <Property name="text" type="java.lang.String" value="Bulletin"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[125, 51]"/>
@@ -170,6 +181,9 @@
           <Dimension value="[125, 51]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="bulletinButtonMouseMoved"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="messagesButton">
       <Properties>
@@ -182,6 +196,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/sgaconnect/resources/Images/MailIcon.png"/>
         </Property>
+        <Property name="mnemonic" type="int" value="109"/>
         <Property name="text" type="java.lang.String" value="Messages"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[125, 51]"/>
@@ -194,6 +209,7 @@
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="messagesButtonMouseMoved"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="messagesButtonActionPerformed"/>
       </Events>
     </Component>

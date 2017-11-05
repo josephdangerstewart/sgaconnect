@@ -5,6 +5,8 @@
  */
 package sgaconnect;
 
+import java.awt.Cursor;
+
 /**
  *
  * @author josephs12
@@ -40,58 +42,100 @@ public class SidebarPresident extends javax.swing.JPanel {
         homePresidentButton.setBackground(new java.awt.Color(221, 209, 199));
         homePresidentButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         homePresidentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/HomeImage1.png"))); // NOI18N
+        homePresidentButton.setMnemonic('h');
         homePresidentButton.setText("Home");
         homePresidentButton.setMaximumSize(new java.awt.Dimension(125, 51));
         homePresidentButton.setMinimumSize(new java.awt.Dimension(125, 51));
         homePresidentButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        homePresidentButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                homePresidentButtonMouseMoved(evt);
+            }
+        });
 
         messagesPresidentButton.setBackground(new java.awt.Color(221, 209, 199));
         messagesPresidentButton.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
         messagesPresidentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/MailPres.png"))); // NOI18N
+        messagesPresidentButton.setMnemonic('m');
         messagesPresidentButton.setText("Messages");
         messagesPresidentButton.setMaximumSize(new java.awt.Dimension(125, 51));
         messagesPresidentButton.setMinimumSize(new java.awt.Dimension(125, 51));
         messagesPresidentButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        messagesPresidentButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                messagesPresidentButtonMouseMoved(evt);
+            }
+        });
 
         bulletinPresidentButton.setBackground(new java.awt.Color(221, 209, 199));
         bulletinPresidentButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         bulletinPresidentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/BulletinIcon.png"))); // NOI18N
+        bulletinPresidentButton.setMnemonic('b');
         bulletinPresidentButton.setText("Bulletin");
         bulletinPresidentButton.setMaximumSize(new java.awt.Dimension(125, 51));
         bulletinPresidentButton.setMinimumSize(new java.awt.Dimension(125, 51));
         bulletinPresidentButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        bulletinPresidentButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                bulletinPresidentButtonMouseMoved(evt);
+            }
+        });
 
         pollsPresidentButton.setBackground(new java.awt.Color(221, 209, 199));
         pollsPresidentButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         pollsPresidentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/PollsIconBW.png"))); // NOI18N
+        pollsPresidentButton.setMnemonic('p');
         pollsPresidentButton.setText("Polls");
         pollsPresidentButton.setMaximumSize(new java.awt.Dimension(125, 51));
         pollsPresidentButton.setMinimumSize(new java.awt.Dimension(125, 51));
         pollsPresidentButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        pollsPresidentButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                pollsPresidentButtonMouseMoved(evt);
+            }
+        });
 
         petitionPresidentButton.setBackground(new java.awt.Color(221, 209, 199));
         petitionPresidentButton.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
         petitionPresidentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/PetitionsBW2.png"))); // NOI18N
+        petitionPresidentButton.setMnemonic('e');
         petitionPresidentButton.setText("Petitions");
         petitionPresidentButton.setMaximumSize(new java.awt.Dimension(125, 51));
         petitionPresidentButton.setMinimumSize(new java.awt.Dimension(125, 51));
         petitionPresidentButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        petitionPresidentButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                petitionPresidentButtonMouseMoved(evt);
+            }
+        });
 
         newsletterPresidentButton.setBackground(new java.awt.Color(221, 209, 199));
         newsletterPresidentButton.setFont(new java.awt.Font("Open Sans", 0, 10)); // NOI18N
         newsletterPresidentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/NewsletterPres3.png"))); // NOI18N
+        newsletterPresidentButton.setMnemonic('n');
         newsletterPresidentButton.setText("Newsletter");
         newsletterPresidentButton.setMaximumSize(new java.awt.Dimension(125, 51));
         newsletterPresidentButton.setMinimumSize(new java.awt.Dimension(125, 51));
         newsletterPresidentButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        newsletterPresidentButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                newsletterPresidentButtonMouseMoved(evt);
+            }
+        });
 
         controlpanelButton.setBackground(new java.awt.Color(221, 209, 199));
         controlpanelButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         controlpanelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/controlpanel1.png"))); // NOI18N
+        controlpanelButton.setMnemonic('c');
         controlpanelButton.setText("Control");
         controlpanelButton.setMaximumSize(new java.awt.Dimension(125, 51));
         controlpanelButton.setMinimumSize(new java.awt.Dimension(125, 51));
         controlpanelButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        controlpanelButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                controlpanelButtonMouseMoved(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -124,12 +168,61 @@ public class SidebarPresident extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(petitionPresidentButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(newsletterPresidentButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(newsletterPresidentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(controlpanelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void homePresidentButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homePresidentButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        homePresidentButton.setCursor(click);
+    }//GEN-LAST:event_homePresidentButtonMouseMoved
+
+    private void messagesPresidentButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagesPresidentButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        messagesPresidentButton.setCursor(click);
+    }//GEN-LAST:event_messagesPresidentButtonMouseMoved
+
+    private void bulletinPresidentButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bulletinPresidentButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        bulletinPresidentButton.setCursor(click);
+    }//GEN-LAST:event_bulletinPresidentButtonMouseMoved
+
+    private void pollsPresidentButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pollsPresidentButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        pollsPresidentButton.setCursor(click);
+    }//GEN-LAST:event_pollsPresidentButtonMouseMoved
+
+    private void petitionPresidentButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_petitionPresidentButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        petitionPresidentButton.setCursor(click);
+    }//GEN-LAST:event_petitionPresidentButtonMouseMoved
+
+    private void newsletterPresidentButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newsletterPresidentButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        newsletterPresidentButton.setCursor(click);
+    }//GEN-LAST:event_newsletterPresidentButtonMouseMoved
+
+    private void controlpanelButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_controlpanelButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        controlpanelButton.setCursor(click);
+    }//GEN-LAST:event_controlpanelButtonMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

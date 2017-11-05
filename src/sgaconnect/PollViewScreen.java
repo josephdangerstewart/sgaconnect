@@ -7,6 +7,7 @@ package sgaconnect;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.io.File;
 import java.util.ArrayList;
@@ -240,7 +241,7 @@ public class PollViewScreen extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         radioContainer = new javax.swing.JPanel();
         submitButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        backPollButton = new javax.swing.JButton();
         lockedView = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -313,18 +314,30 @@ public class PollViewScreen extends javax.swing.JPanel {
         jScrollPane4.setViewportView(radioContainer);
 
         submitButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        submitButton.setMnemonic('s');
         submitButton.setText("Submit");
+        submitButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                submitButtonMouseMoved(evt);
+            }
+        });
         submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        backPollButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        backPollButton.setMnemonic('b');
+        backPollButton.setText("Back");
+        backPollButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                backPollButtonMouseMoved(evt);
+            }
+        });
+        backPollButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                backPollButtonActionPerformed(evt);
             }
         });
 
@@ -336,22 +349,23 @@ public class PollViewScreen extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(respondViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(respondViewLayout.createSequentialGroup()
-                        .addComponent(pollID)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(respondViewLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(submitButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(respondViewLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane3)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, respondViewLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
+                        .addGroup(respondViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(respondViewLayout.createSequentialGroup()
+                                .addComponent(pollID)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(respondViewLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(submitButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(backPollButton)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(respondViewLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jScrollPane3)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, respondViewLayout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+                        .addGap(24, 24, 24))))
         );
         respondViewLayout.setVerticalGroup(
             respondViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,7 +379,7 @@ public class PollViewScreen extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(respondViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(submitButton)
-                    .addComponent(jButton2))
+                    .addComponent(backPollButton))
                 .addContainerGap())
         );
 
@@ -708,19 +722,33 @@ public class PollViewScreen extends javax.swing.JPanel {
         setResultsTable();
     }//GEN-LAST:event_showingComboBoxActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void backPollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backPollButtonActionPerformed
         PollMainScreen.getInstance().init();
         MainView.getInstance().changeView("pollMainScreen");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_backPollButtonActionPerformed
+
+    private void submitButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        submitButton.setCursor(click);
+    }//GEN-LAST:event_submitButtonMouseMoved
+
+    private void backPollButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backPollButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        backPollButton.setCursor(click);
+    }//GEN-LAST:event_backPollButtonMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
+    private javax.swing.JButton backPollButton;
     private javax.swing.JPanel creatorView;
     private javax.swing.JPanel editPanel;
     private javax.swing.JComboBox<String> groupComboBox;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

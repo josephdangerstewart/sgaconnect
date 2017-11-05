@@ -5,6 +5,7 @@
  */
 package sgaconnect;
 
+import java.awt.Cursor;
 import java.awt.Point;
 import java.awt.Window;
 import javax.swing.JComboBox;
@@ -68,6 +69,11 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
         SendButton.setText("Send");
         SendButton.setMaximumSize(new java.awt.Dimension(125, 51));
         SendButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        SendButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                SendButtonMouseMoved(evt);
+            }
+        });
         SendButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SendButtonActionPerformed(evt);
@@ -173,6 +179,13 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
     private void StudentNamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentNamesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_StudentNamesActionPerformed
+
+    private void SendButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        SendButton.setCursor(click);
+    }//GEN-LAST:event_SendButtonMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

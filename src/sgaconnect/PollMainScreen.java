@@ -5,6 +5,7 @@
  */
 package sgaconnect;
 
+import java.awt.Cursor;
 import java.awt.Point;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -57,7 +58,7 @@ public class PollMainScreen extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         pollsTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        newPollsButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 251, 234));
 
@@ -103,8 +104,15 @@ public class PollMainScreen extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jLabel2.setText("Select One or ");
 
-        jButton1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        jButton1.setText("Create New");
+        newPollsButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        newPollsButton.setMnemonic('c');
+        newPollsButton.setText("Create New");
+        newPollsButton.setToolTipText("");
+        newPollsButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                newPollsButtonMouseMoved(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -118,10 +126,9 @@ public class PollMainScreen extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(0, 0, 0)
-                        .addComponent(jButton1)
+                        .addComponent(newPollsButton)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -136,7 +143,7 @@ public class PollMainScreen extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jButton1))
+                    .addComponent(newPollsButton))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -152,12 +159,19 @@ public class PollMainScreen extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_pollsTableMouseClicked
 
+    private void newPollsButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newPollsButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        newPollsButton.setCursor(click);
+    }//GEN-LAST:event_newPollsButtonMouseMoved
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton newPollsButton;
     private javax.swing.JTable pollsTable;
     // End of variables declaration//GEN-END:variables
 

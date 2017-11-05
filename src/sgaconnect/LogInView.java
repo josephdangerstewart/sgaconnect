@@ -68,6 +68,7 @@ public class LogInView extends javax.swing.JPanel {
         });
 
         loginButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        loginButton.setMnemonic('l');
         loginButton.setText("Log In");
         loginButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
