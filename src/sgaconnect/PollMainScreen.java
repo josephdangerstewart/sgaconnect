@@ -163,5 +163,7 @@ public class PollMainScreen extends javax.swing.JPanel {
 
     private void navigateToPoll(int id) {
         System.out.println("Navigating to POLL " + id);
+        PollViewScreen.getInstance().init(MainFrame.getBackend().getPollByID(id));
+        MainView.getInstance().changeView("pollViewScreen");
     }
 }

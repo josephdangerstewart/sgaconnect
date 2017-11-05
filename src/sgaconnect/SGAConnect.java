@@ -60,7 +60,7 @@ public class SGAConnect {
             System.out.println();
             
             //get a description of all petitions
-            JSONObject[] allPetitions = backend.getAllPetitions();
+            JSONObject[] allPetitions = backend.getAllPetitions(loggedInUser);
             
             System.out.println("ALL PETITIONS");
             for (int i = 0; i < allPetitions.length; i++) {

@@ -108,7 +108,15 @@ public class Poll {
         this.options.remove(index);
     }
     
-    public void respond(int id,String response) {
+    public boolean hasResponded(User user) {
+        int signerID = user.getID();
+        for (int i = 0; i < responses.size(); i++) {
+            if (responses.get(i).getID() == id) return true;
+        }
+        return false;
+    }
+    
+    public void respond(int signerID,String response) {
         if (!isLocked) {
             for (int i = 0; i < responses.size(); i++) {
                 if (responses.get(i).getID() == id) return;

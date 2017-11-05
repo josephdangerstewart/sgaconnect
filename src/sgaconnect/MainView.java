@@ -52,6 +52,7 @@ public class MainView extends javax.swing.JPanel {
         senatorMessagesScreen1 = new sgaconnect.SenatorMessagesMain();
         petitionCreationScreen1 = new sgaconnect.PetitionCreationScreen();
         pollMainScreen1 = new sgaconnect.PollMainScreen();
+        pollViewScreen1 = new sgaconnect.PollViewScreen();
 
         headerContainer.setBackground(new java.awt.Color(0, 255, 255));
         headerContainer.setForeground(new java.awt.Color(51, 204, 255));
@@ -84,6 +85,7 @@ public class MainView extends javax.swing.JPanel {
         viewportContainer.add(senatorMessagesScreen1, "senatorMessagesScreen");
         viewportContainer.add(petitionCreationScreen1, "petitionCreationScreen");
         viewportContainer.add(pollMainScreen1, "pollMainScreen");
+        viewportContainer.add(pollViewScreen1, "pollViewScreen");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -114,6 +116,7 @@ public class MainView extends javax.swing.JPanel {
     private sgaconnect.PetitionMainScreen petitionMainScreen1;
     private sgaconnect.PetitionViewScreen petitionViewScreen1;
     private sgaconnect.PollMainScreen pollMainScreen1;
+    private sgaconnect.PollViewScreen pollViewScreen1;
     private sgaconnect.SenatorMessagesMain senatorMessagesScreen1;
     private sgaconnect.Sidebar sidebar1;
     private javax.swing.JPanel sidebarContainer;

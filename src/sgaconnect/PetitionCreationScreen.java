@@ -5,6 +5,7 @@
  */
 package sgaconnect;
 
+import javax.swing.DefaultComboBoxModel;
 import sgaconnect.backend.Petition;
 
 /**
@@ -28,6 +29,12 @@ public class PetitionCreationScreen extends javax.swing.JPanel {
     }
     
     public void init() {
+        DefaultComboBoxModel<String> model = (DefaultComboBoxModel)scopeField.getModel();
+        model.removeAllElements();
+        model.addElement("ALL CAMPUS");
+        model.addElement(MainFrame.getBackend().getScopeOf(MainFrame.getBackend().getLoggedInUser().getDorm()));
+        model.addElement(MainFrame.getBackend().getLoggedInUser().getDorm());
+        
         bodyField.setText("");
         titleField.setText("");
         scopeField.setSelectedIndex(0);

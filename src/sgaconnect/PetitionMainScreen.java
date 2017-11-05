@@ -33,7 +33,7 @@ public class PetitionMainScreen extends javax.swing.JPanel {
     }
     
     public void init() {
-        petitions = MainFrame.getBackend().getAllPetitions();
+        petitions = MainFrame.getBackend().getAllPetitions(MainFrame.getBackend().getLoggedInUser());
         
         DefaultTableModel model = (DefaultTableModel)petitionsTable.getModel();
         model.setRowCount(petitions.length);

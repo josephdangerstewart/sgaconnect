@@ -82,7 +82,7 @@ public class Sidebar extends javax.swing.JPanel {
 
         bulletinButton.setBackground(new java.awt.Color(221, 209, 199));
         bulletinButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        bulletinButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/BulletinIcon.png"))); // NOI18N
+        bulletinButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/BulletinIcon.png"))); // NOI18N
         bulletinButton.setText("Bulletin");
         bulletinButton.setMaximumSize(new java.awt.Dimension(125, 51));
         bulletinButton.setMinimumSize(new java.awt.Dimension(125, 51));
@@ -90,7 +90,7 @@ public class Sidebar extends javax.swing.JPanel {
 
         messagesButton.setBackground(new java.awt.Color(221, 209, 199));
         messagesButton.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        messagesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/MailIcon.png"))); // NOI18N
+        messagesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/MailIcon.png"))); // NOI18N
         messagesButton.setText("Messages");
         messagesButton.setMaximumSize(new java.awt.Dimension(125, 51));
         messagesButton.setMinimumSize(new java.awt.Dimension(125, 51));

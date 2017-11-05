@@ -50,6 +50,24 @@ public class Backend {
         "Blackstone"
     };
     
+    private static final String LOWER_CAMPUS_DORMS[] = {
+        "Hart",
+        "Stewart",
+        "Hope"
+    };
+    
+    private static final String UPPER_CAMPUS_DORMS[] = {
+        "Horton",
+        "Alpha",
+        "Signma",
+        "Blackstone"
+    };
+    
+    private static final String OFF_CAMPUS_DORMS[] = {
+        "Off Campus",
+        "Bluff"
+    };
+    
     private static final String ROLES[] = {
         "Student",
         "Senator",
@@ -270,10 +288,18 @@ public class Backend {
         poll.respond(1, "green");
         polls.put(poll.toJSON());
         
+        Poll poll2 = new Poll(1,STUDENT_COUNT);
+        poll2.setQuestion("Do you like locked polls?");
+        poll2.addOption("Yes");
+        poll2.addOption("No");
+        poll2.setLocked(true);
+        polls.put(poll2.toJSON());
+        
         Petition petition = new Petition(0,0);
         petition.setTitle("No more tofu!!");
         petition.setBody("We the people of Biola university hereby demand that they take tofu out of all eatieries on campus. This includes but is not limited to the caf, eagles, the talon, commons, and blackstone cafe");
         petition.comment(103, "It is done!");
+        petition.setScope("ALL CAMPUS");
         petition.sign(5);
         petition.sign(23);
         petition.sign(23);
@@ -356,6 +382,32 @@ public class Backend {
                 return loggedInUser;
             }
         }
+        return null;
+    }
+    
+    /*
+    * This method returns the area scope of a dorm
+    * So stewart would return "LOWER CAMPUS", Horton would return "UPPER CAMPUS", etc
+    */
+    public String getScopeOf(String dorm) {
+        for (int i = 0; i < LOWER_CAMPUS_DORMS.length; i++) {
+            if (dorm.equals(LOWER_CAMPUS_DORMS[i])) {
+                return "LOWER CAMPUS";
+            }
+        }
+        
+        for (int i = 0; i < UPPER_CAMPUS_DORMS.length; i++) {
+            if (dorm.equals(UPPER_CAMPUS_DORMS[i])) {
+                return "UPPER CAMPUS";
+            }
+        }
+        
+        for (int i = 0; i < OFF_CAMPUS_DORMS.length; i++) {
+            if (dorm.equals(OFF_CAMPUS_DORMS.length)) {
+                return "OFF CAMPUS";
+            }
+        }
+        
         return null;
     }
     
@@ -512,9 +564,9 @@ public class Backend {
         
         for (int i = 0; i< polls.size(); i++) {
             JSONObject obj = new JSONObject();
-            User user = getUserByID(polls.get(i).getCreatorId());
+            User creator = getUserByID(polls.get(i).getCreatorId());
             obj.put("question",polls.get(i).getQuestion());
-            obj.put("creator",user.getName() + " [" + user.getDorm() + "]");
+            obj.put("creator",creator.getName() + " [" + creator.getDorm() + "]");
             obj.put("id", polls.get(i).getID());
             objects[i] = obj;
         }
@@ -532,20 +584,25 @@ public class Backend {
      *  "id" (int)
      * @return a description of all the petitions
      */
-    public JSONObject[] getAllPetitions() {
+    public JSONObject[] getAllPetitions(User user) {
         
-        JSONObject[] objects = new JSONObject[petitions.size()];
+        ArrayList<JSONObject> objects = new ArrayList<JSONObject>();
+        
+        String areaScope = getScopeOf(user.getDorm());
         
         for (int i = 0; i < petitions.size(); i++) {
-            JSONObject obj = new JSONObject();
-            obj.put("title",petitions.get(i).getTitle());
-            obj.put("creator",getUserByID(petitions.get(i).getCreatorID()).getName());
-            obj.put("signerCount", petitions.get(i).getSignerCount());
-            obj.put("id", petitions.get(i).getID());
-            objects[i] = obj;
+            String scope = petitions.get(i).getScope();
+            if (scope.equals("ALL CAMPUS") || scope.equals(areaScope) || scope.equals(user.getDorm())) {
+                JSONObject obj = new JSONObject();
+                obj.put("title",petitions.get(i).getTitle());
+                obj.put("creator",getUserByID(petitions.get(i).getCreatorID()).getName());
+                obj.put("signerCount", petitions.get(i).getSignerCount());
+                obj.put("id", petitions.get(i).getID());
+                objects.add(obj);
+            }
         }
         
-        return objects;
+        return objects.toArray(new JSONObject[0]);
     }
     
     /**
