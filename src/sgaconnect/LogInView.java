@@ -5,6 +5,7 @@
  */
 package sgaconnect;
 
+import java.awt.Cursor;
 import sgaconnect.backend.Backend;
 
 /**
@@ -60,12 +61,27 @@ public class LogInView extends javax.swing.JPanel {
         jLabel4.setText("Password:");
 
         passwordField.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyPressed(evt);
+            }
+        });
 
         loginButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         loginButton.setText("Log In");
+        loginButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                loginButtonMouseMoved(evt);
+            }
+        });
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);
+            }
+        });
+        loginButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                loginButtonKeyPressed(evt);
             }
         });
 
@@ -80,19 +96,15 @@ public class LogInView extends javax.swing.JPanel {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usernameField, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addContainerGap(23, Short.MAX_VALUE))))
+                    .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(usernameField, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,6 +148,44 @@ public class LogInView extends javax.swing.JPanel {
             MainFrame.getMainFrame().changeView("mainView");
         }
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
+        //TODO add your handling code here:
+        //holder for ascii 
+        int key = evt.getKeyCode();
+        //if enter is hit then change frames
+        if (key == 10)
+        {
+         Backend backend2 = MainFrame.getBackend();
+            if (backend2.logIn(usernameField.getText(), new String(passwordField.getPassword())) != null) {
+                StudentMainScreen.getInstance().setUser(backend2.getLoggedInUser());
+                MainFrame.getMainFrame().changeView("mainView");
+            }   
+        }
+    }//GEN-LAST:event_passwordFieldKeyPressed
+
+    private void loginButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginButtonKeyPressed
+        // TODO add your handling code here:
+        //holder for ascii 
+        
+        int key = evt.getKeyCode();
+        //if enter is hit then change frames
+        if (key == 10)
+        {
+         Backend backend3 = MainFrame.getBackend();
+            if (backend3.logIn(usernameField.getText(), new String(passwordField.getPassword())) != null) {
+                StudentMainScreen.getInstance().setUser(backend3.getLoggedInUser());
+                MainFrame.getMainFrame().changeView("mainView");
+            }   
+        }
+    }//GEN-LAST:event_loginButtonKeyPressed
+
+    private void loginButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseMoved
+        // TODO add your handling code here:
+        
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        loginButton.setCursor(click);
+    }//GEN-LAST:event_loginButtonMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,6 +5,8 @@
  */
 package sgaconnect;
 
+import java.awt.Cursor;
+
 /**
  *
  * @author josephs12
@@ -37,6 +39,11 @@ public class Header extends javax.swing.JPanel {
         setBackground(new java.awt.Color(163, 42, 52));
 
         sgaLogoHomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/SGALOGOsmaller.png"))); // NOI18N
+        sgaLogoHomeButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                sgaLogoHomeButtonMouseMoved(evt);
+            }
+        });
         sgaLogoHomeButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 sgaLogoHomeButtonMouseClicked(evt);
@@ -73,7 +80,7 @@ public class Header extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(sgaLogoHomeButton))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         sgaLogoHomeButton.getAccessibleContext().setAccessibleName("Home");
@@ -81,8 +88,17 @@ public class Header extends javax.swing.JPanel {
 
     private void sgaLogoHomeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sgaLogoHomeButtonMouseClicked
         // TODO add your handling code here:
+       
+        StudentMainScreen.getInstance().setUser(MainFrame.getBackend().getLoggedInUser());
+        MainView.getInstance().changeView("studentMainScreen");
         
     }//GEN-LAST:event_sgaLogoHomeButtonMouseClicked
+
+    private void sgaLogoHomeButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sgaLogoHomeButtonMouseMoved
+        // TODO add your handling code here:
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        sgaLogoHomeButton.setCursor(click);
+    }//GEN-LAST:event_sgaLogoHomeButtonMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
