@@ -8,16 +8,22 @@ package sgaconnect;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import javax.swing.AbstractButton;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JRadioButton;
 import javax.swing.JToggleButton.ToggleButtonModel;
 import javax.swing.LayoutStyle;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
+import sgaconnect.backend.Backend;
 import sgaconnect.backend.Poll;
+import sgaconnect.backend.PollResponse;
 import sgaconnect.backend.User;
 
 /**
@@ -34,10 +40,6 @@ public class PollViewScreen extends javax.swing.JPanel {
      */
     public PollViewScreen() {
         initComponents();
-        editPane.setContentType("text/html");
-        HTMLEditorKit kit = new HTMLEditorKit();
-        editPane.setEditorKit(kit);
-        editPane.setText("<html><head></head><body><p>Hello World!</p></body></html>");
         thisObj = this;
     }
     
@@ -51,75 +53,169 @@ public class PollViewScreen extends javax.swing.JPanel {
         this.poll = poll;
         
         if (user.getRole() == 0 && !poll.isLocked()) {
-            //create font
-            Font bodyFont = new Font("Open Sans", 0, 13);
-
-            //set question and poll id
-            pollID.setText("Poll #" + poll.getID());
-            question.setText("Q. " + poll.getQuestion());
-
-            //Empty the radio group container
-            radioContainer.removeAll();
-            Enumeration<AbstractButton> buts = optionGroup.getElements();
-            while (buts.hasMoreElements()) {
-                AbstractButton element = buts.nextElement();
-                optionGroup.remove(element);
-            }
-
-            //Create lists, get layout, and make horizontal and vertical groupings
-            ArrayList<String> pollOptions = poll.getOptions();
-            JRadioButton[] radioButtons = new JRadioButton[pollOptions.size()];
-            GroupLayout radioContainerLayout = (GroupLayout) radioContainer.getLayout();
-
-            GroupLayout.ParallelGroup horizontalRadioButtonGroup = radioContainerLayout.createParallelGroup(GroupLayout.Alignment.LEADING);
-            GroupLayout.SequentialGroup verticalRadioButtonGroup = radioContainerLayout.createSequentialGroup().addContainerGap();
-
-            //iterate through poll options
-            for (int i = 0; i < pollOptions.size(); i++) {
-                //create radio button for poll option i and put it in array
-                radioButtons[i] = new JRadioButton();
-                radioButtons[i].setFont(bodyFont);
-                radioButtons[i].setBackground(new Color(255, 251, 234));
-                radioButtons[i].setText(pollOptions.get(i));
-                optionGroup.add(radioButtons[i]);
-
-                //add new radio button to horizontal and vertical group
-                horizontalRadioButtonGroup.addComponent(radioButtons[i]);
-                verticalRadioButtonGroup.addComponent(radioButtons[i]);
-                if (i != pollOptions.size()) {
-                    verticalRadioButtonGroup.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED);
-                }
-
-            }
-
-            //Add all buttons to the layout
-            radioContainerLayout.setHorizontalGroup(
-                radioContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(radioContainerLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(horizontalRadioButtonGroup)
-                    .addContainerGap(0, Short.MAX_VALUE))
-            );
-            radioContainerLayout.setVerticalGroup(
-                radioContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(verticalRadioButtonGroup
-                    .addContainerGap(0, Short.MAX_VALUE))
-            );
-            CardLayout layout = (CardLayout)this.getLayout();
-            layout.show(this,"respondView");
+            initRespondView();
         } else if (poll.isLocked() && user.getRole() == 0) {
-            CardLayout layout = (CardLayout)this.getLayout();
+            initLockedView(user);
+        } else {
+            initCreatorView(user);
+        }
+    }
+    
+    private void initCreatorView(User user) {
+        CardLayout layout = (CardLayout)this.getLayout();
+        layout.show(this,"creatorView");
+        if (user.getID() != poll.getCreatorId()) {
+            tabPane.remove(editPanel);
+        }
+        setShowing(false);
+        setResultsTable();
+    }
+    
+    private void setResultsTable() {
+        String group = (String)groupComboBox.getSelectedItem();
+        
+        ArrayList<String> options = poll.getOptions();
+        ArrayList<PollResponse> responses = poll.getResponses();
+        int[] breakdown = new int[options.size()];
+        int responseCount = 0;
+        
+        if (group.equals("All")) {
+            
+            for (int i = 0; i < responses.size(); i++) {
+                for (int j = 0; j < options.size(); j++) {
+                    if (responses.get(i).getResponse().equals(options.get(j))) {
+                        breakdown[j]++;
+                        responseCount++;
+                    }
+                }
+            }
+            
+        } else if (group.equals("Year")) {
+            
+            String showing = (String)showingComboBox.getSelectedItem();
+            for (int i = 0; i < responses.size(); i++) {
+                if (MainFrame.getBackend().getUserByID(responses.get(i).getID()).getYearString().equals(showing)) {
+                    for (int j = 0; j < options.size(); j++) {
+                        if (responses.get(i).getResponse().equals(options.get(j))) {
+                            breakdown[j]++;
+                            responseCount++;
+                        }
+                    }
+                }
+            }
+            
+        } else if (group.equals("Dorm")) {
+            
+            String showing = (String)showingComboBox.getSelectedItem();
+            for (int i = 0; i < responses.size(); i++) {
+                if (MainFrame.getBackend().getUserByID(responses.get(i).getID()).getDorm().equals(showing)) {
+                    for (int j = 0; j < options.size(); j++) {
+                        if (responses.get(i).getResponse().equals(options.get(j))) {
+                            breakdown[j]++;
+                            responseCount++;
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) resultsTable.getModel();
+        
+        model.setColumnCount(options.size());
+        
+        for (int i = 0; i < options.size(); i++) {
+            model.setValueAt(options.get(i), i, 0);
+            model.setValueAt(breakdown[i],i,1);
+            model.setValueAt(toPercent((double)breakdown[i]/(double)responseCount),i,2);
+        }
+        
+        setMajority(options,breakdown,responseCount);
+    }
+    
+    private void setMajority(ArrayList<String> options, int[] breakdown, int responseCount) {
+        int max = Integer.MIN_VALUE;
+        int maxIndex = 0;
+        
+        for (int i = 0; i < breakdown.length; i++) {
+            if (breakdown[i] > max) {
+                maxIndex = i;
+                max = breakdown[i];
+            }
+        }
+        
+        majorityLabel.setText("Majority: \"" + options.get(maxIndex) + "\" " + toPercent((double)breakdown[maxIndex]/(double)responseCount));
+    }
+    
+    private String toPercent(double num) {
+        return ((int)(num*10000)/100)+"%";
+   }
+    
+    private void initLockedView(User user) {
+        CardLayout layout = (CardLayout)this.getLayout();
             layout.show(this, "lockedView");
             if (user.getRole() == 0 || (user.getRole() == 1 && user.getID() != poll.getCreatorId())) {
                 lockedView.remove(unlockButton);
             }
-        } else {
-            CardLayout layout = (CardLayout)this.getLayout();
-            layout.show(this,"creatorView");
-            if (user.getID() != poll.getCreatorId()) {
-                tabPane.remove(editPanel);
-            }
+    }
+    
+    private void initRespondView() {
+        //create font
+        Font bodyFont = new Font("Open Sans", 0, 13);
+
+        //set question and poll id
+        pollID.setText("Poll #" + poll.getID());
+        question.setText("Q. " + poll.getQuestion());
+
+        //Empty the radio group container
+        radioContainer.removeAll();
+        Enumeration<AbstractButton> buts = optionGroup.getElements();
+        while (buts.hasMoreElements()) {
+            AbstractButton element = buts.nextElement();
+            optionGroup.remove(element);
         }
+
+        //Create lists, get layout, and make horizontal and vertical groupings
+        ArrayList<String> pollOptions = poll.getOptions();
+        JRadioButton[] radioButtons = new JRadioButton[pollOptions.size()];
+        GroupLayout radioContainerLayout = (GroupLayout) radioContainer.getLayout();
+
+        GroupLayout.ParallelGroup horizontalRadioButtonGroup = radioContainerLayout.createParallelGroup(GroupLayout.Alignment.LEADING);
+        GroupLayout.SequentialGroup verticalRadioButtonGroup = radioContainerLayout.createSequentialGroup().addContainerGap();
+
+        //iterate through poll options
+        for (int i = 0; i < pollOptions.size(); i++) {
+            //create radio button for poll option i and put it in array
+            radioButtons[i] = new JRadioButton();
+            radioButtons[i].setFont(bodyFont);
+            radioButtons[i].setBackground(new Color(255, 251, 234));
+            radioButtons[i].setText(pollOptions.get(i));
+            optionGroup.add(radioButtons[i]);
+
+            //add new radio button to horizontal and vertical group
+            horizontalRadioButtonGroup.addComponent(radioButtons[i]);
+            verticalRadioButtonGroup.addComponent(radioButtons[i]);
+            if (i != pollOptions.size()) {
+                verticalRadioButtonGroup.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED);
+            }
+
+        }
+
+        //Add all buttons to the layout
+        radioContainerLayout.setHorizontalGroup(
+            radioContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(radioContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(horizontalRadioButtonGroup)
+                .addContainerGap(0, Short.MAX_VALUE))
+        );
+        radioContainerLayout.setVerticalGroup(
+            radioContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(verticalRadioButtonGroup
+                .addContainerGap(0, Short.MAX_VALUE))
+        );
+        CardLayout layout = (CardLayout)this.getLayout();
+        layout.show(this,"respondView");
     }
 
     /**
@@ -139,6 +235,7 @@ public class PollViewScreen extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         radioContainer = new javax.swing.JPanel();
         submitButton = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         lockedView = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -149,8 +246,14 @@ public class PollViewScreen extends javax.swing.JPanel {
         tabPane = new javax.swing.JTabbedPane();
         editPanel = new javax.swing.JPanel();
         responsesPanel = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        groupComboBox = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        editPane = new javax.swing.JEditorPane();
+        resultsTable = new javax.swing.JTable();
+        showingLabel = new javax.swing.JLabel();
+        showingComboBox = new javax.swing.JComboBox<>();
+        majorityLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 251, 234));
         setLayout(new java.awt.CardLayout());
@@ -184,7 +287,7 @@ public class PollViewScreen extends javax.swing.JPanel {
         radioContainer.setLayout(radioContainerLayout);
         radioContainerLayout.setHorizontalGroup(
             radioContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 617, Short.MAX_VALUE)
+            .addGap(0, 647, Short.MAX_VALUE)
         );
         radioContainerLayout.setVerticalGroup(
             radioContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,6 +304,14 @@ public class PollViewScreen extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout respondViewLayout = new javax.swing.GroupLayout(respondView);
         respondView.setLayout(respondViewLayout);
         respondViewLayout.setHorizontalGroup(
@@ -209,20 +320,22 @@ public class PollViewScreen extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(respondViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(respondViewLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE))
-                    .addGroup(respondViewLayout.createSequentialGroup()
                         .addComponent(pollID)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(respondViewLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(submitButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(respondViewLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jScrollPane3)))
                 .addContainerGap())
-            .addGroup(respondViewLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(submitButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, respondViewLayout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
         respondViewLayout.setVerticalGroup(
             respondViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,7 +347,9 @@ public class PollViewScreen extends javax.swing.JPanel {
                 .addGap(11, 11, 11)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(submitButton)
+                .addGroup(respondViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(submitButton)
+                    .addComponent(jButton2))
                 .addContainerGap())
         );
 
@@ -328,26 +443,102 @@ public class PollViewScreen extends javax.swing.JPanel {
 
         responsesPanel.setBackground(new java.awt.Color(255, 251, 234));
 
-        editPane.setEditable(false);
-        editPane.setBackground(new java.awt.Color(255, 251, 234));
-        editPane.setText("<html>\n\t<h1>Does this work at all</h1>\n\t<button>Maybe it does, maybe it doesn't</button>\n</html>");
-        jScrollPane1.setViewportView(editPane);
+        jLabel4.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        jLabel4.setText("Group Responses By:");
+
+        groupComboBox.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        groupComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Year", "Dorm" }));
+        groupComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                groupComboBoxActionPerformed(evt);
+            }
+        });
+
+        resultsTable.setBackground(new java.awt.Color(255, 251, 234));
+        resultsTable.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        resultsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Response", "Count", "Percent"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        resultsTable.setFillsViewportHeight(true);
+        jScrollPane1.setViewportView(resultsTable);
+
+        showingLabel.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        showingLabel.setText("Showing:");
+
+        showingComboBox.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        showingComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Freshmen", "Sophmore", "Junior", "Senior" }));
+        showingComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showingComboBoxActionPerformed(evt);
+            }
+        });
+
+        majorityLabel.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        majorityLabel.setText("Majority:");
+
+        jButton1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        jButton1.setText("Export Responses");
 
         javax.swing.GroupLayout responsesPanelLayout = new javax.swing.GroupLayout(responsesPanel);
         responsesPanel.setLayout(responsesPanelLayout);
         responsesPanelLayout.setHorizontalGroup(
             responsesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(responsesPanelLayout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(responsesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
+                    .addGroup(responsesPanelLayout.createSequentialGroup()
+                        .addGroup(responsesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(responsesPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(groupComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(responsesPanelLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(showingLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(showingComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(responsesPanelLayout.createSequentialGroup()
+                        .addComponent(majorityLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
+                .addContainerGap())
         );
         responsesPanelLayout.setVerticalGroup(
             responsesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, responsesPanelLayout.createSequentialGroup()
-                .addContainerGap(189, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
+                .addContainerGap()
+                .addGroup(responsesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(groupComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(responsesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(showingLabel)
+                    .addComponent(showingComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(responsesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(majorityLabel)
+                    .addComponent(jButton1))
+                .addContainerGap())
         );
 
         tabPane.addTab("Responses", responsesPanel);
@@ -396,25 +587,71 @@ public class PollViewScreen extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_unlockButtonActionPerformed
 
+    private void setShowing(boolean showing) {
+        showingLabel.setVisible(showing);
+        showingComboBox.setVisible(showing);
+    }
+    
+    private void setGroupData(String[] data) {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) showingComboBox.getModel();
+        
+        model.removeAllElements();
+        
+        for (int i = 0; i < data.length; i++) {
+            model.addElement(data[i]);
+        }
+    }
+    
+    private void groupComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupComboBoxActionPerformed
+        String group = (String)groupComboBox.getSelectedItem();
+        
+        if (group.equals("All")) {
+            setShowing(false);
+            setResultsTable();
+        } else if (group.equals("Year")) {
+            setShowing(true);
+            setGroupData(Backend.getYears());
+        } else if (group.equals("Dorm")) {
+            setShowing(true);
+            setGroupData(Backend.getDorms());
+        }
+    }//GEN-LAST:event_groupComboBoxActionPerformed
+
+    private void showingComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showingComboBoxActionPerformed
+        setResultsTable();
+    }//GEN-LAST:event_showingComboBoxActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        PollMainScreen.getInstance().init();
+        MainView.getInstance().changeView("pollMainScreen");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JPanel creatorView;
-    private javax.swing.JEditorPane editPane;
     private javax.swing.JPanel editPanel;
+    private javax.swing.JComboBox<String> groupComboBox;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JPanel lockedView;
+    private javax.swing.JLabel majorityLabel;
     private javax.swing.ButtonGroup optionGroup;
     private javax.swing.JLabel pollID;
     private javax.swing.JTextArea question;
     private javax.swing.JPanel radioContainer;
     private javax.swing.JPanel respondView;
     private javax.swing.JPanel responsesPanel;
+    private javax.swing.JTable resultsTable;
+    private javax.swing.JComboBox<String> showingComboBox;
+    private javax.swing.JLabel showingLabel;
     private javax.swing.JButton submitButton;
     private javax.swing.JTabbedPane tabPane;
     private javax.swing.JButton unlockButton;

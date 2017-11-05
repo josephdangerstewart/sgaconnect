@@ -119,10 +119,10 @@ public class Poll {
     public void respond(int signerID,String response) {
         if (!isLocked) {
             for (int i = 0; i < responses.size(); i++) {
-                if (responses.get(i).getID() == id) return;
+                if (responses.get(i).getID() == signerID) return;
             }
 
-            this.responses.add(new PollResponse(id,response));
+            this.responses.add(new PollResponse(signerID,response));
         }
     }
     
