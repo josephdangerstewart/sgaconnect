@@ -98,6 +98,7 @@ public class PetitionCreationScreen extends javax.swing.JPanel {
         jScrollPane1.setViewportView(bodyField);
 
         createButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        createButton.setMnemonic('c');
         createButton.setText("Create");
         createButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +110,7 @@ public class PetitionCreationScreen extends javax.swing.JPanel {
         bodyFieldError.setForeground(new java.awt.Color(255, 44, 52));
 
         jButton1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        jButton1.setMnemonic('a');
         jButton1.setText("Back");
 
         titleFieldError.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N

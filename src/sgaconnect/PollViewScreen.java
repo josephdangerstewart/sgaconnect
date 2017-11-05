@@ -328,7 +328,7 @@ public class PollViewScreen extends javax.swing.JPanel {
         });
 
         backPollButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        backPollButton.setMnemonic('b');
+        backPollButton.setMnemonic('k');
         backPollButton.setText("Back");
         backPollButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {

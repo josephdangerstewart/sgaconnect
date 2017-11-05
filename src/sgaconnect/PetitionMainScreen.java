@@ -119,6 +119,7 @@ public class PetitionMainScreen extends javax.swing.JPanel {
         jScrollPane1.setViewportView(petitionsTable);
 
         createNewButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        createNewButton.setMnemonic('r');
         createNewButton.setText("Create New");
         createNewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

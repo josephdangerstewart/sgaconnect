@@ -126,7 +126,7 @@ public class SidebarPresident extends javax.swing.JPanel {
         controlpanelButton.setBackground(new java.awt.Color(221, 209, 199));
         controlpanelButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         controlpanelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/controlpanel1.png"))); // NOI18N
-        controlpanelButton.setMnemonic('c');
+        controlpanelButton.setMnemonic('r');
         controlpanelButton.setText("Control");
         controlpanelButton.setMaximumSize(new java.awt.Dimension(125, 51));
         controlpanelButton.setMinimumSize(new java.awt.Dimension(125, 51));
