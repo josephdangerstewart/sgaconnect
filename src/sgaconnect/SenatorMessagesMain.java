@@ -51,12 +51,8 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
         MessagesLabel = new javax.swing.JLabel();
         SendButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        CreateMessage = new javax.swing.JScrollPane();
-        CreateMessageField = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        ToLabel = new javax.swing.JLabel();
-        StudentNames = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 251, 234));
 
@@ -65,8 +61,7 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
         MessagesLabel.setText("Messages");
 
         SendButton.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        SendButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/MessageSend.png"))); // NOI18N
-        SendButton.setText("Send");
+        SendButton.setText("New");
         SendButton.setMaximumSize(new java.awt.Dimension(125, 51));
         SendButton.setPreferredSize(new java.awt.Dimension(125, 51));
         SendButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -81,13 +76,6 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
         });
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
-
-        CreateMessageField.setColumns(20);
-        CreateMessageField.setFont(new java.awt.Font("Open Sans", 0, 13)); // NOI18N
-        CreateMessageField.setRows(5);
-        CreateMessageField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        CreateMessageField.setPreferredSize(new java.awt.Dimension(918, 68));
-        CreateMessage.setViewportView(CreateMessageField);
 
         jTable1.setBackground(new java.awt.Color(221, 209, 199));
         jTable1.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
@@ -117,17 +105,6 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        ToLabel.setText("To:");
-
-        StudentNames.setEditable(true);
-        StudentNames.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        StudentNames.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ashley", "Joseph", "Orion", "Wesley", "Wyatt" }));
-        StudentNames.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StudentNamesActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,19 +112,16 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(CreateMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(SendButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ToLabel)
-                            .addComponent(StudentNames, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(MessagesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,18 +129,11 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(MessagesLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ToLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(StudentNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(CreateMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE))
+                .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -174,10 +141,6 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
     private void SendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SendButtonActionPerformed
-
-    private void StudentNamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentNamesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_StudentNamesActionPerformed
 
     private void SendButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendButtonMouseMoved
         // TODO add your handling code here:
@@ -188,12 +151,8 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane CreateMessage;
-    private javax.swing.JTextArea CreateMessageField;
     private javax.swing.JLabel MessagesLabel;
     private javax.swing.JButton SendButton;
-    private javax.swing.JComboBox<String> StudentNames;
-    private javax.swing.JLabel ToLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
