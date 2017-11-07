@@ -52,7 +52,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="petitionPresidentButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="newsletterPresidentButton" min="-2" max="-2" attributes="0"/>
+              <Component id="newsletterPresidentButton" min="-2" pref="51" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="controlpanelButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -72,6 +72,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/sgaconnect/resources/Images/HomeImage1.png"/>
         </Property>
+        <Property name="mnemonic" type="int" value="104"/>
         <Property name="text" type="java.lang.String" value="Home"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[125, 51]"/>
@@ -83,6 +84,9 @@
           <Dimension value="[125, 51]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="homePresidentButtonMouseMoved"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="messagesPresidentButton">
       <Properties>
@@ -95,6 +99,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/sgaconnect/resources/Images/MailPres.png"/>
         </Property>
+        <Property name="mnemonic" type="int" value="109"/>
         <Property name="text" type="java.lang.String" value="Messages"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[125, 51]"/>
@@ -106,6 +111,9 @@
           <Dimension value="[125, 51]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="messagesPresidentButtonMouseMoved"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bulletinPresidentButton">
       <Properties>
@@ -118,6 +126,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/sgaconnect/resources/Images/BulletinIcon.png"/>
         </Property>
+        <Property name="mnemonic" type="int" value="98"/>
         <Property name="text" type="java.lang.String" value="Bulletin"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[125, 51]"/>
@@ -129,6 +138,9 @@
           <Dimension value="[125, 51]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="bulletinPresidentButtonMouseMoved"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="pollsPresidentButton">
       <Properties>
@@ -141,6 +153,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/sgaconnect/resources/Images/PollsIconBW.png"/>
         </Property>
+        <Property name="mnemonic" type="int" value="112"/>
         <Property name="text" type="java.lang.String" value="Polls"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[125, 51]"/>
@@ -152,6 +165,9 @@
           <Dimension value="[125, 51]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="pollsPresidentButtonMouseMoved"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="petitionPresidentButton">
       <Properties>
@@ -164,6 +180,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/sgaconnect/resources/Images/PetitionsBW2.png"/>
         </Property>
+        <Property name="mnemonic" type="int" value="101"/>
         <Property name="text" type="java.lang.String" value="Petitions"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[125, 51]"/>
@@ -175,6 +192,9 @@
           <Dimension value="[125, 51]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="petitionPresidentButtonMouseMoved"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="newsletterPresidentButton">
       <Properties>
@@ -187,6 +207,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/sgaconnect/resources/Images/NewsletterPres3.png"/>
         </Property>
+        <Property name="mnemonic" type="int" value="110"/>
         <Property name="text" type="java.lang.String" value="Newsletter"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[125, 51]"/>
@@ -198,6 +219,9 @@
           <Dimension value="[125, 51]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="newsletterPresidentButtonMouseMoved"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="controlpanelButton">
       <Properties>
@@ -210,6 +234,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/sgaconnect/resources/Images/controlpanel1.png"/>
         </Property>
+        <Property name="mnemonic" type="int" value="114"/>
         <Property name="text" type="java.lang.String" value="Control"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[125, 51]"/>
@@ -221,6 +246,9 @@
           <Dimension value="[125, 51]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="controlpanelButtonMouseMoved"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

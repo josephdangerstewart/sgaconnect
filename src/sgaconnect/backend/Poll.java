@@ -108,13 +108,25 @@ public class Poll {
         this.options.remove(index);
     }
     
-    public void respond(int id,String response) {
+    public void removeAllOptions() {
+        this.options.clear();
+    }
+    
+    public boolean hasResponded(User user) {
+        int signerID = user.getID();
+        for (int i = 0; i < responses.size(); i++) {
+            if (responses.get(i).getID() == id) return true;
+        }
+        return false;
+    }
+    
+    public void respond(int signerID,String response) {
         if (!isLocked) {
             for (int i = 0; i < responses.size(); i++) {
-                if (responses.get(i).getID() == id) return;
+                if (responses.get(i).getID() == signerID) return;
             }
 
-            this.responses.add(new PollResponse(id,response));
+            this.responses.add(new PollResponse(signerID,response));
         }
     }
     

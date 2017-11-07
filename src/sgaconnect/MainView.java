@@ -49,34 +49,25 @@ public class MainView extends javax.swing.JPanel {
         studentMainView2 = new sgaconnect.StudentMainScreen();
         petitionMainScreen1 = new sgaconnect.PetitionMainScreen();
         petitionViewScreen1 = new sgaconnect.PetitionViewScreen();
-        senatorMessagesScreen1 = new sgaconnect.SenatorMessagesScreen();
+        senatorMessagesScreen1 = new sgaconnect.SenatorMessagesMain();
         petitionCreationScreen1 = new sgaconnect.PetitionCreationScreen();
+        pollMainScreen1 = new sgaconnect.PollMainScreen();
+        pollViewScreen1 = new sgaconnect.PollViewScreen();
 
         headerContainer.setBackground(new java.awt.Color(0, 255, 255));
         headerContainer.setForeground(new java.awt.Color(51, 204, 255));
-
-        javax.swing.GroupLayout header1Layout = new javax.swing.GroupLayout(header1);
-        header1.setLayout(header1Layout);
-        header1Layout.setHorizontalGroup(
-            header1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 729, Short.MAX_VALUE)
-        );
-        header1Layout.setVerticalGroup(
-            header1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 75, Short.MAX_VALUE)
-        );
 
         javax.swing.GroupLayout headerContainerLayout = new javax.swing.GroupLayout(headerContainer);
         headerContainer.setLayout(headerContainerLayout);
         headerContainerLayout.setHorizontalGroup(
             headerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 727, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(headerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(header1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(header1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE))
         );
         headerContainerLayout.setVerticalGroup(
             headerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 75, Short.MAX_VALUE)
+            .addGap(0, 83, Short.MAX_VALUE)
             .addGroup(headerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(header1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -93,16 +84,18 @@ public class MainView extends javax.swing.JPanel {
         viewportContainer.add(petitionViewScreen1, "petitionViewScreen");
         viewportContainer.add(senatorMessagesScreen1, "senatorMessagesScreen");
         viewportContainer.add(petitionCreationScreen1, "petitionCreationScreen");
+        viewportContainer.add(pollMainScreen1, "pollMainScreen");
+        viewportContainer.add(pollViewScreen1, "pollViewScreen");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(headerContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(sidebarContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE))
+                .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(headerContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,8 +103,8 @@ public class MainView extends javax.swing.JPanel {
                 .addComponent(headerContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sidebarContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)))
+                    .addComponent(sidebarContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                    .addComponent(viewportContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -122,7 +115,9 @@ public class MainView extends javax.swing.JPanel {
     private sgaconnect.PetitionCreationScreen petitionCreationScreen1;
     private sgaconnect.PetitionMainScreen petitionMainScreen1;
     private sgaconnect.PetitionViewScreen petitionViewScreen1;
-    private sgaconnect.SenatorMessagesScreen senatorMessagesScreen1;
+    private sgaconnect.PollMainScreen pollMainScreen1;
+    private sgaconnect.PollViewScreen pollViewScreen1;
+    private sgaconnect.SenatorMessagesMain senatorMessagesScreen1;
     private sgaconnect.Sidebar sidebar1;
     private javax.swing.JPanel sidebarContainer;
     private sgaconnect.StudentMainScreen studentMainView2;

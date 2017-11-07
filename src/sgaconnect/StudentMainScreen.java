@@ -6,6 +6,7 @@
 package sgaconnect;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Point;
 import javax.swing.JTable;
@@ -35,6 +36,7 @@ public class StudentMainScreen extends javax.swing.JPanel {
         initComponents();
         recentActivityTable.getTableHeader().setFont(new Font("Open Sans",Font.PLAIN,12));
         initTable();
+        
     }
     
     private void initTable() {
@@ -50,6 +52,10 @@ public class StudentMainScreen extends javax.swing.JPanel {
     
     private void navigateToEvent(String type, int id) {
         System.out.println("Navigating to " + type + " " + id);
+        if (type.equals("PETITION")) {
+            PetitionViewScreen.getInstance().init(MainFrame.getBackend().getPetitionByID(id));
+            MainView.getInstance().changeView("petitionViewScreen");
+        }
     }
 
     public static StudentMainScreen getInstance() {
@@ -139,7 +145,13 @@ public class StudentMainScreen extends javax.swing.JPanel {
         senatorYearDisplay.setText("Undefined");
 
         nextButton.setFont(new java.awt.Font("Open Sans", 0, 10)); // NOI18N
+        nextButton.setMnemonic('x');
         nextButton.setText("Next");
+        nextButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                nextButtonMouseMoved(evt);
+            }
+        });
         nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextButtonActionPerformed(evt);
@@ -147,7 +159,13 @@ public class StudentMainScreen extends javax.swing.JPanel {
         });
 
         previousButton.setFont(new java.awt.Font("Open Sans", 0, 10)); // NOI18N
+        previousButton.setMnemonic('r');
         previousButton.setText("Previous");
+        previousButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                previousButtonMouseMoved(evt);
+            }
+        });
         previousButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 previousButtonActionPerformed(evt);
@@ -255,6 +273,7 @@ public class StudentMainScreen extends javax.swing.JPanel {
             }
         });
         recentActivityTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        recentActivityTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         recentActivityTable.setFillsViewportHeight(true);
         recentActivityTable.setGridColor(new java.awt.Color(255, 251, 234));
         recentActivityTable.setRowSelectionAllowed(false);
@@ -340,6 +359,21 @@ public class StudentMainScreen extends javax.swing.JPanel {
             //Do nothing
         }
     }//GEN-LAST:event_recentActivityTableMouseClicked
+
+    private void previousButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_previousButtonMouseMoved
+        // TODO add your handling code here:
+        
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        previousButton.setCursor(click);
+    }//GEN-LAST:event_previousButtonMouseMoved
+
+    private void nextButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        nextButton.setCursor(click);
+    }//GEN-LAST:event_nextButtonMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

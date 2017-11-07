@@ -5,6 +5,7 @@
  */
 package sgaconnect;
 
+import javax.swing.DefaultComboBoxModel;
 import sgaconnect.backend.Petition;
 
 /**
@@ -28,6 +29,12 @@ public class PetitionCreationScreen extends javax.swing.JPanel {
     }
     
     public void init() {
+        DefaultComboBoxModel<String> model = (DefaultComboBoxModel)scopeField.getModel();
+        model.removeAllElements();
+        model.addElement("ALL CAMPUS");
+        model.addElement(MainFrame.getBackend().getScopeOf(MainFrame.getBackend().getLoggedInUser().getDorm()));
+        model.addElement(MainFrame.getBackend().getLoggedInUser().getDorm());
+        
         bodyField.setText("");
         titleField.setText("");
         scopeField.setSelectedIndex(0);
@@ -91,6 +98,7 @@ public class PetitionCreationScreen extends javax.swing.JPanel {
         jScrollPane1.setViewportView(bodyField);
 
         createButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        createButton.setMnemonic('c');
         createButton.setText("Create");
         createButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +110,7 @@ public class PetitionCreationScreen extends javax.swing.JPanel {
         bodyFieldError.setForeground(new java.awt.Color(255, 44, 52));
 
         jButton1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        jButton1.setMnemonic('a');
         jButton1.setText("Back");
 
         titleFieldError.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N

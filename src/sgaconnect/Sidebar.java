@@ -5,6 +5,8 @@
  */
 package sgaconnect;
 
+import java.awt.Cursor;
+
 /**
  *
  * @author josephs12
@@ -39,10 +41,16 @@ public class Sidebar extends javax.swing.JPanel {
         homeButton.setBackground(new java.awt.Color(221, 209, 199));
         homeButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/HomeImage1.png"))); // NOI18N
+        homeButton.setMnemonic('h');
         homeButton.setText("Home");
         homeButton.setMaximumSize(new java.awt.Dimension(125, 51));
         homeButton.setMinimumSize(new java.awt.Dimension(125, 51));
         homeButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        homeButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                homeButtonMouseMoved(evt);
+            }
+        });
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeButtonActionPerformed(evt);
@@ -52,7 +60,13 @@ public class Sidebar extends javax.swing.JPanel {
         petitionButton.setBackground(new java.awt.Color(221, 209, 199));
         petitionButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         petitionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/PetitionsBW2.png"))); // NOI18N
+        petitionButton.setMnemonic('p');
         petitionButton.setText("Petitions");
+        petitionButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                petitionButtonMouseMoved(evt);
+            }
+        });
         petitionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 petitionButtonActionPerformed(evt);
@@ -62,34 +76,63 @@ public class Sidebar extends javax.swing.JPanel {
         pollsButton.setBackground(new java.awt.Color(221, 209, 199));
         pollsButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         pollsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/PollsIconBW.png"))); // NOI18N
+        pollsButton.setMnemonic('s');
         pollsButton.setLabel("Polls");
         pollsButton.setMaximumSize(new java.awt.Dimension(125, 51));
         pollsButton.setMinimumSize(new java.awt.Dimension(125, 51));
         pollsButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        pollsButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                pollsButtonMouseMoved(evt);
+            }
+        });
+        pollsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pollsButtonActionPerformed(evt);
+            }
+        });
 
         newsletterButton.setBackground(new java.awt.Color(221, 209, 199));
         newsletterButton.setFont(new java.awt.Font("Open Sans", 0, 9)); // NOI18N
         newsletterButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/NewsletterPres2.png"))); // NOI18N
+        newsletterButton.setMnemonic('n');
         newsletterButton.setText("Newsletter");
         newsletterButton.setMaximumSize(new java.awt.Dimension(125, 51));
         newsletterButton.setMinimumSize(new java.awt.Dimension(125, 51));
         newsletterButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        newsletterButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                newsletterButtonMouseMoved(evt);
+            }
+        });
 
         bulletinButton.setBackground(new java.awt.Color(221, 209, 199));
         bulletinButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        bulletinButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/BulletinIcon.png"))); // NOI18N
+        bulletinButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/BulletinIcon.png"))); // NOI18N
+        bulletinButton.setMnemonic('b');
         bulletinButton.setText("Bulletin");
         bulletinButton.setMaximumSize(new java.awt.Dimension(125, 51));
         bulletinButton.setMinimumSize(new java.awt.Dimension(125, 51));
         bulletinButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        bulletinButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                bulletinButtonMouseMoved(evt);
+            }
+        });
 
         messagesButton.setBackground(new java.awt.Color(221, 209, 199));
         messagesButton.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        messagesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/MailIcon.png"))); // NOI18N
+        messagesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/MailIcon.png"))); // NOI18N
+        messagesButton.setMnemonic('m');
         messagesButton.setText("Messages");
         messagesButton.setMaximumSize(new java.awt.Dimension(125, 51));
         messagesButton.setMinimumSize(new java.awt.Dimension(125, 51));
         messagesButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        messagesButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                messagesButtonMouseMoved(evt);
+            }
+        });
         messagesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 messagesButtonActionPerformed(evt);
@@ -143,6 +186,54 @@ public class Sidebar extends javax.swing.JPanel {
     private void messagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButtonActionPerformed
         MainView.getInstance().changeView("senatorMessagesScreen");
     }//GEN-LAST:event_messagesButtonActionPerformed
+
+    private void pollsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pollsButtonActionPerformed
+        PollMainScreen.getInstance().init();
+        MainView.getInstance().changeView("pollMainScreen");
+    }//GEN-LAST:event_pollsButtonActionPerformed
+
+    private void homeButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        homeButton.setCursor(click);
+    }//GEN-LAST:event_homeButtonMouseMoved
+
+    private void petitionButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_petitionButtonMouseMoved
+        // TODO add your handling code here:
+        
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        petitionButton.setCursor(click);
+    }//GEN-LAST:event_petitionButtonMouseMoved
+
+    private void pollsButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pollsButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        pollsButton.setCursor(click);
+    }//GEN-LAST:event_pollsButtonMouseMoved
+
+    private void newsletterButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newsletterButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        newsletterButton.setCursor(click);
+    }//GEN-LAST:event_newsletterButtonMouseMoved
+
+    private void bulletinButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bulletinButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        bulletinButton.setCursor(click);
+    }//GEN-LAST:event_bulletinButtonMouseMoved
+
+    private void messagesButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagesButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        messagesButton.setCursor(click);
+    }//GEN-LAST:event_messagesButtonMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

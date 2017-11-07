@@ -5,6 +5,7 @@
  */
 package sgaconnect;
 
+import java.awt.Cursor;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import sgaconnect.backend.Petition;
@@ -42,7 +43,11 @@ public class PetitionViewScreen extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel)signers.getModel();
         model.setRowCount(signerIDs.size());
         for (int i = 0; i < model.getRowCount(); i++) {
-            model.setValueAt(signerIDs.get(i), i, 0);
+            model.setValueAt(MainFrame.getBackend().getUserByID(signerIDs.get(i)).getName(), i, 0);
+        }
+        
+        if (MainFrame.getBackend().getLoggedInUser().getRole() != 0) {
+            this.remove(signButton);
         }
     }
 
@@ -55,8 +60,7 @@ public class PetitionViewScreen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        title = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        backPetitionButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         body = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -64,23 +68,27 @@ public class PetitionViewScreen extends javax.swing.JPanel {
         commentScrollPane = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         commentField = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        commentButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
+        signButton = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        title = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 251, 234));
 
-        title.setFont(new java.awt.Font("Print Clearly", 0, 24)); // NOI18N
-        title.setForeground(new java.awt.Color(10, 10, 10));
-        title.setText("#0 | \"No More Tofu\"");
-
-        jButton1.setForeground(new java.awt.Color(10, 10, 10));
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        backPetitionButton.setForeground(new java.awt.Color(10, 10, 10));
+        backPetitionButton.setMnemonic('b');
+        backPetitionButton.setText("Back");
+        backPetitionButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                backPetitionButtonMouseMoved(evt);
+            }
+        });
+        backPetitionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                backPetitionButtonActionPerformed(evt);
             }
         });
 
@@ -108,7 +116,15 @@ public class PetitionViewScreen extends javax.swing.JPanel {
             new String [] {
                 "Signers"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         signers.setFillsViewportHeight(true);
         signers.setSelectionBackground(new java.awt.Color(221, 209, 199));
         signers.setSelectionForeground(new java.awt.Color(10, 10, 10));
@@ -119,7 +135,19 @@ public class PetitionViewScreen extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(255, 251, 234));
 
-        jButton3.setText("Comment");
+        commentField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                commentFieldKeyPressed(evt);
+            }
+        });
+
+        commentButton.setMnemonic('c');
+        commentButton.setText("Comment");
+        commentButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                commentButtonMouseMoved(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Courier New", 0, 10)); // NOI18N
         jLabel1.setText("User 10 [SENATOR] said at 10/10/12 at 2:09 pm:");
@@ -130,7 +158,7 @@ public class PetitionViewScreen extends javax.swing.JPanel {
         jTextArea1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Wow! I really liked this petition! +2 signs!");
+        jTextArea1.setText("It is done...");
         jTextArea1.setWrapStyleWord(true);
         jTextArea1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -144,7 +172,7 @@ public class PetitionViewScreen extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(commentField, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3))
+                        .addComponent(commentButton))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -159,7 +187,7 @@ public class PetitionViewScreen extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(commentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(commentButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
@@ -171,80 +199,139 @@ public class PetitionViewScreen extends javax.swing.JPanel {
 
         commentScrollPane.setViewportView(jPanel3);
 
-        jButton2.setText("Sign Petition");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        signButton.setMnemonic('p');
+        signButton.setText("Sign Petition");
+        signButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                signButtonMouseMoved(evt);
             }
         });
+        signButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signButtonActionPerformed(evt);
+            }
+        });
+
+        jScrollPane4.setBorder(null);
+
+        title.setEditable(false);
+        title.setBackground(new java.awt.Color(255, 251, 234));
+        title.setColumns(20);
+        title.setFont(new java.awt.Font("Print Clearly", 0, 28)); // NOI18N
+        title.setText("#0 | Petition title goes here");
+        jScrollPane4.setViewportView(title);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(commentScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                            .addComponent(commentScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
+                                .addComponent(signButton))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(title)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
-                .addGap(11, 11, 11))
+                        .addContainerGap()
+                        .addComponent(jScrollPane4)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(backPetitionButton)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(title))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(backPetitionButton)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(signButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(commentScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)))
+                        .addComponent(commentScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE))
                 .addGap(12, 12, 12))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void backPetitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backPetitionButtonActionPerformed
         PetitionMainScreen.getInstance().init();
         MainView.getInstance().changeView("petitionMainScreen");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_backPetitionButtonActionPerformed
+
+    private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signButtonActionPerformed
+        if (petition.getCreatorID() != MainFrame.getBackend().getLoggedInUser().getID()) {
+            petition.sign(MainFrame.getBackend().getLoggedInUser());
+            MainFrame.getBackend().save(petition);
+            init(petition);
+        }
+    }//GEN-LAST:event_signButtonActionPerformed
+
+    private void backPetitionButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backPetitionButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        backPetitionButton.setCursor(click);
+    }//GEN-LAST:event_backPetitionButtonMouseMoved
+
+    private void signButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        signButton.setCursor(click);
+    }//GEN-LAST:event_signButtonMouseMoved
+
+    private void commentButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_commentButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        commentButton.setCursor(click);
+    }//GEN-LAST:event_commentButtonMouseMoved
+
+    private void commentFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_commentFieldKeyPressed
+        
+           //---WHEN THE COMMENT BUTTON IS FINISHED PLEASE FILL THAT SAME CODE
+           //IN THE IF STATEMENT---
+
+        // TODO add your handling code here:
+        /* int key = evt.getKeyCode();
+        //if enter is hit then change frames
+        if (key == 10)
+        {
+            
+        }
+        */
+    }//GEN-LAST:event_commentFieldKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backPetitionButton;
     private javax.swing.JTextArea body;
+    private javax.swing.JButton commentButton;
     private javax.swing.JTextField commentField;
     private javax.swing.JScrollPane commentScrollPane;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton signButton;
     private javax.swing.JTable signers;
-    private javax.swing.JLabel title;
+    private javax.swing.JTextArea title;
     // End of variables declaration//GEN-END:variables
 }
