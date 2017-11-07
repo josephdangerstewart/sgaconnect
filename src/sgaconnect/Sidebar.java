@@ -59,7 +59,7 @@ public class Sidebar extends javax.swing.JPanel {
 
         petitionButton.setBackground(new java.awt.Color(221, 209, 199));
         petitionButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        petitionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/PetitionsBW2.png"))); // NOI18N
+        petitionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/petitionsNEW2.png"))); // NOI18N
         petitionButton.setMnemonic('p');
         petitionButton.setText("Petitions");
         petitionButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -122,7 +122,7 @@ public class Sidebar extends javax.swing.JPanel {
 
         messagesButton.setBackground(new java.awt.Color(221, 209, 199));
         messagesButton.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        messagesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/MailIcon.png"))); // NOI18N
+        messagesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/mailICONSMALLER.png"))); // NOI18N
         messagesButton.setMnemonic('m');
         messagesButton.setText("Messages");
         messagesButton.setMaximumSize(new java.awt.Dimension(125, 51));
@@ -165,7 +165,7 @@ public class Sidebar extends javax.swing.JPanel {
                 .addComponent(pollsButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(newsletterButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(bulletinButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(messagesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
