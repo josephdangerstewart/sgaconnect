@@ -55,7 +55,7 @@ public class SidebarPresident extends javax.swing.JPanel {
 
         messagesPresidentButton.setBackground(new java.awt.Color(221, 209, 199));
         messagesPresidentButton.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        messagesPresidentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/MailPres.png"))); // NOI18N
+        messagesPresidentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/mailICONSMALLER.png"))); // NOI18N
         messagesPresidentButton.setMnemonic('m');
         messagesPresidentButton.setText("Messages");
         messagesPresidentButton.setMaximumSize(new java.awt.Dimension(125, 51));
@@ -97,7 +97,7 @@ public class SidebarPresident extends javax.swing.JPanel {
 
         petitionPresidentButton.setBackground(new java.awt.Color(221, 209, 199));
         petitionPresidentButton.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        petitionPresidentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/PetitionsBW2.png"))); // NOI18N
+        petitionPresidentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/petitionsNEW2.png"))); // NOI18N
         petitionPresidentButton.setMnemonic('e');
         petitionPresidentButton.setText("Petitions");
         petitionPresidentButton.setMaximumSize(new java.awt.Dimension(125, 51));

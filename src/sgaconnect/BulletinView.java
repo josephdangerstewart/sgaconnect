@@ -9,12 +9,12 @@ package sgaconnect;
  *
  * @author Wesley
  */
-public class BulletinView3 extends javax.swing.JPanel {
+public class BulletinView extends javax.swing.JPanel {
 
     /**
      * Creates new form BulletinView
      */
-    public BulletinView3() {
+    public BulletinView() {
         initComponents();
     }
 
