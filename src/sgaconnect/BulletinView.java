@@ -5,6 +5,8 @@
  */
 package sgaconnect;
 
+import java.awt.Cursor;
+
 /**
  *
  * @author Wesley
@@ -37,12 +39,12 @@ public class BulletinView extends javax.swing.JPanel {
         jTextArea1 = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        filterDropDown = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        bulletinEntry = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        postButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -51,8 +53,8 @@ public class BulletinView extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        previousButton = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 251, 234));
 
@@ -77,7 +79,7 @@ public class BulletinView extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -129,7 +131,7 @@ public class BulletinView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -137,13 +139,13 @@ public class BulletinView extends javax.swing.JPanel {
         jLabel2.setText("Filter:");
         jLabel2.setToolTipText("Filter (Pick One)");
 
-        jComboBox1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No filter", "Name (alphabetical)", "Most Recent", "Senator" }));
-        jComboBox1.setToolTipText("Filter Options");
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        filterDropDown.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        filterDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No filter", "Name (alphabetical)", "Most Recent", "Senator" }));
+        filterDropDown.setToolTipText("Filter Options");
+        filterDropDown.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        filterDropDown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                filterDropDownActionPerformed(evt);
             }
         });
 
@@ -154,23 +156,34 @@ public class BulletinView extends javax.swing.JPanel {
         jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jTextArea3.setBackground(new java.awt.Color(221, 209, 199));
-        jTextArea3.setColumns(20);
-        jTextArea3.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        jTextArea3.setLineWrap(true);
-        jTextArea3.setRows(5);
-        jTextArea3.setText("Type your bulletin here");
-        jTextArea3.setToolTipText("Your new bulletin");
-        jTextArea3.setWrapStyleWord(true);
-        jTextArea3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jTextArea3.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jScrollPane4.setViewportView(jTextArea3);
+        bulletinEntry.setBackground(new java.awt.Color(255, 251, 245));
+        bulletinEntry.setColumns(20);
+        bulletinEntry.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        bulletinEntry.setLineWrap(true);
+        bulletinEntry.setRows(5);
+        bulletinEntry.setText("Type your bulletin here");
+        bulletinEntry.setToolTipText("Your new bulletin");
+        bulletinEntry.setWrapStyleWord(true);
+        bulletinEntry.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        bulletinEntry.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        bulletinEntry.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                bulletinEntryMouseMoved(evt);
+            }
+        });
+        jScrollPane4.setViewportView(bulletinEntry);
 
         jLabel5.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jLabel5.setText("Today");
 
-        jButton1.setText("Post");
-        jButton1.setToolTipText("");
+        postButton.setMnemonic('t');
+        postButton.setText("Post");
+        postButton.setToolTipText("");
+        postButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                postButtonMouseMoved(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -183,7 +196,7 @@ public class BulletinView extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(postButton)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -192,7 +205,7 @@ public class BulletinView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jButton1))
+                    .addComponent(postButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
                 .addContainerGap())
@@ -219,7 +232,7 @@ public class BulletinView extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel6.setBackground(new java.awt.Color(221, 209, 199));
@@ -289,22 +302,34 @@ public class BulletinView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jButton2.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        jButton2.setText("Previous");
-        jButton2.setToolTipText("View previous posts");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        previousButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        previousButton.setMnemonic('v');
+        previousButton.setText("Previous");
+        previousButton.setToolTipText("View previous posts");
+        previousButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                previousButtonMouseMoved(evt);
+            }
+        });
+        previousButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                previousButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        jButton3.setText("Next");
-        jButton3.setToolTipText("View later posts");
+        nextButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        nextButton.setMnemonic('x');
+        nextButton.setText("Next");
+        nextButton.setToolTipText("View later posts");
+        nextButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                nextButtonMouseMoved(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -320,22 +345,21 @@ public class BulletinView extends javax.swing.JPanel {
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addComponent(jLabel2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(filterDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(previousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(11, 11, 11))
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+                                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addContainerGap()))))
         );
@@ -348,14 +372,14 @@ public class BulletinView extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(filterDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton2)
-                        .addComponent(jButton3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(previousButton)
+                        .addComponent(nextButton)))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
@@ -381,20 +405,42 @@ public class BulletinView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void filterDropDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterDropDownActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_filterDropDownActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void previousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_previousButtonActionPerformed
+
+    private void bulletinEntryMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bulletinEntryMouseMoved
+        // TODO add your handling code here:
+        Cursor hover = new Cursor(Cursor.TEXT_CURSOR);
+        bulletinEntry.setCursor(hover);
+    }//GEN-LAST:event_bulletinEntryMouseMoved
+
+    private void previousButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_previousButtonMouseMoved
+        // TODO add your handling code here:
+        Cursor click2 = new Cursor(Cursor.HAND_CURSOR);
+        previousButton.setCursor(click2);
+    }//GEN-LAST:event_previousButtonMouseMoved
+
+    private void nextButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextButtonMouseMoved
+        // TODO add your handling code here:
+        Cursor click3 = new Cursor(Cursor.HAND_CURSOR);
+        nextButton.setCursor(click3);
+    }//GEN-LAST:event_nextButtonMouseMoved
+
+    private void postButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_postButtonMouseMoved
+        // TODO add your handling code here:
+        Cursor click4 = new Cursor(Cursor.HAND_CURSOR);
+        postButton.setCursor(click4);
+    }//GEN-LAST:event_postButtonMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextArea bulletinEntry;
+    private javax.swing.JComboBox<String> filterDropDown;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -416,6 +462,8 @@ public class BulletinView extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JButton nextButton;
+    private javax.swing.JButton postButton;
+    private javax.swing.JButton previousButton;
     // End of variables declaration//GEN-END:variables
 }
