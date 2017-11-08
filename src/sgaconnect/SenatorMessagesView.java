@@ -47,10 +47,9 @@ public class SenatorMessagesView extends javax.swing.JPanel {
         backmessagesButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         body = new javax.swing.JTextArea();
-        commentScrollPane = new javax.swing.JScrollPane();
-        jPanel3 = new javax.swing.JPanel();
-        replyField = new javax.swing.JTextField();
         sendButton = new javax.swing.JButton();
+        commentScrollPane = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 251, 234));
 
@@ -81,32 +80,7 @@ public class SenatorMessagesView extends javax.swing.JPanel {
         body.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         body.setFocusable(false);
         jScrollPane2.setViewportView(body);
-
-        commentScrollPane.setBackground(new java.awt.Color(255, 251, 234));
-        commentScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder("Reply"));
-
-        jPanel3.setBackground(new java.awt.Color(255, 251, 234));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(replyField, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(replyField, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        replyField.getAccessibleContext().setAccessibleName("replyField");
-
-        commentScrollPane.setViewportView(jPanel3);
+        body.getAccessibleContext().setAccessibleDescription("");
 
         sendButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/MessageSend.png"))); // NOI18N
         sendButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -120,28 +94,37 @@ public class SenatorMessagesView extends javax.swing.JPanel {
             }
         });
 
+        commentScrollPane.setBackground(new java.awt.Color(255, 251, 234));
+        commentScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reply", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Open Sans", 0, 12))); // NOI18N
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        commentScrollPane.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(sendButton)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(commentScrollPane)
-                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane2)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(messageTitle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
                         .addComponent(backmessagesButton)
                         .addGap(11, 11, 11))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(sendButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(commentScrollPane)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,15 +134,13 @@ public class SenatorMessagesView extends javax.swing.JPanel {
                     .addComponent(messageTitle)
                     .addComponent(backmessagesButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(commentScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(commentScrollPane)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(sendButton)
                 .addContainerGap())
         );
-
-        commentScrollPane.getAccessibleContext().setAccessibleName("ReplyField");
     }// </editor-fold>//GEN-END:initComponents
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
@@ -189,10 +170,9 @@ public class SenatorMessagesView extends javax.swing.JPanel {
     private javax.swing.JButton backmessagesButton;
     private javax.swing.JTextArea body;
     private javax.swing.JScrollPane commentScrollPane;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel messageTitle;
-    private javax.swing.JTextField replyField;
     private javax.swing.JButton sendButton;
     // End of variables declaration//GEN-END:variables
 }

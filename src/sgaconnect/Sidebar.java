@@ -105,6 +105,11 @@ public class Sidebar extends javax.swing.JPanel {
                 newsletterButtonMouseMoved(evt);
             }
         });
+        newsletterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newsletterButtonActionPerformed(evt);
+            }
+        });
 
         bulletinButton.setBackground(new java.awt.Color(221, 209, 199));
         bulletinButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
@@ -117,6 +122,11 @@ public class Sidebar extends javax.swing.JPanel {
         bulletinButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 bulletinButtonMouseMoved(evt);
+            }
+        });
+        bulletinButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bulletinButtonActionPerformed(evt);
             }
         });
 
@@ -184,7 +194,7 @@ public class Sidebar extends javax.swing.JPanel {
     }//GEN-LAST:event_petitionButtonActionPerformed
 
     private void messagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButtonActionPerformed
-        MainView.getInstance().changeView("senatorMessagesScreen");
+        MainView.getInstance().changeView("senatorMessagesMain");
     }//GEN-LAST:event_messagesButtonActionPerformed
 
     private void pollsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pollsButtonActionPerformed
@@ -234,6 +244,14 @@ public class Sidebar extends javax.swing.JPanel {
         Cursor click = new Cursor(Cursor.HAND_CURSOR);
         messagesButton.setCursor(click);
     }//GEN-LAST:event_messagesButtonMouseMoved
+
+    private void bulletinButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bulletinButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bulletinButtonActionPerformed
+
+    private void newsletterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newsletterButtonActionPerformed
+        MainView.getInstance().changeView("newsletterMainScreen");
+    }//GEN-LAST:event_newsletterButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

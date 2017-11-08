@@ -50,7 +50,6 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
 
         MessagesLabel = new javax.swing.JLabel();
         SendButton = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -74,8 +73,6 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
                 SendButtonActionPerformed(evt);
             }
         });
-
-        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
 
         jTable1.setBackground(new java.awt.Color(221, 209, 199));
         jTable1.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
@@ -112,8 +109,7 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(MessagesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -129,9 +125,7 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(MessagesLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -154,7 +148,6 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
     private javax.swing.JLabel MessagesLabel;
     private javax.swing.JButton SendButton;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
