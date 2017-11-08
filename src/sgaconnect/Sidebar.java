@@ -246,7 +246,7 @@ public class Sidebar extends javax.swing.JPanel {
     }//GEN-LAST:event_messagesButtonMouseMoved
 
     private void bulletinButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bulletinButtonActionPerformed
-        // TODO add your handling code here:
+        MainView.getInstance().changeView("bulletinView");
     }//GEN-LAST:event_bulletinButtonActionPerformed
 
     private void newsletterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newsletterButtonActionPerformed
