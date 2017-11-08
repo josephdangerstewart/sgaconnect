@@ -49,10 +49,15 @@ public class MainView extends javax.swing.JPanel {
         studentMainView2 = new sgaconnect.StudentMainScreen();
         petitionMainScreen1 = new sgaconnect.PetitionMainScreen();
         petitionViewScreen1 = new sgaconnect.PetitionViewScreen();
-        senatorMessagesScreen1 = new sgaconnect.SenatorMessagesMain();
         petitionCreationScreen1 = new sgaconnect.PetitionCreationScreen();
         pollMainScreen1 = new sgaconnect.PollMainScreen();
         pollViewScreen1 = new sgaconnect.PollViewScreen();
+        senatorMessagesMain1 = new sgaconnect.SenatorMessagesMain();
+        senatorMessagesNew1 = new sgaconnect.SenatorMessagesNew();
+        senatorMessagesView1 = new sgaconnect.SenatorMessagesView();
+        newsletterMainScreen1 = new sgaconnect.NewsletterMainScreen();
+        newsletterViewScreen1 = new sgaconnect.NewsletterViewScreen();
+        bulletinView1 = new sgaconnect.BulletinView();
 
         headerContainer.setBackground(new java.awt.Color(0, 255, 255));
         headerContainer.setForeground(new java.awt.Color(51, 204, 255));
@@ -82,10 +87,15 @@ public class MainView extends javax.swing.JPanel {
         viewportContainer.add(studentMainView2, "studentMainScreen");
         viewportContainer.add(petitionMainScreen1, "petitionMainScreen");
         viewportContainer.add(petitionViewScreen1, "petitionViewScreen");
-        viewportContainer.add(senatorMessagesScreen1, "senatorMessagesScreen");
         viewportContainer.add(petitionCreationScreen1, "petitionCreationScreen");
         viewportContainer.add(pollMainScreen1, "pollMainScreen");
         viewportContainer.add(pollViewScreen1, "pollViewScreen");
+        viewportContainer.add(senatorMessagesMain1, "senatorMessagesMain");
+        viewportContainer.add(senatorMessagesNew1, "senatorMessagesNew");
+        viewportContainer.add(senatorMessagesView1, "senatorMessagesView");
+        viewportContainer.add(newsletterMainScreen1, "newsletterMainScreen");
+        viewportContainer.add(newsletterViewScreen1, "newsletterViewScreen");
+        viewportContainer.add(bulletinView1, "bulletinView");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -94,7 +104,7 @@ public class MainView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(sidebarContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE))
             .addComponent(headerContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -103,21 +113,26 @@ public class MainView extends javax.swing.JPanel {
                 .addComponent(headerContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sidebarContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                    .addComponent(sidebarContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
                     .addComponent(viewportContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private sgaconnect.BulletinView bulletinView1;
     private sgaconnect.Header header1;
     private javax.swing.JPanel headerContainer;
+    private sgaconnect.NewsletterMainScreen newsletterMainScreen1;
+    private sgaconnect.NewsletterViewScreen newsletterViewScreen1;
     private sgaconnect.PetitionCreationScreen petitionCreationScreen1;
     private sgaconnect.PetitionMainScreen petitionMainScreen1;
     private sgaconnect.PetitionViewScreen petitionViewScreen1;
     private sgaconnect.PollMainScreen pollMainScreen1;
     private sgaconnect.PollViewScreen pollViewScreen1;
-    private sgaconnect.SenatorMessagesMain senatorMessagesScreen1;
+    private sgaconnect.SenatorMessagesMain senatorMessagesMain1;
+    private sgaconnect.SenatorMessagesNew senatorMessagesNew1;
+    private sgaconnect.SenatorMessagesView senatorMessagesView1;
     private sgaconnect.Sidebar sidebar1;
     private javax.swing.JPanel sidebarContainer;
     private sgaconnect.StudentMainScreen studentMainView2;
