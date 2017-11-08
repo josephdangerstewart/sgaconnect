@@ -60,9 +60,11 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
         MessagesLabel.setText("Messages");
 
         SendButton.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        SendButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/newMessageicon2.png"))); // NOI18N
         SendButton.setText("New");
-        SendButton.setMaximumSize(new java.awt.Dimension(125, 51));
-        SendButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        SendButton.setMaximumSize(new java.awt.Dimension(110, 51));
+        SendButton.setMinimumSize(new java.awt.Dimension(110, 51));
+        SendButton.setPreferredSize(new java.awt.Dimension(110, 51));
         SendButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 SendButtonMouseMoved(evt);
@@ -112,12 +114,12 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(MessagesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
