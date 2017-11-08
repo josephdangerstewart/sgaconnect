@@ -40,7 +40,7 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
     public void init() {
         User user = MainFrame.getBackend().getLoggedInUser();
         
-        MessageThread[] threads = MainFrame.getBackend().getAllMessageThreads(user.getID());
+        threads = MainFrame.getBackend().getAllMessageThreads(user.getID());
         
         DefaultTableModel model = (DefaultTableModel) displayTable.getModel();
         model.setRowCount(threads.length);
@@ -49,16 +49,27 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
             
             Integer[] users = threads[i].getUsers().toArray(new Integer[0]);
             String usersString = "";
+            int count = 0;
             
             for (int j = 0; j < users.length; j++) {
-                usersString = usersString + MainFrame.getBackend().getUserByID(users[j]).getNetID();
-                if (j != users.length-1) {
-                    usersString = usersString + ", ";
+                
+                if (users[j] != MainFrame.getBackend().getLoggedInUser().getID()) {
+                    if (count != 0) {
+                        usersString = usersString + ", ";
+                    }
+                    usersString = usersString + MainFrame.getBackend().getUserByID(users[j]).getNetID();
+                    count++;
                 }
+                
             }
             
             model.setValueAt(usersString, i, 0);
             model.setValueAt(threads[i].getSubject(), i, 1);
+        }
+        
+        if (user.getRole() > 0) {
+            remove(newButton);
+            selectOneLabel.setText("Select One");
         }
     }
     
@@ -75,6 +86,7 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
         newButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         displayTable = new javax.swing.JTable();
+        selectOneLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 251, 234));
 
@@ -131,6 +143,8 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(displayTable);
 
+        selectOneLabel.setText("Select One or");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -141,12 +155,14 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(MessagesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(newButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(selectOneLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(newButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,14 +170,17 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(MessagesLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(newButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectOneLabel))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
+        SenatorMessagesNew.getInstance().init();
         MainView.getInstance().changeView("senatorMessagesNew");
     }//GEN-LAST:event_newButtonActionPerformed
 
@@ -180,7 +199,6 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
             System.out.println("Switching to thread " + row);
             SenatorMessagesView.getInstance().init(threads[row]);
             MainView.getInstance().changeView("senatorMessagesView");
-            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -192,5 +210,6 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
     private javax.swing.JTable displayTable;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton newButton;
+    private javax.swing.JLabel selectOneLabel;
     // End of variables declaration//GEN-END:variables
 }

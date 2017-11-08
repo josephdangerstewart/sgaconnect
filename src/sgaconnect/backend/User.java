@@ -141,7 +141,7 @@ public class User {
     }
     
     public String toString() {
-        return name + " - " + Backend.getYears()[year] + " " + major + " major (" + dorm + ") " + "[" + Backend.getRoles()[role].toUpperCase() + "]";
+        return name + " [" + dorm.toUpperCase() + "]";
     }
     
 }

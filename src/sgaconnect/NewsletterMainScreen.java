@@ -5,13 +5,6 @@
  */
 package sgaconnect;
 
-import java.awt.Point;
-import java.io.File;
-import javax.swing.JFileChooser;
-import javax.swing.JTable;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileSystemView;
-
 /**
  *
  * @author josephs12
@@ -36,7 +29,7 @@ public class NewsletterMainScreen extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        newslettersTable = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         postNew = new javax.swing.JButton();
 
@@ -46,9 +39,9 @@ public class NewsletterMainScreen extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(163, 22, 33));
         jLabel1.setText("Newsletter");
 
-        newslettersTable.setBackground(new java.awt.Color(221, 209, 199));
-        newslettersTable.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        newslettersTable.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setBackground(new java.awt.Color(221, 209, 199));
+        jTable1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"11/5/17 at 10:59 pm", "Week 4"},
                 {"10/29/17 at 8:06 pm", "Week 3"},
@@ -67,20 +60,6 @@ public class NewsletterMainScreen extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-<<<<<<< HEAD
-        newslettersTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        newslettersTable.setFillsViewportHeight(true);
-        newslettersTable.setSelectionBackground(new java.awt.Color(221, 209, 199));
-        newslettersTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
-        newslettersTable.setShowVerticalLines(false);
-        newslettersTable.getTableHeader().setReorderingAllowed(false);
-        newslettersTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                newslettersTableMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(newslettersTable);
-=======
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTable1.setFillsViewportHeight(true);
         jTable1.setSelectionBackground(new java.awt.Color(221, 209, 199));
@@ -88,7 +67,6 @@ public class NewsletterMainScreen extends javax.swing.JPanel {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
         jTable1.getAccessibleContext().setAccessibleName("Newsletters Table");
->>>>>>> 6c71dafbd4ffab506ee0030ef1131cf4fe3374c8
 
         jLabel2.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jLabel2.setText("Select One or");
@@ -138,27 +116,15 @@ public class NewsletterMainScreen extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void postNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postNewActionPerformed
-        JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-        
-        int returnValue = jfc.showOpenDialog(null);
+        MainView.getInstance().changeView("newsletterViewScreen");
     }//GEN-LAST:event_postNewActionPerformed
-
-    private void newslettersTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newslettersTableMouseClicked
-        try {
-            JTable source = (JTable)evt.getSource();
-            Point point = evt.getPoint();
-            MainView.getInstance().changeView("newsletterViewScreen");
-        } catch (Exception e) {
-            //Do nothing
-        }
-    }//GEN-LAST:event_newslettersTableMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable newslettersTable;
+    private javax.swing.JTable jTable1;
     private javax.swing.JButton postNew;
     // End of variables declaration//GEN-END:variables
 }

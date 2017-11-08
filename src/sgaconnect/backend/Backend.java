@@ -459,7 +459,7 @@ public class Backend {
         ArrayList<User> presidents = new ArrayList<User>();
         
         for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getRole() == 0) {
+            if (users.get(i).getRole() == 2) {
                 presidents.add(users.get(i));
             }
         }
@@ -629,6 +629,21 @@ public class Backend {
         for (int i = 0; i < polls.size(); i++) {
             if (polls.get(i).getID() > maxId) {
                 maxId = petitions.get(i).getID();
+            }
+        }
+        
+        return maxId + 1;
+    }
+    
+    /**
+     * @return the next available message thread id
+     */
+    public int getNextMessageThreadID() {
+        int maxId = Integer.MIN_VALUE;
+        
+        for (int i = 0; i < messageThreads.size(); i++) {
+            if (messageThreads.get(i).getID() > maxId) {
+                maxId = messageThreads.get(i).getID();
             }
         }
         

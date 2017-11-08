@@ -17,7 +17,7 @@ public class Util {
         Calendar date = Calendar.getInstance();
         date.setTimeInMillis(mili);
         
-        return date.get(Calendar.MONTH) + "/" + date.get(Calendar.DATE) + "/" + date.get(Calendar.YEAR) + " at " + date.get(Calendar.HOUR) + ":" + date.get(Calendar.MINUTE) + " " + (date.get(Calendar.AM_PM)==Calendar.AM ? "am" : "pm");
+        return date.get(Calendar.MONTH) + "/" + date.get(Calendar.DATE) + "/" + date.get(Calendar.YEAR) + " at " + date.get(Calendar.HOUR) + ":" + (date.get(Calendar.MINUTE) <=9 ? "0" + date.get(Calendar.MINUTE) : date.get(Calendar.MINUTE)) + " " + (date.get(Calendar.AM_PM)==Calendar.AM ? "am" : "pm");
     }
     
 }

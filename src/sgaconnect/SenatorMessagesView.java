@@ -6,10 +6,13 @@
 package sgaconnect;
 
 import java.awt.Cursor;
+import java.awt.ScrollPane;
 import java.util.ArrayList;
+import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import sgaconnect.backend.Message;
 import sgaconnect.backend.MessageThread;
+import sgaconnect.backend.User;
 
 /**
  *
@@ -18,6 +21,7 @@ import sgaconnect.backend.MessageThread;
 public class SenatorMessagesView extends javax.swing.JPanel {
 
     private static SenatorMessagesView thisObj;
+    private MessageThread thread;
     
     /**
      * Creates new form PetitionViewScreen
@@ -36,18 +40,35 @@ public class SenatorMessagesView extends javax.swing.JPanel {
         messageSubject.setText("\"" + thread.getSubject() + "\'");
        
         ArrayList<Message> messages = thread.getMessages();
+        this.thread = thread;
         
         String bodyText = "";
         
         for (int i = messages.size()-1; i >= 0; i--) {
-            bodyText = bodyText + (i != messages.size()-1 ? "--------------------------------\n" : "") +
-            MainFrame.getBackend().getUserByID(messages.get(i).getFrom()).getName() + ": \n\n" +
-            messages.get(i).getBody() + "\n\n";
+            int userFrom = messages.get(i).getFrom();
+            int currentUser = MainFrame.getBackend().getLoggedInUser().getID();
+            
+            bodyText = bodyText + 
+                (i != messages.size()-1 ? "--------------------------------\n" : "") +
+                (userFrom == currentUser ? "You" : MainFrame.getBackend().getUserByID(messages.get(i).getFrom()).getName()) +
+                " (" + messages.get(i).getTimestampString() + "): \n\n" +
+                messages.get(i).getBody() + "\n\n";
         }
         
         body.setText(bodyText);
         
         replyField.setText("");
+        body.setCaretPosition(0);
+    }
+    
+    private void sendMessage() {
+        if (!replyField.getText().equals("")) {
+            thread.sendMessage(
+                    MainFrame.getBackend().getLoggedInUser().getID(), 
+                    replyField.getText());
+            MainFrame.getBackend().save(thread);
+            init(thread);
+        }
     }
 
     /**
@@ -59,27 +80,27 @@ public class SenatorMessagesView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        backmessagesButton = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        backButton = new javax.swing.JButton();
+        bodyScrollPane = new javax.swing.JScrollPane();
         body = new javax.swing.JTextArea();
         sendButton = new javax.swing.JButton();
         commentScrollPane = new javax.swing.JScrollPane();
         replyField = new javax.swing.JTextArea();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        titleScrollPane = new javax.swing.JScrollPane();
         messageSubject = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 251, 234));
 
-        backmessagesButton.setForeground(new java.awt.Color(10, 10, 10));
-        backmessagesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/BackArrow.png"))); // NOI18N
-        backmessagesButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        backButton.setForeground(new java.awt.Color(10, 10, 10));
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/BackArrow.png"))); // NOI18N
+        backButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                backmessagesButtonMouseMoved(evt);
+                backButtonMouseMoved(evt);
             }
         });
-        backmessagesButton.addActionListener(new java.awt.event.ActionListener() {
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backmessagesButtonActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -92,7 +113,7 @@ public class SenatorMessagesView extends javax.swing.JPanel {
         body.setWrapStyleWord(true);
         body.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         body.setFocusable(false);
-        jScrollPane2.setViewportView(body);
+        bodyScrollPane.setViewportView(body);
         body.getAccessibleContext().setAccessibleDescription("");
 
         sendButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/MessageSend.png"))); // NOI18N
@@ -110,6 +131,7 @@ public class SenatorMessagesView extends javax.swing.JPanel {
         commentScrollPane.setBackground(new java.awt.Color(255, 251, 234));
         commentScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reply", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Open Sans", 0, 12))); // NOI18N
 
+        replyField.setBackground(new java.awt.Color(255, 253, 245));
         replyField.setColumns(20);
         replyField.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         replyField.setLineWrap(true);
@@ -118,14 +140,14 @@ public class SenatorMessagesView extends javax.swing.JPanel {
         replyField.setName(""); // NOI18N
         commentScrollPane.setViewportView(replyField);
 
-        jScrollPane1.setBorder(null);
+        titleScrollPane.setBorder(null);
 
         messageSubject.setEditable(false);
         messageSubject.setBackground(new java.awt.Color(255, 251, 234));
         messageSubject.setColumns(20);
         messageSubject.setFont(new java.awt.Font("Print Clearly", 0, 28)); // NOI18N
         messageSubject.setText("\"Some subject line\"");
-        jScrollPane1.setViewportView(messageSubject);
+        titleScrollPane.setViewportView(messageSubject);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -135,12 +157,12 @@ public class SenatorMessagesView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+                        .addComponent(titleScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(backmessagesButton)
+                        .addComponent(backButton)
                         .addGap(11, 11, 11))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
+                        .addComponent(bodyScrollPane)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -155,14 +177,14 @@ public class SenatorMessagesView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titleScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(backmessagesButton)))
+                        .addComponent(backButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bodyScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(commentScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                .addComponent(commentScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sendButton)
                 .addContainerGap())
@@ -170,12 +192,13 @@ public class SenatorMessagesView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
-        // TODO add your handling code here:
+        sendMessage();
     }//GEN-LAST:event_sendButtonActionPerformed
 
-    private void backmessagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backmessagesButtonActionPerformed
-        
-    }//GEN-LAST:event_backmessagesButtonActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        SenatorMessagesMain.getInstance().init();
+        MainView.getInstance().changeView("senatorMessagesMain");
+    }//GEN-LAST:event_backButtonActionPerformed
 
     private void sendButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendButtonMouseMoved
         // TODO add your handling code here:
@@ -184,22 +207,22 @@ public class SenatorMessagesView extends javax.swing.JPanel {
         sendButton.setCursor(click);
     }//GEN-LAST:event_sendButtonMouseMoved
 
-    private void backmessagesButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backmessagesButtonMouseMoved
+    private void backButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseMoved
         // TODO add your handling code here:
         //change to click mouse
         Cursor click = new Cursor(Cursor.HAND_CURSOR);
-        backmessagesButton.setCursor(click);
-    }//GEN-LAST:event_backmessagesButtonMouseMoved
+        backButton.setCursor(click);
+    }//GEN-LAST:event_backButtonMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backmessagesButton;
+    private javax.swing.JButton backButton;
     private javax.swing.JTextArea body;
+    private javax.swing.JScrollPane bodyScrollPane;
     private javax.swing.JScrollPane commentScrollPane;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea messageSubject;
     private javax.swing.JTextArea replyField;
     private javax.swing.JButton sendButton;
+    private javax.swing.JScrollPane titleScrollPane;
     // End of variables declaration//GEN-END:variables
 }
