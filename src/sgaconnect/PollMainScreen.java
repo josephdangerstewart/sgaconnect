@@ -106,6 +106,7 @@ public class PollMainScreen extends javax.swing.JPanel {
             pollsTable.getColumnModel().getColumn(0).setResizable(false);
             pollsTable.getColumnModel().getColumn(0).setPreferredWidth(20);
         }
+        pollsTable.getAccessibleContext().setAccessibleName("All Polls (Table)");
 
         guideLabel.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         guideLabel.setText("Select One or ");

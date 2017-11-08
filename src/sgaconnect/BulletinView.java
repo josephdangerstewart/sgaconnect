@@ -38,7 +38,7 @@ public class BulletinView extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         poster1TextArea = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        filterLabel = new javax.swing.JLabel();
         filterDropDown = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -90,6 +90,8 @@ public class BulletinView extends javax.swing.JPanel {
                 .addContainerGap(74, Short.MAX_VALUE))
         );
 
+        poster1Label.getAccessibleContext().setAccessibleName("Bulletin User Post");
+
         jPanel4.setBackground(new java.awt.Color(221, 209, 199));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.setPreferredSize(new java.awt.Dimension(252, 103));
@@ -135,9 +137,11 @@ public class BulletinView extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jLabel2.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
-        jLabel2.setText("Filter:");
-        jLabel2.setToolTipText("Filter (Pick One)");
+        jLabel6.getAccessibleContext().setAccessibleName("Date Posted");
+
+        filterLabel.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
+        filterLabel.setText("Filter:");
+        filterLabel.setToolTipText("Filter (Pick One)");
 
         filterDropDown.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         filterDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No filter", "Name (alphabetical)", "Most Recent", "Senator" }));
@@ -216,6 +220,9 @@ public class BulletinView extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        jLabel5.getAccessibleContext().setAccessibleName("Date Posted");
+        postButton.getAccessibleContext().setAccessibleName("Post Button");
+
         jPanel2.setBackground(new java.awt.Color(221, 209, 199));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -239,6 +246,8 @@ public class BulletinView extends javax.swing.JPanel {
                 .addComponent(userLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        userLabel.getAccessibleContext().setAccessibleName("User Post");
 
         jPanel6.setBackground(new java.awt.Color(221, 209, 199));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -265,6 +274,8 @@ public class BulletinView extends javax.swing.JPanel {
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 
+        poster2Label.getAccessibleContext().setAccessibleName("Bulletin User Post");
+
         jPanel7.setBackground(new java.awt.Color(221, 209, 199));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel7.setPreferredSize(new java.awt.Dimension(250, 103));
@@ -284,6 +295,7 @@ public class BulletinView extends javax.swing.JPanel {
         poster2TextArea.setWrapStyleWord(true);
         poster2TextArea.setBorder(null);
         jScrollPane3.setViewportView(poster2TextArea);
+        poster2TextArea.getAccessibleContext().setAccessibleName("Post Content");
 
         jLabel8.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jLabel8.setText("October 30");
@@ -310,6 +322,8 @@ public class BulletinView extends javax.swing.JPanel {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        jLabel8.getAccessibleContext().setAccessibleName("Date Posted");
 
         previousButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         previousButton.setMnemonic('v');
@@ -348,7 +362,7 @@ public class BulletinView extends javax.swing.JPanel {
                         .addGap(26, 26, 26))
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
+                            .addComponent(filterLabel)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(filterDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
@@ -376,7 +390,7 @@ public class BulletinView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
+                        .addComponent(filterLabel)
                         .addComponent(filterDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(previousButton)
@@ -395,6 +409,9 @@ public class BulletinView extends javax.swing.JPanel {
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
+
+        filterLabel.getAccessibleContext().setAccessibleName("Filter");
+        filterDropDown.getAccessibleContext().setAccessibleName("Filter Drop Down");
 
         jScrollPane2.setViewportView(jPanel5);
 
@@ -453,7 +470,7 @@ public class BulletinView extends javax.swing.JPanel {
     private javax.swing.JTextArea bulletinEntry;
     private javax.swing.JLabel bulletinTitle;
     private javax.swing.JComboBox<String> filterDropDown;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel filterLabel;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;

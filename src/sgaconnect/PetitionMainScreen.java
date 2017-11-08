@@ -113,6 +113,7 @@ public class PetitionMainScreen extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(petitionsTable);
+        petitionsTable.getAccessibleContext().setAccessibleName("Petitions Table");
 
         createNewButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         createNewButton.setMnemonic('r');
@@ -158,6 +159,8 @@ public class PetitionMainScreen extends javax.swing.JPanel {
                     .addComponent(selectOneLabel))
                 .addContainerGap())
         );
+
+        createNewButton.getAccessibleContext().setAccessibleName("Create New Petition");
     }// </editor-fold>//GEN-END:initComponents
 
     private void petitionsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_petitionsTableMouseClicked

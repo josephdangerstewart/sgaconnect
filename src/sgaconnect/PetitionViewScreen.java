@@ -102,6 +102,7 @@ public class PetitionViewScreen extends javax.swing.JPanel {
         body.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         body.setFocusable(false);
         jScrollPane2.setViewportView(body);
+        body.getAccessibleContext().setAccessibleName("Petiton Content");
 
         signers.setBackground(new java.awt.Color(221, 209, 199));
         signers.setFont(new java.awt.Font("Open Sans", 0, 10)); // NOI18N
@@ -129,6 +130,7 @@ public class PetitionViewScreen extends javax.swing.JPanel {
         signers.setSelectionBackground(new java.awt.Color(221, 209, 199));
         signers.setSelectionForeground(new java.awt.Color(10, 10, 10));
         jScrollPane3.setViewportView(signers);
+        signers.getAccessibleContext().setAccessibleName("List of Signers");
 
         commentScrollPane.setBackground(new java.awt.Color(255, 251, 234));
         commentScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder("Comments"));
@@ -198,6 +200,7 @@ public class PetitionViewScreen extends javax.swing.JPanel {
         );
 
         commentScrollPane.setViewportView(jPanel3);
+        jPanel3.getAccessibleContext().setAccessibleName("Comments Section");
 
         signButton.setMnemonic('p');
         signButton.setText("Sign Petition");
@@ -220,6 +223,7 @@ public class PetitionViewScreen extends javax.swing.JPanel {
         title.setFont(new java.awt.Font("Print Clearly", 0, 28)); // NOI18N
         title.setText("#0 | Petition title goes here");
         jScrollPane4.setViewportView(title);
+        title.getAccessibleContext().setAccessibleName("Petition Title");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

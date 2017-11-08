@@ -130,9 +130,15 @@
               <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
             </Property>
           </Properties>
+<<<<<<< HEAD
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="newslettersTableMouseClicked"/>
           </Events>
+=======
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Newsletters Table"/>
+          </AccessibilityProperties>
+>>>>>>> 6c71dafbd4ffab506ee0030ef1131cf4fe3374c8
         </Component>
       </SubComponents>
     </Container>
@@ -151,6 +157,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Post New"/>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Create New Post Button"/>
+      </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="postNewActionPerformed"/>
       </Events>

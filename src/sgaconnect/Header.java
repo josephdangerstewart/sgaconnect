@@ -86,7 +86,8 @@ public class Header extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        sgaLogoHomeButton.getAccessibleContext().setAccessibleName("Home");
+        jLabel1.getAccessibleContext().setAccessibleName("Header");
+        sgaLogoHomeButton.getAccessibleContext().setAccessibleName("SGA Logo");
     }// </editor-fold>//GEN-END:initComponents
 
     private void sgaLogoHomeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sgaLogoHomeButtonMouseClicked

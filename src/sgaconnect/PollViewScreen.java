@@ -342,6 +342,7 @@ public class PollViewScreen extends javax.swing.JPanel {
         question.setDragEnabled(true);
         question.setFocusable(false);
         jScrollPane3.setViewportView(question);
+        question.getAccessibleContext().setAccessibleName("Poll Question");
 
         jScrollPane4.setBackground(new java.awt.Color(255, 251, 234));
         jScrollPane4.setBorder(null);
@@ -360,6 +361,7 @@ public class PollViewScreen extends javax.swing.JPanel {
         );
 
         jScrollPane4.setViewportView(radioContainer);
+        radioContainer.getAccessibleContext().setAccessibleName("Poll Options");
 
         submitButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         submitButton.setMnemonic('s');
@@ -496,6 +498,9 @@ public class PollViewScreen extends javax.swing.JPanel {
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 
+        jLabel3.getAccessibleContext().setAccessibleName("Lock Symbol");
+        unlockButton.getAccessibleContext().setAccessibleName("Unlock Poll");
+
         add(lockedView, "lockedView");
 
         creatorView.setBackground(new java.awt.Color(255, 251, 234));
@@ -524,6 +529,7 @@ public class PollViewScreen extends javax.swing.JPanel {
         ));
         optionsTable.setFillsViewportHeight(true);
         jScrollPane2.setViewportView(optionsTable);
+        optionsTable.getAccessibleContext().setAccessibleName("Answer Responses Table");
 
         addOption.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         addOption.setText("Add");
@@ -601,6 +607,8 @@ public class PollViewScreen extends javax.swing.JPanel {
                         .addContainerGap())))
         );
 
+        questionField.getAccessibleContext().setAccessibleName("Poll Question Field");
+
         tabPane.addTab("Edit", editPanel);
 
         responsesPanel.setBackground(new java.awt.Color(255, 251, 234));
@@ -639,6 +647,7 @@ public class PollViewScreen extends javax.swing.JPanel {
         });
         resultsTable.setFillsViewportHeight(true);
         jScrollPane1.setViewportView(resultsTable);
+        resultsTable.getAccessibleContext().setAccessibleName("Poll Results Table");
 
         showingLabel.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         showingLabel.setText("Showing:");
@@ -702,6 +711,9 @@ public class PollViewScreen extends javax.swing.JPanel {
                     .addComponent(jButton1))
                 .addContainerGap())
         );
+
+        groupComboBox.getAccessibleContext().setAccessibleName("Group Options Drop Down");
+        showingComboBox.getAccessibleContext().setAccessibleName("Filter Drop Down");
 
         tabPane.addTab("Responses", responsesPanel);
 

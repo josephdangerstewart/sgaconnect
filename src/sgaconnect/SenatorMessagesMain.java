@@ -12,7 +12,6 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import org.json.JSONObject;
 import sgaconnect.backend.MessageThread;
 import sgaconnect.backend.User;
 
@@ -41,7 +40,7 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
     public void init() {
         User user = MainFrame.getBackend().getLoggedInUser();
         
-        threads = MainFrame.getBackend().getAllMessageThreads(user.getID());
+        MessageThread[] threads = MainFrame.getBackend().getAllMessageThreads(user.getID());
         
         DefaultTableModel model = (DefaultTableModel) displayTable.getModel();
         model.setRowCount(threads.length);

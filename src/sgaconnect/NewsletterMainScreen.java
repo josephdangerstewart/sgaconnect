@@ -67,6 +67,7 @@ public class NewsletterMainScreen extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+<<<<<<< HEAD
         newslettersTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         newslettersTable.setFillsViewportHeight(true);
         newslettersTable.setSelectionBackground(new java.awt.Color(221, 209, 199));
@@ -79,6 +80,15 @@ public class NewsletterMainScreen extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(newslettersTable);
+=======
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTable1.setFillsViewportHeight(true);
+        jTable1.setSelectionBackground(new java.awt.Color(221, 209, 199));
+        jTable1.setShowVerticalLines(false);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTable1);
+        jTable1.getAccessibleContext().setAccessibleName("Newsletters Table");
+>>>>>>> 6c71dafbd4ffab506ee0030ef1131cf4fe3374c8
 
         jLabel2.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jLabel2.setText("Select One or");
@@ -123,6 +133,8 @@ public class NewsletterMainScreen extends javax.swing.JPanel {
                     .addComponent(postNew))
                 .addContainerGap())
         );
+
+        postNew.getAccessibleContext().setAccessibleName("Create New Post Button");
     }// </editor-fold>//GEN-END:initComponents
 
     private void postNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postNewActionPerformed

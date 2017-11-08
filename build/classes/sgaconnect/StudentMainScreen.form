@@ -199,6 +199,9 @@
               <Image iconType="3" name="/sgaconnect/resources/Images/profile-icon.png"/>
             </Property>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="User Profile Picture"/>
+          </AccessibilityProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="senatorNameDisplay">
           <Properties>
@@ -207,6 +210,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Undefined"/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Name Description"/>
+          </AccessibilityProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="senatorEmailDisplay">
           <Properties>
@@ -215,6 +221,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Undefined"/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Email Description"/>
+          </AccessibilityProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="senatorRoomDisplay">
           <Properties>
@@ -223,6 +232,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Undefined"/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Room Description"/>
+          </AccessibilityProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="senatorMajorDisplay">
           <Properties>
@@ -231,6 +243,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Undefined"/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Major Description"/>
+          </AccessibilityProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="senatorYearDisplay">
           <Properties>
@@ -239,6 +254,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Undefined"/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Year Description"/>
+          </AccessibilityProperties>
         </Component>
         <Component class="javax.swing.JButton" name="nextButton">
           <Properties>
@@ -273,6 +291,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="0/0"/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Number of Students"/>
+          </AccessibilityProperties>
         </Component>
       </SubComponents>
     </Container>
@@ -364,6 +385,9 @@
                   <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Recent Activity Table"/>
+              </AccessibilityProperties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="recentActivityTableMouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="recentActivityTableMouseEntered"/>

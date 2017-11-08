@@ -30,8 +30,8 @@ public class LogInView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        SGAConnectLabel = new javax.swing.JLabel();
+        SGAConnectCatchphrase = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         usernameField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -41,13 +41,13 @@ public class LogInView extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 251, 234));
 
-        jLabel1.setFont(new java.awt.Font("Steelfish Outline", 1, 80)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(142, 15, 22));
-        jLabel1.setText("SGA Connect");
+        SGAConnectLabel.setFont(new java.awt.Font("Steelfish Outline", 1, 80)); // NOI18N
+        SGAConnectLabel.setForeground(new java.awt.Color(142, 15, 22));
+        SGAConnectLabel.setText("SGA Connect");
 
-        jLabel2.setFont(new java.awt.Font("Print Clearly", 0, 28)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 150, 148));
-        jLabel2.setText("Stay Informed, Stay Connected");
+        SGAConnectCatchphrase.setFont(new java.awt.Font("Print Clearly", 0, 28)); // NOI18N
+        SGAConnectCatchphrase.setForeground(new java.awt.Color(153, 150, 148));
+        SGAConnectCatchphrase.setText("Stay Informed, Stay Connected");
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -93,8 +93,8 @@ public class LogInView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SGAConnectLabel)
+                    .addComponent(SGAConnectCatchphrase, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -113,9 +113,9 @@ public class LogInView extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(SGAConnectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2))
+                        .addComponent(SGAConnectCatchphrase))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -134,6 +134,7 @@ public class LogInView extends javax.swing.JPanel {
                 .addContainerGap(130, Short.MAX_VALUE))
         );
 
+        jSeparator1.getAccessibleContext().setAccessibleName("Separator");
         usernameField.getAccessibleContext().setAccessibleName("Biola NetID");
         usernameField.getAccessibleContext().setAccessibleDescription("Enter your NetID username");
         passwordField.getAccessibleContext().setAccessibleName("NetID Password");
@@ -190,8 +191,8 @@ public class LogInView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel SGAConnectCatchphrase;
+    private javax.swing.JLabel SGAConnectLabel;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;
