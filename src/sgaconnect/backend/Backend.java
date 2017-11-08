@@ -493,6 +493,15 @@ public class Backend {
         return User.getNullUser();
     }
     
+    public User getUserByNetID(String netID) {
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getNetID().equals(netID)) {
+                return users.get(i);
+            }
+        }
+        return User.getNullUser();
+    }
+    
     /**
      * @param id
      * @return petition object corresponding to the given id
@@ -628,7 +637,7 @@ public class Backend {
         
         for (int i = 0; i < polls.size(); i++) {
             if (polls.get(i).getID() > maxId) {
-                maxId = petitions.get(i).getID();
+                maxId = polls.get(i).getID();
             }
         }
         

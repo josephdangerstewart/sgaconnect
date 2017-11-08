@@ -30,6 +30,7 @@ public class LogInView extends javax.swing.JPanel {
                 SenatorMainScreen.getInstance().init();
                 MainView.getInstance().changeView("senatorMainScreen");
             }
+            Sidebar.getInstance().init();
             MainFrame.getMainFrame().changeView("mainView");
         }
     }

@@ -65,6 +65,7 @@ public class MainView extends javax.swing.JPanel {
         newsletterViewScreen1 = new sgaconnect.NewsletterViewScreen();
         bulletinView1 = new sgaconnect.BulletinView();
         senatorMainScreen1 = new sgaconnect.SenatorMainScreen();
+        controlPanel1 = new sgaconnect.ControlPanel();
 
         headerContainer.setBackground(new java.awt.Color(0, 255, 255));
         headerContainer.setForeground(new java.awt.Color(51, 204, 255));
@@ -104,6 +105,7 @@ public class MainView extends javax.swing.JPanel {
         viewportContainer.add(newsletterViewScreen1, "newsletterViewScreen");
         viewportContainer.add(bulletinView1, "bulletinView");
         viewportContainer.add(senatorMainScreen1, "senatorMainScreen");
+        viewportContainer.add(controlPanel1, "controlPanel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -112,7 +114,7 @@ public class MainView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(sidebarContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE))
+                .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE))
             .addComponent(headerContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -121,7 +123,7 @@ public class MainView extends javax.swing.JPanel {
                 .addComponent(headerContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sidebarContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
+                    .addComponent(sidebarContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 411, Short.MAX_VALUE)
                     .addComponent(viewportContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -129,6 +131,7 @@ public class MainView extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private sgaconnect.BulletinView bulletinView1;
+    private sgaconnect.ControlPanel controlPanel1;
     private sgaconnect.Header header1;
     private javax.swing.JPanel headerContainer;
     private sgaconnect.NewsletterMainScreen newsletterMainScreen1;

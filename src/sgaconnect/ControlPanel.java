@@ -7,8 +7,10 @@ package sgaconnect;
 
 import java.awt.Cursor;
 import java.awt.Point;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import sgaconnect.backend.User;
 
 /**
  *
@@ -17,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class ControlPanel extends javax.swing.JPanel {
     
     private static ControlPanel thisObj;
+    User[] senators;
     
     /**
      * Creates new form PollMainScreen
@@ -31,7 +34,16 @@ public class ControlPanel extends javax.swing.JPanel {
     }
     
     public void init() {
+        DefaultTableModel model = (DefaultTableModel) senatorsTable.getModel();
         
+        senators = MainFrame.getBackend().getSenators();
+        
+        model.setRowCount(senators.length);
+        
+        for (int i = 0; i < senators.length; i++) {
+            model.setValueAt(senators[i].getName(),i,0);
+            model.setValueAt(senators[i].getDorm(), i, 1);
+        }
     }
 
     /**
@@ -45,12 +57,10 @@ public class ControlPanel extends javax.swing.JPanel {
 
         title = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        senators = new javax.swing.JTable();
-        backButton = new javax.swing.JButton();
+        senatorsTable = new javax.swing.JTable();
         removeSenator = new javax.swing.JButton();
         addSenator = new javax.swing.JButton();
-        searchField = new javax.swing.JComboBox<>();
-        search = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 251, 234));
 
@@ -58,9 +68,9 @@ public class ControlPanel extends javax.swing.JPanel {
         title.setForeground(new java.awt.Color(163, 22, 33));
         title.setText("Control Panel");
 
-        senators.setBackground(new java.awt.Color(221, 209, 199));
-        senators.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        senators.setModel(new javax.swing.table.DefaultTableModel(
+        senatorsTable.setBackground(new java.awt.Color(221, 209, 199));
+        senatorsTable.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        senatorsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -79,54 +89,42 @@ public class ControlPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        senators.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        senators.setFillsViewportHeight(true);
-        senators.setSelectionBackground(new java.awt.Color(221, 209, 199));
-        senators.setSelectionForeground(new java.awt.Color(0, 0, 0));
-        senators.setShowVerticalLines(false);
-        senators.getTableHeader().setReorderingAllowed(false);
-        senators.setVerifyInputWhenFocusTarget(false);
-        senators.addMouseListener(new java.awt.event.MouseAdapter() {
+        senatorsTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        senatorsTable.setFillsViewportHeight(true);
+        senatorsTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        senatorsTable.setShowVerticalLines(false);
+        senatorsTable.getTableHeader().setReorderingAllowed(false);
+        senatorsTable.setVerifyInputWhenFocusTarget(false);
+        senatorsTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                senatorsMouseClicked(evt);
+                senatorsTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(senators);
-        if (senators.getColumnModel().getColumnCount() > 0) {
-            senators.getColumnModel().getColumn(0).setResizable(false);
-            senators.getColumnModel().getColumn(0).setPreferredWidth(20);
+        jScrollPane1.setViewportView(senatorsTable);
+        if (senatorsTable.getColumnModel().getColumnCount() > 0) {
+            senatorsTable.getColumnModel().getColumn(0).setResizable(false);
+            senatorsTable.getColumnModel().getColumn(0).setPreferredWidth(20);
         }
-        senators.getAccessibleContext().setAccessibleName("Senators");
+        senatorsTable.getAccessibleContext().setAccessibleName("Senators");
 
-        backButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/BackArrow.png"))); // NOI18N
-        backButton.setMnemonic('c');
-        backButton.setText("Back");
-        backButton.setToolTipText("");
-        backButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                backButtonMouseMoved(evt);
-            }
-        });
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
-
+        removeSenator.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         removeSenator.setText("-");
-
-        addSenator.setText("+");
-
-        searchField.setEditable(true);
-        searchField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Senator Jake", "Senator Jojo", "Senator Jacklyn" }));
-        searchField.addActionListener(new java.awt.event.ActionListener() {
+        removeSenator.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchFieldActionPerformed(evt);
+                removeSenatorActionPerformed(evt);
             }
         });
 
-        search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/magnifying_glass.png"))); // NOI18N
+        addSenator.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        addSenator.setText("+");
+        addSenator.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addSenatorActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        jLabel1.setText("Add/Remove Senators");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -135,21 +133,16 @@ public class ControlPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(backButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addSenator)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(removeSenator))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(title)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(addSenator)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(removeSenator)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -157,55 +150,61 @@ public class ControlPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(title)
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backButton)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(removeSenator)
-                        .addComponent(addSenator)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addSenator)
+                    .addComponent(removeSenator)
+                    .addComponent(jLabel1))
                 .addContainerGap())
         );
 
         removeSenator.getAccessibleContext().setAccessibleName("Delete Senator Button");
         addSenator.getAccessibleContext().setAccessibleName("Add Senator Button");
-        searchField.getAccessibleContext().setAccessibleName("Search Field");
-        search.getAccessibleContext().setAccessibleName("Search Icon");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseMoved
-        // TODO add your handling code here:
-        //change to click mouse
-        Cursor click = new Cursor(Cursor.HAND_CURSOR);
-        backButton.setCursor(click);
-    }//GEN-LAST:event_backButtonMouseMoved
+    private void senatorsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_senatorsTableMouseClicked
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+    }//GEN-LAST:event_senatorsTableMouseClicked
 
-    }//GEN-LAST:event_backButtonActionPerformed
+    private void addSenatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSenatorActionPerformed
+        String netID = JOptionPane.showInputDialog(this,
+                "Enter NetID of new senator", 
+                "Enter NetID", 
+                JOptionPane.QUESTION_MESSAGE);
+        
+        User user = MainFrame.getBackend().getUserByNetID(netID);
+        
+        if (!user.isNull() && user.getRole() != 2) {
+            user.setRole(1);
+            MainFrame.getBackend().save(user);
+            init();
+        }
+    }//GEN-LAST:event_addSenatorActionPerformed
 
-    private void senatorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_senatorsMouseClicked
-
-    }//GEN-LAST:event_senatorsMouseClicked
-
-    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchFieldActionPerformed
+    private void removeSenatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeSenatorActionPerformed
+        int[] selectedRows = senatorsTable.getSelectedRows();
+        
+        for (int i = 0; i < selectedRows.length; i++) {
+            int selection = selectedRows[i];
+            if (selection != -1) {
+                User user = senators[selection];
+                user.setRole(0);
+                MainFrame.getBackend().save(user);
+            }
+        }
+        
+        init();
+    }//GEN-LAST:event_removeSenatorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSenator;
-    private javax.swing.JButton backButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton removeSenator;
-    private javax.swing.JButton search;
-    private javax.swing.JComboBox<String> searchField;
-    private javax.swing.JTable senators;
+    private javax.swing.JTable senatorsTable;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 

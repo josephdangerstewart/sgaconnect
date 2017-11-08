@@ -35,6 +35,8 @@ public class User {
     private String netID = "UNDEFINED";
     private String password = "UNDEFINED";
     
+    private boolean isNull = false;
+    
     public User(JSONObject userObj) {
         
         try {
@@ -89,11 +91,15 @@ public class User {
     }
     
     private User() {
-        
+        isNull = true;
     }
     
     public static User getNullUser() {
         return new User();
+    }
+    
+    public boolean isNull() {
+        return isNull;
     }
     
     public JSONObject toJSON() {

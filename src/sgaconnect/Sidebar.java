@@ -13,11 +13,24 @@ import java.awt.Cursor;
  */
 public class Sidebar extends javax.swing.JPanel {
 
+    private static Sidebar thisObj;
+    
     /**
      * Creates new form Sidebar
      */
     public Sidebar() {
         initComponents();
+        thisObj = this;
+    }
+    
+    public static Sidebar getInstance() {
+        return thisObj;
+    }
+    
+    public void init() {
+        if (MainFrame.getBackend().getLoggedInUser().getRole() != 2) {
+            remove(controlPanelButton);
+        }
     }
 
     /**
@@ -29,12 +42,33 @@ public class Sidebar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        controlpanelButton = new javax.swing.JButton();
         homeButton = new javax.swing.JButton();
         petitionButton = new javax.swing.JButton();
         pollsButton = new javax.swing.JButton();
         newsletterButton = new javax.swing.JButton();
         bulletinButton = new javax.swing.JButton();
         messagesButton = new javax.swing.JButton();
+        controlPanelButton = new javax.swing.JButton();
+
+        controlpanelButton.setBackground(new java.awt.Color(221, 209, 199));
+        controlpanelButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        controlpanelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/controlpanel1.png"))); // NOI18N
+        controlpanelButton.setMnemonic('r');
+        controlpanelButton.setText("Control");
+        controlpanelButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        controlpanelButton.setMinimumSize(new java.awt.Dimension(125, 51));
+        controlpanelButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        controlpanelButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                controlpanelButtonMouseMoved(evt);
+            }
+        });
+        controlpanelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                controlpanelButtonActionPerformed(evt);
+            }
+        });
 
         setBackground(new java.awt.Color(137, 110, 88));
 
@@ -149,6 +183,25 @@ public class Sidebar extends javax.swing.JPanel {
             }
         });
 
+        controlPanelButton.setBackground(new java.awt.Color(221, 209, 199));
+        controlPanelButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        controlPanelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/controlpanel1.png"))); // NOI18N
+        controlPanelButton.setMnemonic('r');
+        controlPanelButton.setText("Control");
+        controlPanelButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        controlPanelButton.setMinimumSize(new java.awt.Dimension(125, 51));
+        controlPanelButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        controlPanelButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                controlPanelButtonMouseMoved(evt);
+            }
+        });
+        controlPanelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                controlPanelButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -161,25 +214,28 @@ public class Sidebar extends javax.swing.JPanel {
                     .addComponent(petitionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bulletinButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(messagesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(messagesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(controlPanelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(petitionButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(pollsButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(newsletterButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(bulletinButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(messagesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(controlPanelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -262,9 +318,31 @@ public class Sidebar extends javax.swing.JPanel {
         MainView.getInstance().changeView("newsletterMainScreen");
     }//GEN-LAST:event_newsletterButtonActionPerformed
 
+    private void controlpanelButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_controlpanelButtonMouseMoved
+        // TODO add your handling code here:
+        //change to click mouse
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        controlpanelButton.setCursor(click);
+    }//GEN-LAST:event_controlpanelButtonMouseMoved
+
+    private void controlpanelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_controlpanelButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_controlpanelButtonActionPerformed
+
+    private void controlPanelButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_controlPanelButtonMouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_controlPanelButtonMouseMoved
+
+    private void controlPanelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_controlPanelButtonActionPerformed
+        ControlPanel.getInstance().init();
+        MainView.getInstance().changeView("controlPanel");
+    }//GEN-LAST:event_controlPanelButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bulletinButton;
+    private javax.swing.JButton controlPanelButton;
+    private javax.swing.JButton controlpanelButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JButton messagesButton;
     private javax.swing.JButton newsletterButton;
