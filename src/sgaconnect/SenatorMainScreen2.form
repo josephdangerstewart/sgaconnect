@@ -108,17 +108,17 @@
                 <Property name="autoResizeMode" type="int" value="3"/>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="21" resizable="false">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="21" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="21" resizable="false">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="21" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
@@ -130,7 +130,7 @@
                 </Property>
                 <Property name="fillsViewportHeight" type="boolean" value="true"/>
                 <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ea" green="fb" red="ff" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="rowSelectionAllowed" type="boolean" value="false"/>
                 <Property name="showHorizontalLines" type="boolean" value="false"/>
@@ -209,12 +209,12 @@
                 <Property name="autoResizeMode" type="int" value="3"/>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="21" resizable="false">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="21" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="21" resizable="false">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="21" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>

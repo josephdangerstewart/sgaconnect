@@ -117,7 +117,7 @@ public class SenatorMainScreen2 extends javax.swing.JPanel {
         recentActivityTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
         recentActivityTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         recentActivityTable1.setFillsViewportHeight(true);
-        recentActivityTable1.setGridColor(new java.awt.Color(255, 251, 234));
+        recentActivityTable1.setGridColor(new java.awt.Color(255, 255, 255));
         recentActivityTable1.setRowSelectionAllowed(false);
         recentActivityTable1.setShowHorizontalLines(false);
         recentActivityTable1.getTableHeader().setReorderingAllowed(false);
@@ -131,11 +131,8 @@ public class SenatorMainScreen2 extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(recentActivityTable1);
         if (recentActivityTable1.getColumnModel().getColumnCount() > 0) {
-            recentActivityTable1.getColumnModel().getColumn(0).setResizable(false);
             recentActivityTable1.getColumnModel().getColumn(0).setPreferredWidth(21);
-            recentActivityTable1.getColumnModel().getColumn(1).setResizable(false);
             recentActivityTable1.getColumnModel().getColumn(1).setPreferredWidth(21);
-            recentActivityTable1.getColumnModel().getColumn(2).setResizable(false);
         }
 
         javax.swing.GroupLayout senatorPanelLayout = new javax.swing.GroupLayout(senatorPanel);
@@ -193,9 +190,7 @@ public class SenatorMainScreen2 extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(recentActivityTable);
         if (recentActivityTable.getColumnModel().getColumnCount() > 0) {
-            recentActivityTable.getColumnModel().getColumn(0).setResizable(false);
             recentActivityTable.getColumnModel().getColumn(0).setPreferredWidth(21);
-            recentActivityTable.getColumnModel().getColumn(1).setResizable(false);
             recentActivityTable.getColumnModel().getColumn(1).setPreferredWidth(21);
         }
 

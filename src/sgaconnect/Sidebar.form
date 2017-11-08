@@ -156,6 +156,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="newsletterButtonMouseMoved"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newsletterButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bulletinButton">
@@ -183,6 +184,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="bulletinButtonMouseMoved"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bulletinButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="messagesButton">
