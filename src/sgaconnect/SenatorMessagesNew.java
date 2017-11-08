@@ -73,10 +73,12 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 251, 234));
 
-        SendButton.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        SendButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/MessageSend.png"))); // NOI18N
+        SendButton.setBackground(new java.awt.Color(221, 209, 199));
+        SendButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        SendButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/send.png"))); // NOI18N
         SendButton.setText("Send");
         SendButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        SendButton.setMinimumSize(new java.awt.Dimension(125, 51));
         SendButton.setPreferredSize(new java.awt.Dimension(125, 51));
         SendButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -113,10 +115,14 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
         messageTitle.setForeground(new java.awt.Color(10, 10, 10));
         messageTitle.setText("New Message");
 
+        backmessagesButton.setBackground(new java.awt.Color(221, 209, 199));
         backmessagesButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         backmessagesButton.setForeground(new java.awt.Color(10, 10, 10));
-        backmessagesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/BackArrow.png"))); // NOI18N
+        backmessagesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/back.png"))); // NOI18N
         backmessagesButton.setText(" Back");
+        backmessagesButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        backmessagesButton.setMinimumSize(new java.awt.Dimension(125, 51));
+        backmessagesButton.setPreferredSize(new java.awt.Dimension(125, 51));
         backmessagesButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 backmessagesButtonMouseMoved(evt);
@@ -146,31 +152,29 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(CreateMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(messageTitle)
+                        .addComponent(backmessagesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(backmessagesButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ToLabel)
-                        .addGap(160, 160, 160)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(StudentNames, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1)))
+                        .addComponent(jTextField1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(messageTitle)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ToLabel)
+                                .addGap(160, 160, 160)
+                                .addComponent(jLabel1)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(messageTitle)
-                    .addComponent(backmessagesButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(messageTitle)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ToLabel)
                     .addComponent(jLabel1))
@@ -179,9 +183,11 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
                     .addComponent(StudentNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(CreateMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                .addComponent(CreateMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backmessagesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

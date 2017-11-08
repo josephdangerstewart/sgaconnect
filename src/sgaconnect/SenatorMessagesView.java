@@ -57,6 +57,7 @@ public class SenatorMessagesView extends javax.swing.JPanel {
         messageTitle.setForeground(new java.awt.Color(10, 10, 10));
         messageTitle.setText("Message #0 | Randy Loller");
 
+        backmessagesButton.setBackground(new java.awt.Color(221, 209, 199));
         backmessagesButton.setForeground(new java.awt.Color(10, 10, 10));
         backmessagesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/BackArrow.png"))); // NOI18N
         backmessagesButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -82,6 +83,7 @@ public class SenatorMessagesView extends javax.swing.JPanel {
         jScrollPane2.setViewportView(body);
         body.getAccessibleContext().setAccessibleDescription("");
 
+        sendButton.setBackground(new java.awt.Color(221, 209, 199));
         sendButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/MessageSend.png"))); // NOI18N
         sendButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
