@@ -88,7 +88,7 @@ public class SenatorMainScreen2 extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 251, 234));
 
         senatorPanel.setBackground(new java.awt.Color(255, 251, 234));
-        senatorPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Messages", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Print Clearly", 0, 24), new java.awt.Color(153, 150, 148))); // NOI18N
+        senatorPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Inbox", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Print Clearly", 0, 24), new java.awt.Color(153, 150, 148))); // NOI18N
 
         jScrollPane2.setBackground(new java.awt.Color(255, 251, 234));
 
@@ -96,17 +96,18 @@ public class SenatorMainScreen2 extends javax.swing.JPanel {
         recentActivityTable1.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
         recentActivityTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", null},
-                {"", null},
-                {null, null},
-                {null, null}
+                {"", null, null},
+                {"", null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Time", "Event (Click for More)"
+                "Date/Time", "Sender", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -119,7 +120,6 @@ public class SenatorMainScreen2 extends javax.swing.JPanel {
         recentActivityTable1.setGridColor(new java.awt.Color(255, 251, 234));
         recentActivityTable1.setRowSelectionAllowed(false);
         recentActivityTable1.setShowHorizontalLines(false);
-        recentActivityTable1.setShowVerticalLines(false);
         recentActivityTable1.getTableHeader().setReorderingAllowed(false);
         recentActivityTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -131,8 +131,11 @@ public class SenatorMainScreen2 extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(recentActivityTable1);
         if (recentActivityTable1.getColumnModel().getColumnCount() > 0) {
-            recentActivityTable1.getColumnModel().getColumn(0).setPreferredWidth(10);
+            recentActivityTable1.getColumnModel().getColumn(0).setResizable(false);
+            recentActivityTable1.getColumnModel().getColumn(0).setPreferredWidth(21);
             recentActivityTable1.getColumnModel().getColumn(1).setResizable(false);
+            recentActivityTable1.getColumnModel().getColumn(1).setPreferredWidth(21);
+            recentActivityTable1.getColumnModel().getColumn(2).setResizable(false);
         }
 
         javax.swing.GroupLayout senatorPanelLayout = new javax.swing.GroupLayout(senatorPanel);
@@ -143,7 +146,7 @@ public class SenatorMainScreen2 extends javax.swing.JPanel {
         );
         senatorPanelLayout.setVerticalGroup(
             senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         recentActivityPanel.setBackground(new java.awt.Color(255, 251, 234));
@@ -190,8 +193,10 @@ public class SenatorMainScreen2 extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(recentActivityTable);
         if (recentActivityTable.getColumnModel().getColumnCount() > 0) {
-            recentActivityTable.getColumnModel().getColumn(0).setPreferredWidth(10);
+            recentActivityTable.getColumnModel().getColumn(0).setResizable(false);
+            recentActivityTable.getColumnModel().getColumn(0).setPreferredWidth(21);
             recentActivityTable.getColumnModel().getColumn(1).setResizable(false);
+            recentActivityTable.getColumnModel().getColumn(1).setPreferredWidth(21);
         }
 
         javax.swing.GroupLayout recentActivityPanelLayout = new javax.swing.GroupLayout(recentActivityPanel);
@@ -202,7 +207,7 @@ public class SenatorMainScreen2 extends javax.swing.JPanel {
         );
         recentActivityPanelLayout.setVerticalGroup(
             recentActivityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
