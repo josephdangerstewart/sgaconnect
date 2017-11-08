@@ -57,6 +57,8 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
         StudentNames = new javax.swing.JComboBox<>();
         messageTitle = new javax.swing.JLabel();
         backmessagesButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         body.setEditable(false);
         body.setBackground(new java.awt.Color(255, 251, 234));
@@ -88,13 +90,14 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
         });
 
         CreateMessageField.setColumns(20);
-        CreateMessageField.setFont(new java.awt.Font("Open Sans", 0, 13)); // NOI18N
+        CreateMessageField.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         CreateMessageField.setRows(5);
         CreateMessageField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        CreateMessageField.setPreferredSize(new java.awt.Dimension(918, 68));
+        CreateMessageField.setPreferredSize(new java.awt.Dimension(0, 89));
         CreateMessage.setViewportView(CreateMessageField);
         CreateMessageField.getAccessibleContext().setAccessibleName("NewMessageField");
 
+        ToLabel.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         ToLabel.setText("To:");
 
         StudentNames.setEditable(true);
@@ -110,6 +113,7 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
         messageTitle.setForeground(new java.awt.Color(10, 10, 10));
         messageTitle.setText("New Message");
 
+        backmessagesButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         backmessagesButton.setForeground(new java.awt.Color(10, 10, 10));
         backmessagesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/BackArrow.png"))); // NOI18N
         backmessagesButton.setText(" Back");
@@ -124,6 +128,15 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        jLabel1.setText("Subject:");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,17 +144,23 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CreateMessage)
+                    .addComponent(CreateMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ToLabel)
-                            .addComponent(StudentNames, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 315, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(messageTitle)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(backmessagesButton)))
+                        .addComponent(backmessagesButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ToLabel)
+                        .addGap(160, 160, 160)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(StudentNames, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -151,15 +170,18 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(messageTitle)
                     .addComponent(backmessagesButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CreateMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ToLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(StudentNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ToLabel)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(StudentNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CreateMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -190,6 +212,10 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
 
     }//GEN-LAST:event_backmessagesButtonActionPerformed
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane CreateMessage;
@@ -199,7 +225,9 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
     private javax.swing.JLabel ToLabel;
     private javax.swing.JButton backmessagesButton;
     private javax.swing.JTextArea body;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel messageTitle;
     // End of variables declaration//GEN-END:variables
 }
