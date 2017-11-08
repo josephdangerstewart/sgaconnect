@@ -165,6 +165,7 @@ public class PetitionMainScreen extends javax.swing.JPanel {
             JTable source = (JTable)evt.getSource();
             Point point = evt.getPoint();
             int row = source.rowAtPoint(point);
+            System.out.println(row);
             navigateToPetition(petitions[row].getInt("id"));
         } catch (Exception e) {
             //Do nothing

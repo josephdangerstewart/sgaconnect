@@ -13,6 +13,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import org.json.JSONObject;
+import sgaconnect.backend.MessageThread;
+import sgaconnect.backend.User;
 
 /**
  *
@@ -22,7 +24,7 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
 
     private static SenatorMessagesMain thisObj;
     
-    private JSONObject[] petitions;
+    private MessageThread[] threads;
     
     /**
      * Creates new form PetitionMainScreen
@@ -37,6 +39,28 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
     }
     
     public void init() {
+        User user = MainFrame.getBackend().getLoggedInUser();
+        
+        threads = MainFrame.getBackend().getAllMessageThreads(user.getID());
+        
+        DefaultTableModel model = (DefaultTableModel) displayTable.getModel();
+        model.setRowCount(threads.length);
+        
+        for (int i = 0; i < threads.length; i++) {
+            
+            Integer[] users = threads[i].getUsers().toArray(new Integer[0]);
+            String usersString = "";
+            
+            for (int j = 0; j < users.length; j++) {
+                usersString = usersString + MainFrame.getBackend().getUserByID(users[j]).getNetID();
+                if (j != users.length-1) {
+                    usersString = usersString + ", ";
+                }
+            }
+            
+            model.setValueAt(usersString, i, 0);
+            model.setValueAt(threads[i].getSubject(), i, 1);
+        }
     }
     
     /**
@@ -49,9 +73,9 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
     private void initComponents() {
 
         MessagesLabel = new javax.swing.JLabel();
-        SendButton = new javax.swing.JButton();
+        newButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        displayTable = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 251, 234));
 
@@ -59,31 +83,31 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
         MessagesLabel.setForeground(new java.awt.Color(142, 15, 22));
         MessagesLabel.setText("Messages");
 
-        SendButton.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        SendButton.setText("New");
-        SendButton.setMaximumSize(new java.awt.Dimension(125, 51));
-        SendButton.setPreferredSize(new java.awt.Dimension(125, 51));
-        SendButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        newButton.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        newButton.setText("New");
+        newButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        newButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        newButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                SendButtonMouseMoved(evt);
+                newButtonMouseMoved(evt);
             }
         });
-        SendButton.addActionListener(new java.awt.event.ActionListener() {
+        newButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SendButtonActionPerformed(evt);
+                newButtonActionPerformed(evt);
             }
         });
 
-        jTable1.setBackground(new java.awt.Color(221, 209, 199));
-        jTable1.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        displayTable.setBackground(new java.awt.Color(221, 209, 199));
+        displayTable.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        displayTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
                 {null, null}
             },
             new String [] {
-                "Student", "Message"
+                "Student", "Subject"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -94,13 +118,19 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jTable1.setFillsViewportHeight(true);
-        jTable1.setInheritsPopupMenu(true);
-        jTable1.setSelectionBackground(jTable1.getBackground());
-        jTable1.setShowVerticalLines(false);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        displayTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        displayTable.setFillsViewportHeight(true);
+        displayTable.setInheritsPopupMenu(true);
+        displayTable.setSelectionBackground(displayTable.getBackground());
+        displayTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        displayTable.setShowVerticalLines(false);
+        displayTable.getTableHeader().setReorderingAllowed(false);
+        displayTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                displayTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(displayTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -109,15 +139,15 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(MessagesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(newButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,29 +155,43 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(MessagesLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(newButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SendButtonActionPerformed
+    private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
+        MainView.getInstance().changeView("senatorMessagesNew");
+    }//GEN-LAST:event_newButtonActionPerformed
 
-    private void SendButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendButtonMouseMoved
+    private void newButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newButtonMouseMoved
         // TODO add your handling code here:
         //change to click mouse
         Cursor click = new Cursor(Cursor.HAND_CURSOR);
-        SendButton.setCursor(click);
-    }//GEN-LAST:event_SendButtonMouseMoved
+        newButton.setCursor(click);
+    }//GEN-LAST:event_newButtonMouseMoved
+
+    private void displayTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_displayTableMouseClicked
+        try {
+            JTable source = (JTable)evt.getSource();
+            Point point = evt.getPoint();
+            int row = source.rowAtPoint(point);
+            System.out.println("Switching to thread " + row);
+            SenatorMessagesView.getInstance().init(threads[row]);
+            MainView.getInstance().changeView("senatorMessagesView");
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_displayTableMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel MessagesLabel;
-    private javax.swing.JButton SendButton;
+    private javax.swing.JTable displayTable;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton newButton;
     // End of variables declaration//GEN-END:variables
 }

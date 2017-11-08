@@ -104,7 +104,7 @@ public class MainView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(sidebarContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE))
+                .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE))
             .addComponent(headerContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(

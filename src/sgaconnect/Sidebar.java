@@ -194,6 +194,7 @@ public class Sidebar extends javax.swing.JPanel {
     }//GEN-LAST:event_petitionButtonActionPerformed
 
     private void messagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButtonActionPerformed
+        SenatorMessagesMain.getInstance().init();
         MainView.getInstance().changeView("senatorMessagesMain");
     }//GEN-LAST:event_messagesButtonActionPerformed
 
