@@ -212,6 +212,9 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
                     .addComponent(backmessagesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        StudentNames.getAccessibleContext().setAccessibleName("Recipent Drop Down");
+        subjectField.getAccessibleContext().setAccessibleName("Subject Text Field");
     }// </editor-fold>//GEN-END:initComponents
 
     private void SendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendButtonActionPerformed

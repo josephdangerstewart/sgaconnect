@@ -49,7 +49,7 @@ public class PetitionCreationScreen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         titleField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -64,9 +64,9 @@ public class PetitionCreationScreen extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 251, 234));
 
-        jLabel1.setFont(new java.awt.Font("Steelfish Outline", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(142, 15, 22));
-        jLabel1.setText("Create Petition");
+        title.setFont(new java.awt.Font("Steelfish Outline", 1, 48)); // NOI18N
+        title.setForeground(new java.awt.Color(142, 15, 22));
+        title.setText("Create Petition");
 
         jLabel2.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jLabel2.setText("Title");
@@ -96,6 +96,7 @@ public class PetitionCreationScreen extends javax.swing.JPanel {
         bodyField.setWrapStyleWord(true);
         bodyField.setDoubleBuffered(true);
         jScrollPane1.setViewportView(bodyField);
+        bodyField.getAccessibleContext().setAccessibleName("Body of Petiton");
 
         createButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         createButton.setMnemonic('c');
@@ -145,7 +146,7 @@ public class PetitionCreationScreen extends javax.swing.JPanel {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 204, Short.MAX_VALUE)
-                                .addComponent(jLabel1)
+                                .addComponent(title)
                                 .addGap(0, 204, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
@@ -159,7 +160,7 @@ public class PetitionCreationScreen extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -181,6 +182,9 @@ public class PetitionCreationScreen extends javax.swing.JPanel {
                     .addComponent(jButton1))
                 .addContainerGap())
         );
+
+        titleField.getAccessibleContext().setAccessibleName("Title Field");
+        scopeField.getAccessibleContext().setAccessibleName("Scope Drop Down");
     }// </editor-fold>//GEN-END:initComponents
 
     private void titleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleFieldActionPerformed
@@ -218,12 +222,12 @@ public class PetitionCreationScreen extends javax.swing.JPanel {
     private javax.swing.JLabel bodyFieldError;
     private javax.swing.JButton createButton;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> scopeField;
+    private javax.swing.JLabel title;
     private javax.swing.JTextField titleField;
     private javax.swing.JLabel titleFieldError;
     // End of variables declaration//GEN-END:variables
