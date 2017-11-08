@@ -19,7 +19,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="sidebarContainer" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="viewportContainer" pref="514" max="32767" attributes="0"/>
+              <Component id="viewportContainer" pref="632" max="32767" attributes="0"/>
           </Group>
           <Component id="headerContainer" alignment="0" max="32767" attributes="0"/>
       </Group>
@@ -30,7 +30,7 @@
               <Component id="headerContainer" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="sidebarContainer" pref="372" max="32767" attributes="0"/>
+                  <Component id="sidebarContainer" pref="411" max="32767" attributes="0"/>
                   <Component id="viewportContainer" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -177,6 +177,13 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="newsletterViewScreen"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="sgaconnect.BulletinView" name="bulletinView1">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="bulletinView"/>
             </Constraint>
           </Constraints>
         </Component>
