@@ -88,6 +88,7 @@ public class SenatorMessagesView extends javax.swing.JPanel {
         body.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         body.setFocusable(false);
         jScrollPane2.setViewportView(body);
+        body.getAccessibleContext().setAccessibleName("Message Content");
         body.getAccessibleContext().setAccessibleDescription("");
 
         sendButton.setBackground(new java.awt.Color(221, 209, 199));
@@ -115,6 +116,7 @@ public class SenatorMessagesView extends javax.swing.JPanel {
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         commentScrollPane.setViewportView(jTextArea1);
+        jTextArea1.getAccessibleContext().setAccessibleName("Reply Field");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -156,6 +158,8 @@ public class SenatorMessagesView extends javax.swing.JPanel {
                 .addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        messageTitle.getAccessibleContext().setAccessibleName("Message Title");
     }// </editor-fold>//GEN-END:initComponents
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
