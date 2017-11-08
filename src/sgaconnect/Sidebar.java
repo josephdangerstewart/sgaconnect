@@ -185,7 +185,13 @@ public class Sidebar extends javax.swing.JPanel {
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         StudentMainScreen.getInstance().setUser(MainFrame.getBackend().getLoggedInUser());
+        if (MainFrame.getBackend().getLoggedInUser().getRole() == 0) {
+            StudentMainScreen.getInstance().setUser(MainFrame.getBackend().getLoggedInUser());
         MainView.getInstance().changeView("studentMainScreen");
+        } else {
+            SenatorMainScreen.getInstance().init();
+            MainView.getInstance().changeView("senatorMainScreen");
+        }
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void petitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_petitionButtonActionPerformed
@@ -247,10 +253,12 @@ public class Sidebar extends javax.swing.JPanel {
     }//GEN-LAST:event_messagesButtonMouseMoved
 
     private void bulletinButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bulletinButtonActionPerformed
+        BulletinView.getInstance().init();
         MainView.getInstance().changeView("bulletinView");
     }//GEN-LAST:event_bulletinButtonActionPerformed
 
     private void newsletterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newsletterButtonActionPerformed
+        NewsletterMainScreen.getInstance().init();
         MainView.getInstance().changeView("newsletterMainScreen");
     }//GEN-LAST:event_newsletterButtonActionPerformed
 

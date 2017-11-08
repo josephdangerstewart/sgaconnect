@@ -55,6 +55,9 @@ public class StudentMainScreen extends javax.swing.JPanel {
         if (type.equals("PETITION")) {
             PetitionViewScreen.getInstance().init(MainFrame.getBackend().getPetitionByID(id));
             MainView.getInstance().changeView("petitionViewScreen");
+        } else if (type.equals("POLL")) {
+            PollViewScreen.getInstance().init(MainFrame.getBackend().getPollByID(id));
+            MainView.getInstance().changeView("pollViewScreen");
         }
     }
 

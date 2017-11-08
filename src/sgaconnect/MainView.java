@@ -31,6 +31,12 @@ public class MainView extends javax.swing.JPanel {
         CardLayout layout = (CardLayout)viewportContainer.getLayout();
         layout.show(viewportContainer, card);
     }
+    
+    public void init() {
+        if (MainFrame.getBackend().getLoggedInUser().getRole() != 0) {
+            
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,6 +64,7 @@ public class MainView extends javax.swing.JPanel {
         newsletterMainScreen1 = new sgaconnect.NewsletterMainScreen();
         newsletterViewScreen1 = new sgaconnect.NewsletterViewScreen();
         bulletinView1 = new sgaconnect.BulletinView();
+        senatorMainScreen1 = new sgaconnect.SenatorMainScreen();
 
         headerContainer.setBackground(new java.awt.Color(0, 255, 255));
         headerContainer.setForeground(new java.awt.Color(51, 204, 255));
@@ -96,6 +103,7 @@ public class MainView extends javax.swing.JPanel {
         viewportContainer.add(newsletterMainScreen1, "newsletterMainScreen");
         viewportContainer.add(newsletterViewScreen1, "newsletterViewScreen");
         viewportContainer.add(bulletinView1, "bulletinView");
+        viewportContainer.add(senatorMainScreen1, "senatorMainScreen");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -104,7 +112,7 @@ public class MainView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(sidebarContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE))
+                .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE))
             .addComponent(headerContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -130,6 +138,7 @@ public class MainView extends javax.swing.JPanel {
     private sgaconnect.PetitionViewScreen petitionViewScreen1;
     private sgaconnect.PollMainScreen pollMainScreen1;
     private sgaconnect.PollViewScreen pollViewScreen1;
+    private sgaconnect.SenatorMainScreen senatorMainScreen1;
     private sgaconnect.SenatorMessagesMain senatorMessagesMain1;
     private sgaconnect.SenatorMessagesNew senatorMessagesNew1;
     private sgaconnect.SenatorMessagesView senatorMessagesView1;

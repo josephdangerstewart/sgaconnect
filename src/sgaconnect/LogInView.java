@@ -20,6 +20,19 @@ public class LogInView extends javax.swing.JPanel {
     public LogInView() {
         initComponents();
     }
+    
+    private void login() {
+        Backend backend = MainFrame.getBackend();
+        
+        if (backend.logIn(usernameField.getText(), new String(passwordField.getPassword())) != null) {
+            StudentMainScreen.getInstance().setUser(backend.getLoggedInUser());
+            if (backend.getLoggedInUser().getRole() != 0) {
+                SenatorMainScreen.getInstance().init();
+                MainView.getInstance().changeView("senatorMainScreen");
+            }
+            MainFrame.getMainFrame().changeView("mainView");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -143,12 +156,7 @@ public class LogInView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        Backend backend = MainFrame.getBackend();
-        
-        if (backend.logIn(usernameField.getText(), new String(passwordField.getPassword())) != null) {
-            StudentMainScreen.getInstance().setUser(backend.getLoggedInUser());
-            MainFrame.getMainFrame().changeView("mainView");
-        }
+        login();
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
@@ -158,11 +166,7 @@ public class LogInView extends javax.swing.JPanel {
         //if enter is hit then change frames
         if (key == 10)
         {
-         Backend backend2 = MainFrame.getBackend();
-            if (backend2.logIn(usernameField.getText(), new String(passwordField.getPassword())) != null) {
-                StudentMainScreen.getInstance().setUser(backend2.getLoggedInUser());
-                MainFrame.getMainFrame().changeView("mainView");
-            }   
+            login();
         }
     }//GEN-LAST:event_passwordFieldKeyPressed
 
@@ -174,11 +178,7 @@ public class LogInView extends javax.swing.JPanel {
         //if enter is hit then change frames
         if (key == 10)
         {
-         Backend backend3 = MainFrame.getBackend();
-            if (backend3.logIn(usernameField.getText(), new String(passwordField.getPassword())) != null) {
-                StudentMainScreen.getInstance().setUser(backend3.getLoggedInUser());
-                MainFrame.getMainFrame().changeView("mainView");
-            }   
+            login();
         }
     }//GEN-LAST:event_loginButtonKeyPressed
 

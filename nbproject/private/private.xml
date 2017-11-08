@@ -5,8 +5,11 @@
         <group>
             <file>file:/C:/Users/josephs12/sgaconnect/src/sgaconnect/backend/Message.java</file>
             <file>file:/C:/Users/josephs12/sgaconnect/src/sgaconnect/Sidebar.java</file>
-            <file>file:/C:/Users/josephs12/sgaconnect/src/sgaconnect/SenatorMessagesMain.java</file>
-            <file>file:/C:/Users/josephs12/sgaconnect/src/sgaconnect/SenatorMessagesView.java</file>
+            <file>file:/C:/Users/josephs12/sgaconnect/src/sgaconnect/StudentMainScreen.java</file>
+            <file>file:/C:/Users/josephs12/sgaconnect/src/sgaconnect/backend/MessageThread.java</file>
+            <file>file:/C:/Users/josephs12/sgaconnect/src/sgaconnect/backend/Backend.java</file>
+            <file>file:/C:/Users/josephs12/sgaconnect/src/sgaconnect/MainView.java</file>
+            <file>file:/C:/Users/josephs12/sgaconnect/src/sgaconnect/SenatorMainScreen.java</file>
         </group>
     </open-files>
 </project-private>

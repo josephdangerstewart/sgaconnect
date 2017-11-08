@@ -11,7 +11,9 @@ import java.awt.Font;
 import java.awt.Point;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import sgaconnect.backend.MessageThread;
 import sgaconnect.backend.User;
+import sgaconnect.backend.Util;
 
 /**
  *
@@ -21,11 +23,12 @@ public class SenatorMainScreen extends javax.swing.JPanel {
 
     private static SenatorMainScreen thisObj;
     
+    private MessageThread[] threads;
     private User[] senators;
     int index;
     private String[][] events = {
-        {"10/20/17 at 2:03 pm","Your senator posted a poll!","POLL","0"},
-        {"10/17/17 at 11:19 am", "Someone signed your petition","PETITION","0"}
+        {"10/20/17 at 2:03 pm","You posted a poll!","POLL","0"},
+        {"10/17/17 at 11:19 am", "A petition is getting popular!","PETITION","0"}
     };
     
     /**
@@ -36,7 +39,6 @@ public class SenatorMainScreen extends javax.swing.JPanel {
         initComponents();
         recentActivityTable.getTableHeader().setFont(new Font("Open Sans",Font.PLAIN,12));
         initTable();
-        
     }
     
     private void initTable() {
@@ -62,12 +64,34 @@ public class SenatorMainScreen extends javax.swing.JPanel {
         return thisObj;
     }
     
-    public void setUser(User user) {
-        senators = MainFrame.getBackend().getSenatorsOf(user.getDorm());
-        index = 0;
+    public void init() {
+        threads = MainFrame.getBackend().getAllMessageThreads(MainFrame.getBackend().getLoggedInUser().getID());
         
+        for (int i = 0; i < threads.length; i++) {
+            long max = Long.MIN_VALUE;
+            int maxIndex = 0;
+            for (int j = threads.length-1; j >= i; j--) {
+                long mostRecent = threads[j].getMostRecentMessage().getTimestamp();
+                if (mostRecent > max) {
+                    max = mostRecent;
+                    maxIndex = j;
+                }
+            }
+            
+            MessageThread temp = threads[maxIndex];
+            threads[maxIndex] = threads[i];
+            threads[i] = temp;
+        }
+        
+        DefaultTableModel messagesModel = (DefaultTableModel) messagesTable.getModel();
+        messagesModel.setRowCount(threads.length);
+        
+        for (int i = 0; i < threads.length; i++) {
+            messagesModel.setValueAt(Util.getDateFromMili(threads[i].getMostRecentMessage().getTimestamp()), i, 0);
+            messagesModel.setValueAt(MainFrame.getBackend().getUserByID(threads[i].getMostRecentMessage().getFrom()), i, 1);
+            messagesModel.setValueAt(threads[i].getSubject(),i,2);
+        }
     }
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,7 +104,7 @@ public class SenatorMainScreen extends javax.swing.JPanel {
 
         senatorPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        recentActivityTable1 = new javax.swing.JTable();
+        messagesTable = new javax.swing.JTable();
         recentActivityPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         recentActivityTable = new javax.swing.JTable();
@@ -92,9 +116,9 @@ public class SenatorMainScreen extends javax.swing.JPanel {
 
         jScrollPane2.setBackground(new java.awt.Color(255, 251, 234));
 
-        recentActivityTable1.setBackground(new java.awt.Color(221, 209, 199));
-        recentActivityTable1.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        recentActivityTable1.setModel(new javax.swing.table.DefaultTableModel(
+        messagesTable.setBackground(new java.awt.Color(221, 209, 199));
+        messagesTable.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        messagesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"", null, null},
                 {"", null, null},
@@ -114,25 +138,26 @@ public class SenatorMainScreen extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        recentActivityTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
-        recentActivityTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        recentActivityTable1.setFillsViewportHeight(true);
-        recentActivityTable1.setGridColor(new java.awt.Color(255, 255, 255));
-        recentActivityTable1.setRowSelectionAllowed(false);
-        recentActivityTable1.setShowHorizontalLines(false);
-        recentActivityTable1.getTableHeader().setReorderingAllowed(false);
-        recentActivityTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        messagesTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        messagesTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        messagesTable.setFillsViewportHeight(true);
+        messagesTable.setGridColor(new java.awt.Color(255, 255, 255));
+        messagesTable.setRowSelectionAllowed(false);
+        messagesTable.setShowHorizontalLines(false);
+        messagesTable.setShowVerticalLines(false);
+        messagesTable.getTableHeader().setReorderingAllowed(false);
+        messagesTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                recentActivityTable1MouseClicked(evt);
+                messagesTableMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                recentActivityTable1MouseEntered(evt);
+                messagesTableMouseEntered(evt);
             }
         });
-        jScrollPane2.setViewportView(recentActivityTable1);
-        if (recentActivityTable1.getColumnModel().getColumnCount() > 0) {
-            recentActivityTable1.getColumnModel().getColumn(0).setPreferredWidth(21);
-            recentActivityTable1.getColumnModel().getColumn(1).setPreferredWidth(21);
+        jScrollPane2.setViewportView(messagesTable);
+        if (messagesTable.getColumnModel().getColumnCount() > 0) {
+            messagesTable.getColumnModel().getColumn(0).setPreferredWidth(21);
+            messagesTable.getColumnModel().getColumn(1).setPreferredWidth(21);
         }
 
         javax.swing.GroupLayout senatorPanelLayout = new javax.swing.GroupLayout(senatorPanel);
@@ -234,33 +259,38 @@ public class SenatorMainScreen extends javax.swing.JPanel {
         try {
             JTable source = (JTable)evt.getSource();
             Point point = evt.getPoint();
-            int column = source.columnAtPoint(point);
-            if (column == 1) {
-                int row = source.rowAtPoint(point);
-                String type = events[row][2];
-                int id = Integer.parseInt(events[row][3]);
-                navigateToEvent(type,id);
-            }
+            int row = source.rowAtPoint(point);
+            String type = events[row][2];
+            int id = Integer.parseInt(events[row][3]);
+            navigateToEvent(type,id);
         } catch (Exception e) {
             //Do nothing
         }
     }//GEN-LAST:event_recentActivityTableMouseClicked
 
-    private void recentActivityTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recentActivityTable1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recentActivityTable1MouseClicked
+    private void messagesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagesTableMouseClicked
+        try {
+            JTable source = (JTable)evt.getSource();
+            Point point = evt.getPoint();
+            int row = source.rowAtPoint(point);
+            SenatorMessagesView.getInstance().init(threads[row]);
+            MainView.getInstance().changeView("senatorMessagesView");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_messagesTableMouseClicked
 
-    private void recentActivityTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recentActivityTable1MouseEntered
+    private void messagesTableMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagesTableMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_recentActivityTable1MouseEntered
+    }//GEN-LAST:event_messagesTableMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable messagesTable;
     private javax.swing.JPanel recentActivityPanel;
     private javax.swing.JTable recentActivityTable;
-    private javax.swing.JTable recentActivityTable1;
     private javax.swing.JPanel senatorPanel;
     // End of variables declaration//GEN-END:variables
 }

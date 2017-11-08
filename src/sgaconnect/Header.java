@@ -94,7 +94,14 @@ public class Header extends javax.swing.JPanel {
         // TODO add your handling code here:
        
         StudentMainScreen.getInstance().setUser(MainFrame.getBackend().getLoggedInUser());
-        MainView.getInstance().changeView("studentMainScreen");
+        if (MainFrame.getBackend().getLoggedInUser().getRole() == 0) {
+            StudentMainScreen.getInstance().setUser(MainFrame.getBackend().getLoggedInUser());
+            MainView.getInstance().changeView("studentMainScreen");
+        }
+        else {
+            SenatorMainScreen.getInstance().init();
+            MainView.getInstance().changeView("senatorMainScreen");
+        }
         
     }//GEN-LAST:event_sgaLogoHomeButtonMouseClicked
 

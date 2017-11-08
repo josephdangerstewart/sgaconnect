@@ -13,11 +13,24 @@ import java.awt.Cursor;
  */
 public class BulletinView extends javax.swing.JPanel {
 
+    private static BulletinView thisObj;
+    
     /**
      * Creates new form BulletinView
      */
     public BulletinView() {
         initComponents();
+        thisObj = this;
+    }
+    
+    public static BulletinView getInstance() {
+        return thisObj;
+    }
+    
+    public void init() {
+        if (MainFrame.getBackend().getLoggedInUser().getRole() == 0) {
+            mainPanel.remove(postPanel);
+        }
     }
 
     /**
@@ -30,35 +43,34 @@ public class BulletinView extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane2 = new javax.swing.JScrollPane();
-        jPanel5 = new javax.swing.JPanel();
+        mainPanel = new javax.swing.JPanel();
         bulletinTitle = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         poster1Label = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         poster1TextArea = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         filterLabel = new javax.swing.JLabel();
         filterDropDown = new javax.swing.JComboBox<>();
-        jPanel1 = new javax.swing.JPanel();
+        postPanel = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         bulletinEntry = new javax.swing.JTextArea();
-        jLabel5 = new javax.swing.JLabel();
         postButton = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        userLabel = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         poster2Label = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         poster2TextArea = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
-        previousButton = new javax.swing.JButton();
-        nextButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 251, 234));
 
-        jPanel5.setBackground(new java.awt.Color(255, 251, 234));
+        jScrollPane2.setBorder(null);
+
+        mainPanel.setBackground(new java.awt.Color(255, 251, 234));
 
         bulletinTitle.setFont(new java.awt.Font("Steelfish Outline", 1, 48)); // NOI18N
         bulletinTitle.setForeground(new java.awt.Color(142, 15, 22));
@@ -71,15 +83,22 @@ public class BulletinView extends javax.swing.JPanel {
 
         poster1Label.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         poster1Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        poster1Label.setText("Your Senator");
+        poster1Label.setText("User 106");
+
+        jLabel2.setText("[Senator]");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(poster1Label, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(poster1Label, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -87,7 +106,9 @@ public class BulletinView extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(poster1Label)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         poster1Label.getAccessibleContext().setAccessibleName("Bulletin User Post");
@@ -105,7 +126,7 @@ public class BulletinView extends javax.swing.JPanel {
         poster1TextArea.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         poster1TextArea.setLineWrap(true);
         poster1TextArea.setRows(5);
-        poster1TextArea.setText("Pack up your bags Biola Students! We are moving to La Mirada! #BIOLM");
+        poster1TextArea.setText("Pack up your bags Biola Students! We are moving to La Mirada! #BIOLA");
         poster1TextArea.setToolTipText("");
         poster1TextArea.setWrapStyleWord(true);
         poster1TextArea.setBorder(null);
@@ -139,12 +160,12 @@ public class BulletinView extends javax.swing.JPanel {
 
         jLabel6.getAccessibleContext().setAccessibleName("Date Posted");
 
-        filterLabel.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
+        filterLabel.setFont(new java.awt.Font("Print Clearly", 0, 22)); // NOI18N
         filterLabel.setText("Filter:");
         filterLabel.setToolTipText("Filter (Pick One)");
 
         filterDropDown.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        filterDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No filter", "Name (alphabetical)", "Most Recent", "Senator" }));
+        filterDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No filter", "President", "Your Senator" }));
         filterDropDown.setToolTipText("Filter Options");
         filterDropDown.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         filterDropDown.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -158,8 +179,8 @@ public class BulletinView extends javax.swing.JPanel {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(221, 209, 199));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        postPanel.setBackground(new java.awt.Color(221, 209, 199));
+        postPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jScrollPane4.setBorder(null);
         jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -170,7 +191,7 @@ public class BulletinView extends javax.swing.JPanel {
         bulletinEntry.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         bulletinEntry.setLineWrap(true);
         bulletinEntry.setRows(5);
-        bulletinEntry.setText("Type your bulletin here");
+        bulletinEntry.setText("Whats going on?");
         bulletinEntry.setToolTipText("Your new bulletin");
         bulletinEntry.setWrapStyleWord(true);
         bulletinEntry.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -180,10 +201,12 @@ public class BulletinView extends javax.swing.JPanel {
                 bulletinEntryMouseMoved(evt);
             }
         });
+        bulletinEntry.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bulletinEntryMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(bulletinEntry);
-
-        jLabel5.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        jLabel5.setText("Today");
 
         postButton.setMnemonic('t');
         postButton.setText("Post");
@@ -194,60 +217,31 @@ public class BulletinView extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout postPanelLayout = new javax.swing.GroupLayout(postPanel);
+        postPanel.setLayout(postPanelLayout);
+        postPanelLayout.setHorizontalGroup(
+            postPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(postPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(postPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(postButton)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, postPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(postButton)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        postPanelLayout.setVerticalGroup(
+            postPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(postPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(postButton))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                .addComponent(postButton)
                 .addContainerGap())
         );
 
-        jLabel5.getAccessibleContext().setAccessibleName("Date Posted");
         postButton.getAccessibleContext().setAccessibleName("Post Button");
-
-        jPanel2.setBackground(new java.awt.Color(221, 209, 199));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        userLabel.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        userLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        userLabel.setText("You");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(userLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(userLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        userLabel.getAccessibleContext().setAccessibleName("User Post");
 
         jPanel6.setBackground(new java.awt.Color(221, 209, 199));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -255,15 +249,23 @@ public class BulletinView extends javax.swing.JPanel {
 
         poster2Label.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         poster2Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        poster2Label.setText("President");
+        poster2Label.setText("User 110");
+
+        jLabel1.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        jLabel1.setText("[President]");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+            .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(poster2Label, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(poster2Label, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -271,7 +273,9 @@ public class BulletinView extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(poster2Label)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         poster2Label.getAccessibleContext().setAccessibleName("Bulletin User Post");
@@ -290,7 +294,7 @@ public class BulletinView extends javax.swing.JPanel {
         poster2TextArea.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         poster2TextArea.setLineWrap(true);
         poster2TextArea.setRows(5);
-        poster2TextArea.setText("Maybe limit the number of characters somehow?\nThus we can have same size boxes and stuff\n");
+        poster2TextArea.setText("Cool things are happening at SGA right now!!");
         poster2TextArea.setToolTipText("");
         poster2TextArea.setWrapStyleWord(true);
         poster2TextArea.setBorder(null);
@@ -325,95 +329,58 @@ public class BulletinView extends javax.swing.JPanel {
 
         jLabel8.getAccessibleContext().setAccessibleName("Date Posted");
 
-        previousButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        previousButton.setMnemonic('v');
-        previousButton.setText("Previous");
-        previousButton.setToolTipText("View previous posts");
-        previousButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                previousButtonMouseMoved(evt);
-            }
-        });
-        previousButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                previousButtonActionPerformed(evt);
-            }
-        });
-
-        nextButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        nextButton.setMnemonic('x');
-        nextButton.setText("Next");
-        nextButton.setToolTipText("View later posts");
-        nextButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                nextButtonMouseMoved(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(bulletinTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
-                        .addGap(26, 26, 26))
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addComponent(filterLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(filterDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
-                            .addComponent(previousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(11, 11, 11))
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addContainerGap()))))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(postPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(filterLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(filterDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(bulletinTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bulletinTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(filterLabel)
-                        .addComponent(filterDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(previousButton)
-                        .addComponent(nextButton)))
-                .addGap(16, 16, 16)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(filterLabel)
+                    .addComponent(filterDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addComponent(postPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         filterLabel.getAccessibleContext().setAccessibleName("Filter");
         filterDropDown.getAccessibleContext().setAccessibleName("Filter Drop Down");
 
-        jScrollPane2.setViewportView(jPanel5);
+        jScrollPane2.setViewportView(mainPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -423,7 +390,7 @@ public class BulletinView extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+            .addComponent(jScrollPane2)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -431,27 +398,11 @@ public class BulletinView extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_filterDropDownActionPerformed
 
-    private void previousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_previousButtonActionPerformed
-
     private void bulletinEntryMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bulletinEntryMouseMoved
         // TODO add your handling code here:
         Cursor hover = new Cursor(Cursor.TEXT_CURSOR);
         bulletinEntry.setCursor(hover);
     }//GEN-LAST:event_bulletinEntryMouseMoved
-
-    private void previousButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_previousButtonMouseMoved
-        // TODO add your handling code here:
-        Cursor click2 = new Cursor(Cursor.HAND_CURSOR);
-        previousButton.setCursor(click2);
-    }//GEN-LAST:event_previousButtonMouseMoved
-
-    private void nextButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextButtonMouseMoved
-        // TODO add your handling code here:
-        Cursor click3 = new Cursor(Cursor.HAND_CURSOR);
-        nextButton.setCursor(click3);
-    }//GEN-LAST:event_nextButtonMouseMoved
 
     private void postButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_postButtonMouseMoved
         // TODO add your handling code here:
@@ -465,33 +416,36 @@ public class BulletinView extends javax.swing.JPanel {
         filterDropDown.setCursor(click5);
     }//GEN-LAST:event_filterDropDownMouseMoved
 
+    private void bulletinEntryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bulletinEntryMouseClicked
+        if (bulletinEntry.getText().equals("Whats going on?")) {
+            bulletinEntry.setText("");
+        }
+    }//GEN-LAST:event_bulletinEntryMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea bulletinEntry;
     private javax.swing.JLabel bulletinTitle;
     private javax.swing.JComboBox<String> filterDropDown;
     private javax.swing.JLabel filterLabel;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JButton nextButton;
+    private javax.swing.JPanel mainPanel;
     private javax.swing.JButton postButton;
+    private javax.swing.JPanel postPanel;
     private javax.swing.JLabel poster1Label;
     private javax.swing.JTextArea poster1TextArea;
     private javax.swing.JLabel poster2Label;
     private javax.swing.JTextArea poster2TextArea;
-    private javax.swing.JButton previousButton;
-    private javax.swing.JLabel userLabel;
     // End of variables declaration//GEN-END:variables
 }

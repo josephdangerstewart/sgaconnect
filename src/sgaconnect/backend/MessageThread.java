@@ -90,4 +90,17 @@ public class MessageThread {
         this.messages.add(new Message(userID, body));
     }
     
+    public Message getMostRecentMessage() {
+        long max = Long.MIN_VALUE;
+        int maxIndex = 0;
+        
+        for (int i = 0; i < messages.size(); i++) {
+            if (messages.get(i).getTimestamp() > max) {
+                max = messages.get(i).getTimestamp();
+                maxIndex = i;
+            }
+        }
+        
+        return messages.get(maxIndex);
+    }
 }
