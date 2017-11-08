@@ -91,19 +91,19 @@ public class SenatorMainScreen extends javax.swing.JPanel {
         senatorPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         senatorEmailDisplay = new javax.swing.JLabel();
-        senatorRoomDisplay = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        senatorRoomDisplay1 = new javax.swing.JLabel();
         senatorRoomDisplay2 = new javax.swing.JLabel();
         senatorEmailDisplay2 = new javax.swing.JLabel();
         senatorRoomDisplay3 = new javax.swing.JLabel();
         senatorRoomDisplay4 = new javax.swing.JLabel();
         senatorRoomDisplay5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         recentActivityPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         recentActivityTable = new javax.swing.JTable();
@@ -122,9 +122,6 @@ public class SenatorMainScreen extends javax.swing.JPanel {
         senatorEmailDisplay.setMaximumSize(new java.awt.Dimension(150, 17));
         senatorEmailDisplay.setMinimumSize(new java.awt.Dimension(150, 17));
         senatorEmailDisplay.setPreferredSize(new java.awt.Dimension(150, 17));
-
-        senatorRoomDisplay.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        senatorRoomDisplay.setText("112");
 
         jButton1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jButton1.setText("More");
@@ -147,9 +144,6 @@ public class SenatorMainScreen extends javax.swing.JPanel {
         jLabel8.setToolTipText("");
         jLabel8.setPreferredSize(new java.awt.Dimension(107, 17));
 
-        senatorRoomDisplay1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        senatorRoomDisplay1.setText("211");
-
         senatorRoomDisplay2.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         senatorRoomDisplay2.setText("316");
 
@@ -168,6 +162,16 @@ public class SenatorMainScreen extends javax.swing.JPanel {
 
         senatorRoomDisplay5.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         senatorRoomDisplay5.setText("Senior");
+
+        jLabel3.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        jLabel3.setText("Biola Bob");
+        jLabel3.setToolTipText("");
+        jLabel3.setPreferredSize(new java.awt.Dimension(107, 17));
+
+        jLabel4.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        jLabel4.setText("Biola Bob");
+        jLabel4.setToolTipText("");
+        jLabel4.setPreferredSize(new java.awt.Dimension(107, 17));
 
         javax.swing.GroupLayout senatorPanelLayout = new javax.swing.GroupLayout(senatorPanel);
         senatorPanel.setLayout(senatorPanelLayout);
@@ -190,22 +194,23 @@ public class SenatorMainScreen extends javax.swing.JPanel {
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(senatorRoomDisplay1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(senatorRoomDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(senatorEmailDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(senatorRoomDisplay2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(senatorPanelLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
                                 .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(senatorRoomDisplay4, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(senatorEmailDisplay2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, senatorPanelLayout.createSequentialGroup()
+                                    .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(senatorEmailDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(senatorRoomDisplay2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(senatorRoomDisplay5, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(senatorRoomDisplay3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(senatorRoomDisplay3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(senatorPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(senatorRoomDisplay4, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(senatorEmailDisplay2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(56, 56, 56))
         );
         senatorPanelLayout.setVerticalGroup(
@@ -223,13 +228,13 @@ public class SenatorMainScreen extends javax.swing.JPanel {
                 .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(senatorRoomDisplay)
-                        .addComponent(senatorRoomDisplay4)))
+                        .addComponent(senatorRoomDisplay4)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(senatorRoomDisplay1)
-                    .addComponent(senatorRoomDisplay3))
+                    .addComponent(senatorRoomDisplay3)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -344,6 +349,8 @@ public class SenatorMainScreen extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -353,8 +360,6 @@ public class SenatorMainScreen extends javax.swing.JPanel {
     private javax.swing.JLabel senatorEmailDisplay;
     private javax.swing.JLabel senatorEmailDisplay2;
     private javax.swing.JPanel senatorPanel;
-    private javax.swing.JLabel senatorRoomDisplay;
-    private javax.swing.JLabel senatorRoomDisplay1;
     private javax.swing.JLabel senatorRoomDisplay2;
     private javax.swing.JLabel senatorRoomDisplay3;
     private javax.swing.JLabel senatorRoomDisplay4;

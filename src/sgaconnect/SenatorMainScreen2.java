@@ -65,19 +65,9 @@ public class SenatorMainScreen2 extends javax.swing.JPanel {
     public void setUser(User user) {
         senators = MainFrame.getBackend().getSenatorsOf(user.getDorm());
         index = 0;
-        setSenator(0);
+        
     }
     
-    private void setSenator(int index) {
-        if (index >= 0 && senators.length > 0) {
-            senatorNameDisplay.setText(senators[index].getName());
-            senatorEmailDisplay.setText(senators[index].getEmail());
-            senatorRoomDisplay.setText(senators[index].getDorm() + " " + senators[index].getRoom());
-            senatorMajorDisplay.setText(senators[index].getMajor());
-            senatorYearDisplay.setText(senators[index].getYearString());
-            indexDisplay.setText((index + 1) + "/"+senators.length);
-        }
-    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -89,20 +79,8 @@ public class SenatorMainScreen2 extends javax.swing.JPanel {
     private void initComponents() {
 
         senatorPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        senatorNameDisplay = new javax.swing.JLabel();
-        senatorEmailDisplay = new javax.swing.JLabel();
-        senatorRoomDisplay = new javax.swing.JLabel();
-        senatorMajorDisplay = new javax.swing.JLabel();
-        senatorYearDisplay = new javax.swing.JLabel();
-        nextButton = new javax.swing.JButton();
-        previousButton = new javax.swing.JButton();
-        indexDisplay = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        recentActivityTable1 = new javax.swing.JTable();
         recentActivityPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         recentActivityTable = new javax.swing.JTable();
@@ -110,140 +88,62 @@ public class SenatorMainScreen2 extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 251, 234));
 
         senatorPanel.setBackground(new java.awt.Color(255, 251, 234));
-        senatorPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Recent Activity", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Print Clearly", 0, 24), new java.awt.Color(153, 150, 148))); // NOI18N
+        senatorPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Messages", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Print Clearly", 0, 24), new java.awt.Color(153, 150, 148))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        jLabel1.setText("Name:");
+        jScrollPane2.setBackground(new java.awt.Color(255, 251, 234));
 
-        jLabel2.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        jLabel2.setText("Email:");
+        recentActivityTable1.setBackground(new java.awt.Color(221, 209, 199));
+        recentActivityTable1.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        recentActivityTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"", null},
+                {"", null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Time", "Event (Click for More)"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
-        jLabel3.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        jLabel3.setText("Room:");
-
-        jLabel4.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        jLabel4.setText("Major:");
-
-        jLabel5.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        jLabel5.setText("Year:");
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/profile-icon.png"))); // NOI18N
-
-        senatorNameDisplay.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        senatorNameDisplay.setText("Undefined");
-
-        senatorEmailDisplay.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        senatorEmailDisplay.setText("Undefined");
-
-        senatorRoomDisplay.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        senatorRoomDisplay.setText("Undefined");
-
-        senatorMajorDisplay.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        senatorMajorDisplay.setText("Undefined");
-
-        senatorYearDisplay.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        senatorYearDisplay.setText("Undefined");
-
-        nextButton.setFont(new java.awt.Font("Open Sans", 0, 10)); // NOI18N
-        nextButton.setMnemonic('x');
-        nextButton.setText("Next");
-        nextButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                nextButtonMouseMoved(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        nextButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextButtonActionPerformed(evt);
+        recentActivityTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        recentActivityTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        recentActivityTable1.setFillsViewportHeight(true);
+        recentActivityTable1.setGridColor(new java.awt.Color(255, 251, 234));
+        recentActivityTable1.setRowSelectionAllowed(false);
+        recentActivityTable1.setShowHorizontalLines(false);
+        recentActivityTable1.setShowVerticalLines(false);
+        recentActivityTable1.getTableHeader().setReorderingAllowed(false);
+        recentActivityTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                recentActivityTable1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                recentActivityTable1MouseEntered(evt);
             }
         });
-
-        previousButton.setFont(new java.awt.Font("Open Sans", 0, 10)); // NOI18N
-        previousButton.setMnemonic('r');
-        previousButton.setText("Previous");
-        previousButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                previousButtonMouseMoved(evt);
-            }
-        });
-        previousButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                previousButtonActionPerformed(evt);
-            }
-        });
-
-        indexDisplay.setFont(new java.awt.Font("Open Sans", 0, 10)); // NOI18N
-        indexDisplay.setText("0/0");
+        jScrollPane2.setViewportView(recentActivityTable1);
+        if (recentActivityTable1.getColumnModel().getColumnCount() > 0) {
+            recentActivityTable1.getColumnModel().getColumn(0).setPreferredWidth(10);
+            recentActivityTable1.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         javax.swing.GroupLayout senatorPanelLayout = new javax.swing.GroupLayout(senatorPanel);
         senatorPanel.setLayout(senatorPanelLayout);
         senatorPanelLayout.setHorizontalGroup(
             senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(senatorPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(senatorPanelLayout.createSequentialGroup()
-                        .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(senatorRoomDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
-                            .addComponent(senatorEmailDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(senatorNameDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(senatorPanelLayout.createSequentialGroup()
-                        .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
-                        .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(senatorYearDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                            .addComponent(senatorMajorDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(senatorPanelLayout.createSequentialGroup()
-                        .addComponent(previousButton)
-                        .addGap(143, 143, 143)
-                        .addComponent(indexDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(nextButton, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
         );
         senatorPanelLayout.setVerticalGroup(
             senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, senatorPanelLayout.createSequentialGroup()
-                .addGap(0, 25, Short.MAX_VALUE)
-                .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(senatorPanelLayout.createSequentialGroup()
-                        .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(senatorNameDisplay))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(senatorEmailDisplay))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(senatorRoomDisplay))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(senatorMajorDisplay))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(senatorYearDisplay))
-                        .addContainerGap())
-                    .addGroup(senatorPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(previousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(indexDisplay)))))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
         );
 
         recentActivityPanel.setBackground(new java.awt.Color(255, 251, 234));
@@ -302,18 +202,18 @@ public class SenatorMainScreen2 extends javax.swing.JPanel {
         );
         recentActivityPanelLayout.setVerticalGroup(
             recentActivityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(recentActivityPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(senatorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(recentActivityPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(senatorPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -326,20 +226,6 @@ public class SenatorMainScreen2 extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-        if (index < senators.length-1) {
-            index++;
-            setSenator(index);
-        }
-    }//GEN-LAST:event_nextButtonActionPerformed
-
-    private void previousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousButtonActionPerformed
-        if (index > 0) {
-            index--;
-            setSenator(index);
-        }
-    }//GEN-LAST:event_previousButtonActionPerformed
 
     private void recentActivityTableMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recentActivityTableMouseEntered
     }//GEN-LAST:event_recentActivityTableMouseEntered
@@ -360,40 +246,21 @@ public class SenatorMainScreen2 extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_recentActivityTableMouseClicked
 
-    private void previousButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_previousButtonMouseMoved
+    private void recentActivityTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recentActivityTable1MouseClicked
         // TODO add your handling code here:
-        
-        //change to click mouse
-        Cursor click = new Cursor(Cursor.HAND_CURSOR);
-        previousButton.setCursor(click);
-    }//GEN-LAST:event_previousButtonMouseMoved
+    }//GEN-LAST:event_recentActivityTable1MouseClicked
 
-    private void nextButtonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextButtonMouseMoved
+    private void recentActivityTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recentActivityTable1MouseEntered
         // TODO add your handling code here:
-        //change to click mouse
-        Cursor click = new Cursor(Cursor.HAND_CURSOR);
-        nextButton.setCursor(click);
-    }//GEN-LAST:event_nextButtonMouseMoved
+    }//GEN-LAST:event_recentActivityTable1MouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel indexDisplay;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton nextButton;
-    private javax.swing.JButton previousButton;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel recentActivityPanel;
     private javax.swing.JTable recentActivityTable;
-    private javax.swing.JLabel senatorEmailDisplay;
-    private javax.swing.JLabel senatorMajorDisplay;
-    private javax.swing.JLabel senatorNameDisplay;
+    private javax.swing.JTable recentActivityTable1;
     private javax.swing.JPanel senatorPanel;
-    private javax.swing.JLabel senatorRoomDisplay;
-    private javax.swing.JLabel senatorYearDisplay;
     // End of variables declaration//GEN-END:variables
 }
