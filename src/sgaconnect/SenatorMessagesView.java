@@ -57,8 +57,16 @@ public class SenatorMessagesView extends javax.swing.JPanel {
         messageTitle.setForeground(new java.awt.Color(10, 10, 10));
         messageTitle.setText("Message #0 | Randy Loller");
 
+        backmessagesButton.setBackground(new java.awt.Color(221, 209, 199));
+        backmessagesButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         backmessagesButton.setForeground(new java.awt.Color(10, 10, 10));
-        backmessagesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/BackArrow.png"))); // NOI18N
+        backmessagesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/back.png"))); // NOI18N
+        backmessagesButton.setMnemonic('k');
+        backmessagesButton.setText("Back");
+        backmessagesButton.setToolTipText("");
+        backmessagesButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        backmessagesButton.setMinimumSize(new java.awt.Dimension(125, 51));
+        backmessagesButton.setPreferredSize(new java.awt.Dimension(125, 51));
         backmessagesButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 backmessagesButtonMouseMoved(evt);
@@ -82,7 +90,14 @@ public class SenatorMessagesView extends javax.swing.JPanel {
         jScrollPane2.setViewportView(body);
         body.getAccessibleContext().setAccessibleDescription("");
 
-        sendButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/MessageSend.png"))); // NOI18N
+        sendButton.setBackground(new java.awt.Color(221, 209, 199));
+        sendButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        sendButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/send.png"))); // NOI18N
+        sendButton.setText("Send");
+        sendButton.setToolTipText("");
+        sendButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        sendButton.setMinimumSize(new java.awt.Dimension(125, 51));
+        sendButton.setPreferredSize(new java.awt.Dimension(125, 51));
         sendButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 sendButtonMouseMoved(evt);
@@ -113,14 +128,14 @@ public class SenatorMessagesView extends javax.swing.JPanel {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(messageTitle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
-                        .addComponent(backmessagesButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                        .addComponent(backmessagesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(sendButton))
+                        .addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(commentScrollPane)))
@@ -132,13 +147,13 @@ public class SenatorMessagesView extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(messageTitle)
-                    .addComponent(backmessagesButton))
+                    .addComponent(backmessagesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(commentScrollPane)
+                .addComponent(commentScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(sendButton)
+                .addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

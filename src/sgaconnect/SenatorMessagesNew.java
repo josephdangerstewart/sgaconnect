@@ -58,7 +58,7 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
         messageTitle = new javax.swing.JLabel();
         backmessagesButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        subjectField = new javax.swing.JTextField();
 
         body.setEditable(false);
         body.setBackground(new java.awt.Color(255, 251, 234));
@@ -73,10 +73,13 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 251, 234));
 
-        SendButton.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        SendButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/MessageSend.png"))); // NOI18N
+        SendButton.setBackground(new java.awt.Color(221, 209, 199));
+        SendButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        SendButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/send.png"))); // NOI18N
+        SendButton.setMnemonic('d');
         SendButton.setText("Send");
         SendButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        SendButton.setMinimumSize(new java.awt.Dimension(125, 51));
         SendButton.setPreferredSize(new java.awt.Dimension(125, 51));
         SendButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -94,6 +97,11 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
         CreateMessageField.setRows(5);
         CreateMessageField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         CreateMessageField.setPreferredSize(new java.awt.Dimension(0, 89));
+        CreateMessageField.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                CreateMessageFieldMouseMoved(evt);
+            }
+        });
         CreateMessage.setViewportView(CreateMessageField);
         CreateMessageField.getAccessibleContext().setAccessibleName("NewMessageField");
 
@@ -103,6 +111,16 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
         StudentNames.setEditable(true);
         StudentNames.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
         StudentNames.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ashley", "Joseph", "Orion", "Wesley", "Wyatt" }));
+        StudentNames.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                StudentNamesMouseMoved(evt);
+            }
+        });
+        StudentNames.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                StudentNamesMouseWheelMoved(evt);
+            }
+        });
         StudentNames.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StudentNamesActionPerformed(evt);
@@ -113,10 +131,15 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
         messageTitle.setForeground(new java.awt.Color(10, 10, 10));
         messageTitle.setText("New Message");
 
+        backmessagesButton.setBackground(new java.awt.Color(221, 209, 199));
         backmessagesButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         backmessagesButton.setForeground(new java.awt.Color(10, 10, 10));
-        backmessagesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/BackArrow.png"))); // NOI18N
+        backmessagesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/back.png"))); // NOI18N
+        backmessagesButton.setMnemonic('k');
         backmessagesButton.setText(" Back");
+        backmessagesButton.setMaximumSize(new java.awt.Dimension(125, 51));
+        backmessagesButton.setMinimumSize(new java.awt.Dimension(125, 51));
+        backmessagesButton.setPreferredSize(new java.awt.Dimension(125, 51));
         backmessagesButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 backmessagesButtonMouseMoved(evt);
@@ -131,9 +154,14 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jLabel1.setText("Subject:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        subjectField.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                subjectFieldMouseMoved(evt);
+            }
+        });
+        subjectField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                subjectFieldActionPerformed(evt);
             }
         });
 
@@ -146,42 +174,42 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(CreateMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(messageTitle)
+                        .addComponent(backmessagesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(backmessagesButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ToLabel)
-                        .addGap(160, 160, 160)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(StudentNames, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1)))
+                        .addComponent(subjectField))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(messageTitle)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ToLabel)
+                                .addGap(160, 160, 160)
+                                .addComponent(jLabel1)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(messageTitle)
-                    .addComponent(backmessagesButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(messageTitle)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ToLabel)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(StudentNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(subjectField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(CreateMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                .addComponent(CreateMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(SendButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backmessagesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -212,9 +240,32 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
 
     }//GEN-LAST:event_backmessagesButtonActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void subjectFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subjectFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_subjectFieldActionPerformed
+
+    private void CreateMessageFieldMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateMessageFieldMouseMoved
+        // TODO add your handling code here:
+        Cursor hover = new Cursor(Cursor.TEXT_CURSOR);
+        CreateMessageField.setCursor(hover);
+    }//GEN-LAST:event_CreateMessageFieldMouseMoved
+
+    private void subjectFieldMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subjectFieldMouseMoved
+        // TODO add your handling code here:
+        
+        Cursor hover2 = new Cursor(Cursor.TEXT_CURSOR);
+        subjectField.setCursor(hover2);
+    }//GEN-LAST:event_subjectFieldMouseMoved
+
+    private void StudentNamesMouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_StudentNamesMouseWheelMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StudentNamesMouseWheelMoved
+
+    private void StudentNamesMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StudentNamesMouseMoved
+        // TODO add your handling code here:
+        Cursor click = new Cursor(Cursor.HAND_CURSOR);
+        StudentNames.setCursor(click);
+    }//GEN-LAST:event_StudentNamesMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -227,7 +278,7 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
     private javax.swing.JTextArea body;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel messageTitle;
+    private javax.swing.JTextField subjectField;
     // End of variables declaration//GEN-END:variables
 }
