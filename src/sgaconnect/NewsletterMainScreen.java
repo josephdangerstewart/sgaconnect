@@ -66,6 +66,7 @@ public class NewsletterMainScreen extends javax.swing.JPanel {
         jTable1.setShowVerticalLines(false);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
+        jTable1.getAccessibleContext().setAccessibleName("Newsletters Table");
 
         jLabel2.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jLabel2.setText("Select One or");
@@ -88,14 +89,14 @@ public class NewsletterMainScreen extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(postNew)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(postNew)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,6 +111,8 @@ public class NewsletterMainScreen extends javax.swing.JPanel {
                     .addComponent(postNew))
                 .addContainerGap())
         );
+
+        postNew.getAccessibleContext().setAccessibleName("Create New Post Button");
     }// </editor-fold>//GEN-END:initComponents
 
     private void postNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postNewActionPerformed

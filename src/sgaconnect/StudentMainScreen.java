@@ -246,6 +246,14 @@ public class StudentMainScreen extends javax.swing.JPanel {
                             .addComponent(indexDisplay)))))
         );
 
+        jLabel6.getAccessibleContext().setAccessibleName("User Profile Picture");
+        senatorNameDisplay.getAccessibleContext().setAccessibleName("Name Description");
+        senatorEmailDisplay.getAccessibleContext().setAccessibleName("Email Description");
+        senatorRoomDisplay.getAccessibleContext().setAccessibleName("Room Description");
+        senatorMajorDisplay.getAccessibleContext().setAccessibleName("Major Description");
+        senatorYearDisplay.getAccessibleContext().setAccessibleName("Year Description");
+        indexDisplay.getAccessibleContext().setAccessibleName("Number of Students");
+
         recentActivityPanel.setBackground(new java.awt.Color(255, 251, 234));
         recentActivityPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Recent Activity", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Print Clearly", 0, 24), new java.awt.Color(153, 150, 148))); // NOI18N
 
@@ -293,6 +301,7 @@ public class StudentMainScreen extends javax.swing.JPanel {
             recentActivityTable.getColumnModel().getColumn(0).setPreferredWidth(10);
             recentActivityTable.getColumnModel().getColumn(1).setResizable(false);
         }
+        recentActivityTable.getAccessibleContext().setAccessibleName("Recent Activity Table");
 
         javax.swing.GroupLayout recentActivityPanelLayout = new javax.swing.GroupLayout(recentActivityPanel);
         recentActivityPanel.setLayout(recentActivityPanelLayout);

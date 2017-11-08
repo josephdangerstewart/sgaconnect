@@ -72,6 +72,9 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Header"/>
+      </AccessibilityProperties>
     </Component>
     <Component class="javax.swing.JLabel" name="sgaLogoHomeButton">
       <Properties>
@@ -89,7 +92,7 @@
         </Property>
       </Properties>
       <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Home"/>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="SGA Logo"/>
       </AccessibilityProperties>
       <Events>
         <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="sgaLogoHomeButtonMouseMoved"/>

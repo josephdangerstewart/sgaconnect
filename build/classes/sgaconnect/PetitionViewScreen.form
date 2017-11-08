@@ -118,6 +118,9 @@
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Petiton Content"/>
+          </AccessibilityProperties>
         </Component>
       </SubComponents>
     </Container>
@@ -152,6 +155,9 @@
               <Color blue="a" green="a" red="a" type="rgb"/>
             </Property>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="List of Signers"/>
+          </AccessibilityProperties>
         </Component>
       </SubComponents>
     </Container>
@@ -175,6 +181,9 @@
               <Color blue="ea" green="fb" red="ff" type="rgb"/>
             </Property>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Comments Section"/>
+          </AccessibilityProperties>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -303,6 +312,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="#0 | Petition title goes here"/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Petition Title"/>
+          </AccessibilityProperties>
         </Component>
       </SubComponents>
     </Container>
