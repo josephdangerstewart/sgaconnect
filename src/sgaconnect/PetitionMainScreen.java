@@ -46,7 +46,7 @@ public class PetitionMainScreen extends javax.swing.JPanel {
         
         if (MainFrame.getBackend().getLoggedInUser().getRole() != 0) {
             this.remove(createNewButton);
-            selectOneLabel.setText("Select one");
+            selectOneLabel.setText("Select One");
         }
     }
 

@@ -5,6 +5,8 @@
  */
 package sgaconnect;
 
+import sgaconnect.backend.User;
+
 /**
  *
  * @author josephs12
@@ -26,7 +28,15 @@ public class UserProfile extends javax.swing.JPanel {
     }
     
     public void init() {
+        User user = MainFrame.getBackend().getLoggedInUser();
         
+        nameDisplay.setText(user.getName());
+        dormDisplay.setText(user.getDorm());
+        roomDisplay.setText(user.getRoom());
+        majorDisplay.setText(user.getMajor());
+        yearDisplay.setText(user.getYearString());
+        roleDisplay.setText("[" + user.getRoleString().toUpperCase() + "]");
+        emailDisplay.setText(user.getEmail());
     }
 
     /**
@@ -135,7 +145,7 @@ public class UserProfile extends javax.swing.JPanel {
                             .addComponent(majorDisplay)
                             .addComponent(roleDisplay)
                             .addComponent(emailDisplay))))
-                .addContainerGap())
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         cardLayout.setVerticalGroup(
             cardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,9 +189,9 @@ public class UserProfile extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titleLabel)
-                    .addComponent(card, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(183, Short.MAX_VALUE))
+                    .addComponent(card, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titleLabel))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +200,7 @@ public class UserProfile extends javax.swing.JPanel {
                 .addComponent(titleLabel)
                 .addGap(18, 18, 18)
                 .addComponent(card, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -47,7 +47,7 @@ public class PollMainScreen extends javax.swing.JPanel {
         
         if (MainFrame.getBackend().getLoggedInUser().getRole() == 0) {
             this.remove(createPollButton);
-            guideLabel.setText("Select one");
+            guideLabel.setText("Select One");
         }
     }
 

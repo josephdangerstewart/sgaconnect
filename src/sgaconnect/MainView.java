@@ -66,6 +66,7 @@ public class MainView extends javax.swing.JPanel {
         bulletinView1 = new sgaconnect.BulletinView();
         senatorMainScreen1 = new sgaconnect.SenatorMainScreen();
         controlPanel1 = new sgaconnect.ControlPanel();
+        userProfile1 = new sgaconnect.UserProfile();
 
         headerContainer.setBackground(new java.awt.Color(0, 255, 255));
         headerContainer.setForeground(new java.awt.Color(51, 204, 255));
@@ -74,15 +75,17 @@ public class MainView extends javax.swing.JPanel {
         headerContainer.setLayout(headerContainerLayout);
         headerContainerLayout.setHorizontalGroup(
             headerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 964, Short.MAX_VALUE)
             .addGroup(headerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(header1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE))
         );
         headerContainerLayout.setVerticalGroup(
             headerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 83, Short.MAX_VALUE)
+            .addGap(0, 80, Short.MAX_VALUE)
             .addGroup(headerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(header1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(headerContainerLayout.createSequentialGroup()
+                    .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         sidebarContainer.setBackground(new java.awt.Color(153, 255, 51));
@@ -106,6 +109,7 @@ public class MainView extends javax.swing.JPanel {
         viewportContainer.add(bulletinView1, "bulletinView");
         viewportContainer.add(senatorMainScreen1, "senatorMainScreen");
         viewportContainer.add(controlPanel1, "controlPanel");
+        viewportContainer.add(userProfile1, "userProfile");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -114,7 +118,7 @@ public class MainView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(sidebarContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE))
+                .addComponent(viewportContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 819, Short.MAX_VALUE))
             .addComponent(headerContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -148,6 +152,7 @@ public class MainView extends javax.swing.JPanel {
     private sgaconnect.Sidebar sidebar1;
     private javax.swing.JPanel sidebarContainer;
     private sgaconnect.StudentMainScreen studentMainView2;
+    private sgaconnect.UserProfile userProfile1;
     private javax.swing.JPanel viewportContainer;
     // End of variables declaration//GEN-END:variables
 }

@@ -33,6 +33,7 @@ public class Header extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         sgaLogoHomeButton = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        userProfile = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -58,6 +59,14 @@ public class Header extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 251, 234));
         jLabel2.setText("SGA Connect");
 
+        userProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/profile-header.png"))); // NOI18N
+        userProfile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        userProfile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                userProfileMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -67,23 +76,29 @@ public class Header extends javax.swing.JPanel {
                 .addComponent(sgaLogoHomeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 464, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 486, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(66, 66, 66))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addComponent(userProfile)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(sgaLogoHomeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(sgaLogoHomeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(userProfile)
+                                    .addComponent(jLabel2)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel1)))
+                .addContainerGap())
         );
 
         jLabel1.getAccessibleContext().setAccessibleName("Header");
@@ -111,11 +126,17 @@ public class Header extends javax.swing.JPanel {
         sgaLogoHomeButton.setCursor(click);
     }//GEN-LAST:event_sgaLogoHomeButtonMouseMoved
 
+    private void userProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userProfileMouseClicked
+        UserProfile.getInstance().init();
+        MainView.getInstance().changeView("userProfile");
+    }//GEN-LAST:event_userProfileMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel sgaLogoHomeButton;
+    private javax.swing.JLabel userProfile;
     // End of variables declaration//GEN-END:variables
 }
