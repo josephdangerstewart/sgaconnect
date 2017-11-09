@@ -59,8 +59,8 @@ public class LogInView extends javax.swing.JPanel {
         sgaConnectLogo.setForeground(new java.awt.Color(142, 15, 22));
         sgaConnectLogo.setText("SGA Connect");
 
-        SGAConnectCatchphrase.setFont(new java.awt.Font("Print Clearly", 0, 28)); // NOI18N
-        SGAConnectCatchphrase.setForeground(new java.awt.Color(153, 150, 148));
+        SGAConnectCatchphrase.setFont(new java.awt.Font("Print Clearly", 1, 24)); // NOI18N
+        SGAConnectCatchphrase.setForeground(new java.awt.Color(137, 110, 88));
         SGAConnectCatchphrase.setText("Stay Informed, Stay Connected");
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);

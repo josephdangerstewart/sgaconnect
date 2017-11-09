@@ -72,7 +72,7 @@ public class BulletinView extends javax.swing.JPanel {
 
         mainPanel.setBackground(new java.awt.Color(255, 251, 234));
 
-        bulletinTitle.setFont(new java.awt.Font("Steelfish Outline", 1, 48)); // NOI18N
+        bulletinTitle.setFont(new java.awt.Font("Steelfish Outline", 1, 54)); // NOI18N
         bulletinTitle.setForeground(new java.awt.Color(142, 15, 22));
         bulletinTitle.setText("Bulletin");
         bulletinTitle.setToolTipText("Bulletin Title");
@@ -374,7 +374,7 @@ public class BulletinView extends javax.swing.JPanel {
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         filterLabel.getAccessibleContext().setAccessibleName("Filter");
@@ -390,7 +390,7 @@ public class BulletinView extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

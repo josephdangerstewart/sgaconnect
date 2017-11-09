@@ -52,8 +52,8 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Inbox">
-              <Font PropertyName="font" name="Print Clearly" size="24" style="0"/>
-              <Color PropertyName="color" blue="94" green="96" red="99" type="rgb"/>
+              <Font PropertyName="font" name="Print Clearly" size="24" style="1"/>
+              <Color PropertyName="color" blue="58" green="6e" red="89" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -156,8 +156,8 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Recent Activity">
-              <Font PropertyName="font" name="Print Clearly" size="24" style="0"/>
-              <Color PropertyName="color" blue="94" green="96" red="99" type="rgb"/>
+              <Font PropertyName="font" name="Print Clearly" size="24" style="1"/>
+              <Color PropertyName="color" blue="58" green="6e" red="89" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
