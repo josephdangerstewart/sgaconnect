@@ -44,20 +44,20 @@ public class LogInView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        SGAConnectLabel = new javax.swing.JLabel();
+        sgaConnectLogo = new javax.swing.JLabel();
         SGAConnectCatchphrase = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         usernameField = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        usernameLabel = new javax.swing.JLabel();
+        passwordLabel = new javax.swing.JLabel();
         passwordField = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 251, 234));
 
-        SGAConnectLabel.setFont(new java.awt.Font("Steelfish Outline", 1, 80)); // NOI18N
-        SGAConnectLabel.setForeground(new java.awt.Color(142, 15, 22));
-        SGAConnectLabel.setText("SGA Connect");
+        sgaConnectLogo.setFont(new java.awt.Font("Steelfish Outline", 1, 80)); // NOI18N
+        sgaConnectLogo.setForeground(new java.awt.Color(142, 15, 22));
+        sgaConnectLogo.setText("SGA Connect");
 
         SGAConnectCatchphrase.setFont(new java.awt.Font("Print Clearly", 0, 28)); // NOI18N
         SGAConnectCatchphrase.setForeground(new java.awt.Color(153, 150, 148));
@@ -68,11 +68,11 @@ public class LogInView extends javax.swing.JPanel {
         usernameField.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         usernameField.setToolTipText("");
 
-        jLabel3.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        jLabel3.setText("Username:");
+        usernameLabel.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        usernameLabel.setText("Username:");
 
-        jLabel4.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        jLabel4.setText("Password:");
+        passwordLabel.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        passwordLabel.setText("Password:");
 
         passwordField.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -107,7 +107,7 @@ public class LogInView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(SGAConnectLabel)
+                    .addComponent(sgaConnectLogo)
                     .addComponent(SGAConnectCatchphrase, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -116,8 +116,8 @@ public class LogInView extends javax.swing.JPanel {
                     .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(usernameLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(passwordLabel, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(usernameField, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -127,15 +127,15 @@ public class LogInView extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(SGAConnectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sgaConnectLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SGAConnectCatchphrase))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(usernameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
+                        .addComponent(passwordLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)))
@@ -193,12 +193,12 @@ public class LogInView extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel SGAConnectCatchphrase;
-    private javax.swing.JLabel SGAConnectLabel;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField passwordField;
+    private javax.swing.JLabel passwordLabel;
+    private javax.swing.JLabel sgaConnectLogo;
     private javax.swing.JTextField usernameField;
+    private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 }
