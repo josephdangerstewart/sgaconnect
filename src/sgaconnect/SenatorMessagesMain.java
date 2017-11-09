@@ -94,8 +94,10 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
         MessagesLabel.setForeground(new java.awt.Color(142, 15, 22));
         MessagesLabel.setText("Messages");
 
-        newButton.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        newButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        newButton.setMnemonic('w');
         newButton.setText("New");
+        newButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         newButton.setMaximumSize(new java.awt.Dimension(125, 51));
         newButton.setPreferredSize(new java.awt.Dimension(125, 51));
         newButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -143,6 +145,7 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(displayTable);
 
+        selectOneLabel.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         selectOneLabel.setText("Select One or");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -155,14 +158,14 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(MessagesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(selectOneLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(selectOneLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(newButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

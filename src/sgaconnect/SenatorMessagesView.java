@@ -91,8 +91,13 @@ public class SenatorMessagesView extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 251, 234));
 
+        backButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         backButton.setForeground(new java.awt.Color(10, 10, 10));
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/BackArrow.png"))); // NOI18N
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/back.png"))); // NOI18N
+        backButton.setMnemonic('k');
+        backButton.setText("Back");
+        backButton.setToolTipText("");
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 backButtonMouseMoved(evt);
@@ -116,7 +121,10 @@ public class SenatorMessagesView extends javax.swing.JPanel {
         bodyScrollPane.setViewportView(body);
         body.getAccessibleContext().setAccessibleDescription("");
 
-        sendButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/MessageSend.png"))); // NOI18N
+        sendButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/send.png"))); // NOI18N
+        sendButton.setMnemonic('d');
+        sendButton.setText("Send");
+        sendButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sendButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 sendButtonMouseMoved(evt);
@@ -138,6 +146,11 @@ public class SenatorMessagesView extends javax.swing.JPanel {
         replyField.setWrapStyleWord(true);
         replyField.setMinimumSize(new java.awt.Dimension(4, 0));
         replyField.setName(""); // NOI18N
+        replyField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                replyFieldKeyPressed(evt);
+            }
+        });
         commentScrollPane.setViewportView(replyField);
 
         titleScrollPane.setBorder(null);
@@ -157,7 +170,7 @@ public class SenatorMessagesView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(titleScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+                        .addComponent(titleScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(backButton)
                         .addGap(11, 11, 11))
@@ -182,7 +195,7 @@ public class SenatorMessagesView extends javax.swing.JPanel {
                         .addGap(10, 10, 10)
                         .addComponent(backButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bodyScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                .addComponent(bodyScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(commentScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -213,6 +226,16 @@ public class SenatorMessagesView extends javax.swing.JPanel {
         Cursor click = new Cursor(Cursor.HAND_CURSOR);
         backButton.setCursor(click);
     }//GEN-LAST:event_backButtonMouseMoved
+
+    private void replyFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_replyFieldKeyPressed
+        // TODO add your handling code here:
+         int key = evt.getKeyCode();
+        if (key == 17 && key == 10)
+        {
+            sendMessage();
+        }
+        
+    }//GEN-LAST:event_replyFieldKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

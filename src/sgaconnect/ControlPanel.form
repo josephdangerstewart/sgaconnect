@@ -129,6 +129,9 @@
           <Font name="Open Sans" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="-"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Delete Senator Button"/>
@@ -143,6 +146,9 @@
           <Font name="Open Sans" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="+"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Add Senator Button"/>

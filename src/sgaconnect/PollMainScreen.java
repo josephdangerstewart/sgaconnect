@@ -115,6 +115,7 @@ public class PollMainScreen extends javax.swing.JPanel {
         createPollButton.setMnemonic('c');
         createPollButton.setText("Create New");
         createPollButton.setToolTipText("");
+        createPollButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         createPollButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 createPollButtonMouseMoved(evt);

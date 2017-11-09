@@ -366,6 +366,7 @@ public class PollViewScreen extends javax.swing.JPanel {
         submitButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         submitButton.setMnemonic('s');
         submitButton.setText("Submit");
+        submitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         submitButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 submitButtonMouseMoved(evt);
@@ -380,6 +381,10 @@ public class PollViewScreen extends javax.swing.JPanel {
         backPollButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         backPollButton.setMnemonic('k');
         backPollButton.setText("Back");
+        backPollButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backPollButton.setMaximumSize(new java.awt.Dimension(71, 25));
+        backPollButton.setMinimumSize(new java.awt.Dimension(71, 25));
+        backPollButton.setPreferredSize(new java.awt.Dimension(71, 25));
         backPollButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 backPollButtonMouseMoved(evt);
@@ -407,7 +412,7 @@ public class PollViewScreen extends javax.swing.JPanel {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(submitButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(backPollButton)
+                                .addComponent(backPollButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(respondViewLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
@@ -429,7 +434,7 @@ public class PollViewScreen extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(respondViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(submitButton)
-                    .addComponent(backPollButton))
+                    .addComponent(backPollButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 

@@ -109,6 +109,7 @@ public class ControlPanel extends javax.swing.JPanel {
 
         removeSenator.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         removeSenator.setText("-");
+        removeSenator.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         removeSenator.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeSenatorActionPerformed(evt);
@@ -117,6 +118,7 @@ public class ControlPanel extends javax.swing.JPanel {
 
         addSenator.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         addSenator.setText("+");
+        addSenator.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         addSenator.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addSenatorActionPerformed(evt);

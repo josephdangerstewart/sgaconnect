@@ -83,6 +83,7 @@ public class PetitionCreationScreen extends javax.swing.JPanel {
 
         scopeField.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         scopeField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALL CAMPUS", "Upper Campus", "Lower Campus", "Your Dorm" }));
+        scopeField.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel4.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jLabel4.setText("Body");
@@ -99,8 +100,9 @@ public class PetitionCreationScreen extends javax.swing.JPanel {
         bodyField.getAccessibleContext().setAccessibleName("Body of Petiton");
 
         createButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        createButton.setMnemonic('c');
+        createButton.setMnemonic('r');
         createButton.setText("Create");
+        createButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         createButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createButtonActionPerformed(evt);
@@ -111,8 +113,12 @@ public class PetitionCreationScreen extends javax.swing.JPanel {
         bodyFieldError.setForeground(new java.awt.Color(255, 44, 52));
 
         jButton1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        jButton1.setMnemonic('a');
+        jButton1.setMnemonic('k');
         jButton1.setText("Back");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setMaximumSize(new java.awt.Dimension(71, 25));
+        jButton1.setMinimumSize(new java.awt.Dimension(71, 25));
+        jButton1.setPreferredSize(new java.awt.Dimension(71, 25));
 
         titleFieldError.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         titleFieldError.setForeground(new java.awt.Color(255, 44, 52));
@@ -153,7 +159,7 @@ public class PetitionCreationScreen extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(createButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -179,7 +185,7 @@ public class PetitionCreationScreen extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createButton)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 

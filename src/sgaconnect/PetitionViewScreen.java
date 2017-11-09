@@ -79,8 +79,9 @@ public class PetitionViewScreen extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 251, 234));
 
         backPetitionButton.setForeground(new java.awt.Color(10, 10, 10));
-        backPetitionButton.setMnemonic('b');
+        backPetitionButton.setMnemonic('k');
         backPetitionButton.setText("Back");
+        backPetitionButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backPetitionButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 backPetitionButtonMouseMoved(evt);
@@ -143,8 +144,9 @@ public class PetitionViewScreen extends javax.swing.JPanel {
             }
         });
 
-        commentButton.setMnemonic('c');
+        commentButton.setMnemonic('t');
         commentButton.setText("Comment");
+        commentButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         commentButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 commentButtonMouseMoved(evt);
@@ -202,8 +204,9 @@ public class PetitionViewScreen extends javax.swing.JPanel {
         commentScrollPane.setViewportView(jPanel3);
         jPanel3.getAccessibleContext().setAccessibleName("Comments Section");
 
-        signButton.setMnemonic('p');
+        signButton.setMnemonic('g');
         signButton.setText("Sign Petition");
+        signButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 signButtonMouseMoved(evt);

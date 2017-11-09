@@ -97,7 +97,9 @@ public class NewsletterMainScreen extends javax.swing.JPanel {
         selectOneLabel.setText("Select One or");
 
         postNew.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        postNew.setMnemonic('w');
         postNew.setText("Post New");
+        postNew.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         postNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 postNewActionPerformed(evt);

@@ -115,6 +115,7 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
         sendButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/send.png"))); // NOI18N
         sendButton.setMnemonic('d');
         sendButton.setText("Send");
+        sendButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sendButton.setMaximumSize(new java.awt.Dimension(125, 51));
         sendButton.setMinimumSize(new java.awt.Dimension(125, 51));
         sendButton.setPreferredSize(new java.awt.Dimension(125, 51));
@@ -146,6 +147,7 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
         ToLabel.setText("To:");
 
         toBox.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        toBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         toBox.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 toBoxMouseMoved(evt);
@@ -172,9 +174,10 @@ public class SenatorMessagesNew extends javax.swing.JPanel {
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/back.png"))); // NOI18N
         backButton.setMnemonic('k');
         backButton.setText(" Back");
-        backButton.setMaximumSize(new java.awt.Dimension(125, 51));
-        backButton.setMinimumSize(new java.awt.Dimension(125, 51));
-        backButton.setPreferredSize(new java.awt.Dimension(125, 51));
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backButton.setMaximumSize(new java.awt.Dimension(115, 51));
+        backButton.setMinimumSize(new java.awt.Dimension(115, 51));
+        backButton.setPreferredSize(new java.awt.Dimension(115, 51));
         backButton.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 backButtonMouseMoved(evt);
