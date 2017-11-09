@@ -61,13 +61,13 @@ public class UserProfile extends javax.swing.JPanel {
         titleLabel.setForeground(new java.awt.Color(163, 22, 33));
         titleLabel.setText("User Profile");
 
-        card.setBackground(new java.awt.Color(232, 229, 213));
+        card.setBackground(new java.awt.Color(243, 232, 219));
         card.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         nameDisplay.setFont(new java.awt.Font("Print Clearly", 0, 36)); // NOI18N
         nameDisplay.setText("Ashley Cheah");
 
-        profileIcon.setBackground(new java.awt.Color(233, 225, 219));
+        profileIcon.setBackground(new java.awt.Color(214, 207, 205));
         profileIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/profile-icon.png"))); // NOI18N
         profileIcon.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         profileIcon.setOpaque(true);
@@ -120,9 +120,7 @@ public class UserProfile extends javax.swing.JPanel {
                         .addComponent(profileIcon)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(cardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cardLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(emailLabel))
+                            .addComponent(emailLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(roomLabel)
                                 .addComponent(majorLabel)
