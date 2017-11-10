@@ -16,6 +16,7 @@ import javax.swing.AbstractButton;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JToggleButton.ToggleButtonModel;
 import javax.swing.LayoutStyle;
@@ -744,8 +745,15 @@ public class PollViewScreen extends javax.swing.JPanel {
                     JRadioButton element = (JRadioButton)buttons.nextElement();
                     if (element.isSelected()) {
                         System.out.println("Trying to respond");
-                        poll.respond(MainFrame.getBackend().getLoggedInUser().getID(), element.getText());
+                        boolean responded = poll.respond(MainFrame.getBackend().getLoggedInUser().getID(), element.getText());
                         MainFrame.getBackend().save(poll);
+                        
+                        if (responded) {
+                            JOptionPane.showMessageDialog(null, "SGA thanks you for your input!");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Sorry! You already responded!");
+                        }
+                        
                         PollMainScreen.getInstance().init();
                         MainView.getInstance().changeView("pollMainScreen");
                     }

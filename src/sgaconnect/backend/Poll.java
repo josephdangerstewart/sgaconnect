@@ -120,14 +120,16 @@ public class Poll {
         return false;
     }
     
-    public void respond(int signerID,String response) {
+    public boolean respond(int signerID,String response) {
         if (!isLocked) {
             for (int i = 0; i < responses.size(); i++) {
-                if (responses.get(i).getID() == signerID) return;
+                if (responses.get(i).getID() == signerID) return false;
             }
 
             this.responses.add(new PollResponse(signerID,response));
+            return true;
         }
+        return false;
     }
     
 }
