@@ -10,6 +10,7 @@ import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Point;
 import javax.swing.JTable;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import sgaconnect.backend.User;
 
@@ -69,9 +70,10 @@ public class StudentMainScreen extends javax.swing.JPanel {
         senators = MainFrame.getBackend().getSenatorsOf(user.getDorm());
         index = 0;
         if (senators.length <= 1) {
-            nextButton.setVisible(false);
-            indexDisplay.setVisible(false);
-            previousButton.setVisible(false);
+            senatorPanel.remove(nextButton);
+            senatorPanel.remove(indexDisplay);
+            senatorPanel.remove(previousButton);
+            ((TitledBorder)(senatorPanel.getBorder())).setTitle("Your Senator");
         }
         setSenator(0);
     }
@@ -118,7 +120,7 @@ public class StudentMainScreen extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 251, 234));
 
         senatorPanel.setBackground(new java.awt.Color(255, 251, 234));
-        senatorPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Your Senator(s)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Print Clearly", 1, 24), new java.awt.Color(137, 110, 88))); // NOI18N
+        senatorPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Your Senators", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Print Clearly", 1, 24), new java.awt.Color(137, 110, 88))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
         jLabel1.setText("Name:");
@@ -222,7 +224,7 @@ public class StudentMainScreen extends javax.swing.JPanel {
         senatorPanelLayout.setVerticalGroup(
             senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, senatorPanelLayout.createSequentialGroup()
-                .addGap(0, 25, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(senatorPanelLayout.createSequentialGroup()
                         .addGroup(senatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
