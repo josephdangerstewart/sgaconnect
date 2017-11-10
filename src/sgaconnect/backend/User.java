@@ -147,7 +147,7 @@ public class User {
     }
     
     public String toString() {
-        return name + " [" + dorm.toUpperCase() + "]";
+        return name + " [" + (role != 2 ? dorm.toUpperCase() : "PRESIDENT") + "]";
     }
     
 }

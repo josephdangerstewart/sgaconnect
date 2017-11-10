@@ -746,6 +746,8 @@ public class PollViewScreen extends javax.swing.JPanel {
                         System.out.println("Trying to respond");
                         poll.respond(MainFrame.getBackend().getLoggedInUser().getID(), element.getText());
                         MainFrame.getBackend().save(poll);
+                        PollMainScreen.getInstance().init();
+                        MainView.getInstance().changeView("pollMainScreen");
                     }
                 }
             }
