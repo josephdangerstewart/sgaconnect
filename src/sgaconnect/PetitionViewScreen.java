@@ -7,6 +7,7 @@ package sgaconnect;
 
 import java.awt.Cursor;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sgaconnect.backend.Petition;
 
@@ -281,9 +282,13 @@ public class PetitionViewScreen extends javax.swing.JPanel {
 
     private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signButtonActionPerformed
         if (petition.getCreatorID() != MainFrame.getBackend().getLoggedInUser().getID()) {
-            petition.sign(MainFrame.getBackend().getLoggedInUser());
-            MainFrame.getBackend().save(petition);
-            init(petition);
+            int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to sign this petition?", "Are you sure?", JOptionPane.YES_NO_OPTION);
+            
+            if (reply == JOptionPane.YES_OPTION) {
+                petition.sign(MainFrame.getBackend().getLoggedInUser());
+                MainFrame.getBackend().save(petition);
+                init(petition);
+            }
         }
     }//GEN-LAST:event_signButtonActionPerformed
 

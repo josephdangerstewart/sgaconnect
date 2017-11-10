@@ -68,6 +68,11 @@ public class StudentMainScreen extends javax.swing.JPanel {
     public void setUser(User user) {
         senators = MainFrame.getBackend().getSenatorsOf(user.getDorm());
         index = 0;
+        if (senators.length <= 1) {
+            nextButton.setVisible(false);
+            indexDisplay.setVisible(false);
+            previousButton.setVisible(false);
+        }
         setSenator(0);
     }
     
