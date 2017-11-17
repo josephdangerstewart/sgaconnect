@@ -161,6 +161,7 @@ public class BulletinView extends javax.swing.JPanel {
         jLabel6.getAccessibleContext().setAccessibleName("Date Posted");
 
         filterLabel.setFont(new java.awt.Font("Print Clearly", 0, 22)); // NOI18N
+        filterLabel.setForeground(new java.awt.Color(23, 47, 86));
         filterLabel.setText("Filter:");
         filterLabel.setToolTipText("Filter (Pick One)");
 

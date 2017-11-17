@@ -269,7 +269,7 @@ public class StudentMainScreen extends javax.swing.JPanel {
 
         jScrollPane1.setBackground(new java.awt.Color(255, 251, 234));
 
-        recentActivityTable.setBackground(new java.awt.Color(173, 173, 173));
+        recentActivityTable.setBackground(new java.awt.Color(202, 202, 202));
         recentActivityTable.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
         recentActivityTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
