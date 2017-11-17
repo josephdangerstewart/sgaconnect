@@ -53,7 +53,7 @@
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Your Senators">
               <Font PropertyName="font" name="Print Clearly" size="24" style="1"/>
-              <Color PropertyName="color" blue="58" green="6e" red="89" type="rgb"/>
+              <Color PropertyName="color" blue="56" green="2f" red="17" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -306,7 +306,7 @@
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Recent Activity">
               <Font PropertyName="font" name="Print Clearly" size="24" style="1"/>
-              <Color PropertyName="color" blue="58" green="6e" red="89" type="rgb"/>
+              <Color PropertyName="color" blue="56" green="2f" red="17" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -340,7 +340,7 @@
             <Component class="javax.swing.JTable" name="recentActivityTable">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c7" green="d1" red="dd" type="rgb"/>
+                  <Color blue="ad" green="ad" red="ad" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Open Sans" size="11" style="0"/>

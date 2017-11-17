@@ -91,7 +91,7 @@ public class SenatorMessagesMain extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 251, 234));
 
         MessagesLabel.setFont(new java.awt.Font("Steelfish Outline", 1, 54)); // NOI18N
-        MessagesLabel.setForeground(new java.awt.Color(142, 15, 22));
+        MessagesLabel.setForeground(new java.awt.Color(163, 22, 33));
         MessagesLabel.setText("Messages");
 
         newButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N

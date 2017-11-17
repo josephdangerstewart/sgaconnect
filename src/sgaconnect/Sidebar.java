@@ -70,7 +70,7 @@ public class Sidebar extends javax.swing.JPanel {
             }
         });
 
-        setBackground(new java.awt.Color(137, 110, 88));
+        setBackground(new java.awt.Color(56, 56, 56));
 
         homeButton.setBackground(new java.awt.Color(221, 209, 199));
         homeButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N

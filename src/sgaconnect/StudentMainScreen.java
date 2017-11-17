@@ -120,7 +120,7 @@ public class StudentMainScreen extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 251, 234));
 
         senatorPanel.setBackground(new java.awt.Color(255, 251, 234));
-        senatorPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Your Senators", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Print Clearly", 1, 24), new java.awt.Color(137, 110, 88))); // NOI18N
+        senatorPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Your Senators", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Print Clearly", 1, 24), new java.awt.Color(23, 47, 86))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
         jLabel1.setText("Name:");
@@ -265,11 +265,11 @@ public class StudentMainScreen extends javax.swing.JPanel {
         indexDisplay.getAccessibleContext().setAccessibleName("Number of Students");
 
         recentActivityPanel.setBackground(new java.awt.Color(255, 251, 234));
-        recentActivityPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Recent Activity", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Print Clearly", 1, 24), new java.awt.Color(137, 110, 88))); // NOI18N
+        recentActivityPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Recent Activity", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Print Clearly", 1, 24), new java.awt.Color(23, 47, 86))); // NOI18N
 
         jScrollPane1.setBackground(new java.awt.Color(255, 251, 234));
 
-        recentActivityTable.setBackground(new java.awt.Color(221, 209, 199));
+        recentActivityTable.setBackground(new java.awt.Color(173, 173, 173));
         recentActivityTable.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
         recentActivityTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -73,7 +73,7 @@ public class BulletinView extends javax.swing.JPanel {
         mainPanel.setBackground(new java.awt.Color(255, 251, 234));
 
         bulletinTitle.setFont(new java.awt.Font("Steelfish Outline", 1, 54)); // NOI18N
-        bulletinTitle.setForeground(new java.awt.Color(142, 15, 22));
+        bulletinTitle.setForeground(new java.awt.Color(163, 22, 33));
         bulletinTitle.setText("Bulletin");
         bulletinTitle.setToolTipText("Bulletin Title");
 
@@ -390,7 +390,7 @@ public class BulletinView extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
+            .addComponent(jScrollPane2)
         );
     }// </editor-fold>//GEN-END:initComponents
 

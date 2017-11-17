@@ -32,7 +32,7 @@ public class Header extends javax.swing.JPanel {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         sgaLogoHomeButton = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        sgaTitle = new javax.swing.JLabel();
         userProfile = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -54,10 +54,16 @@ public class Header extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Steelfish Outline", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 251, 234));
-        jLabel2.setText("SGA Connect");
+        sgaTitle.setBackground(new java.awt.Color(255, 255, 255));
+        sgaTitle.setFont(new java.awt.Font("Steelfish Outline", 1, 48)); // NOI18N
+        sgaTitle.setForeground(new java.awt.Color(255, 251, 234));
+        sgaTitle.setText("SGA Connect");
+        sgaTitle.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sgaTitle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                sgaTitleMousePressed(evt);
+            }
+        });
 
         userProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/profile-header.png"))); // NOI18N
         userProfile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -75,7 +81,7 @@ public class Header extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(sgaLogoHomeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(sgaTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 486, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
@@ -94,7 +100,7 @@ public class Header extends javax.swing.JPanel {
                                 .addGap(3, 3, 3)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(userProfile)
-                                    .addComponent(jLabel2)))))
+                                    .addComponent(sgaTitle)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jLabel1)))
@@ -131,12 +137,25 @@ public class Header extends javax.swing.JPanel {
         MainView.getInstance().changeView("userProfile");
     }//GEN-LAST:event_userProfileMouseClicked
 
+    private void sgaTitleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sgaTitleMousePressed
+        // TODO add your handling code here:
+        StudentMainScreen.getInstance().setUser(MainFrame.getBackend().getLoggedInUser());
+        if (MainFrame.getBackend().getLoggedInUser().getRole() == 0) {
+            StudentMainScreen.getInstance().setUser(MainFrame.getBackend().getLoggedInUser());
+            MainView.getInstance().changeView("studentMainScreen");
+        }
+        else {
+            SenatorMainScreen.getInstance().init();
+            MainView.getInstance().changeView("senatorMainScreen");
+        }
+    }//GEN-LAST:event_sgaTitleMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel sgaLogoHomeButton;
+    private javax.swing.JLabel sgaTitle;
     private javax.swing.JLabel userProfile;
     // End of variables declaration//GEN-END:variables
 }

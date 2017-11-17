@@ -74,7 +74,7 @@ public class PetitionMainScreen extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 251, 234));
 
         jLabel1.setFont(new java.awt.Font("Steelfish Outline", 1, 54)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(142, 15, 22));
+        jLabel1.setForeground(new java.awt.Color(163, 22, 33));
         jLabel1.setText("Petitions");
 
         petitionsTable.setBackground(new java.awt.Color(221, 209, 199));

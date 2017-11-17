@@ -94,7 +94,7 @@
           <Font name="Print Clearly" size="24" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="58" green="6e" red="89" type="rgb"/>
+          <Color blue="38" green="38" red="38" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Stay Informed, Stay Connected"/>
       </Properties>
