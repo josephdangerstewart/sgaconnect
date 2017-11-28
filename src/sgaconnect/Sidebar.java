@@ -147,7 +147,7 @@ public class Sidebar extends javax.swing.JPanel {
 
         bulletinButton.setBackground(new java.awt.Color(221, 209, 199));
         bulletinButton.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        bulletinButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/BulletinIcon.png"))); // NOI18N
+        bulletinButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sgaconnect/resources/Images/newBulletinIcon.png"))); // NOI18N
         bulletinButton.setMnemonic('b');
         bulletinButton.setText("Bulletin");
         bulletinButton.setMaximumSize(new java.awt.Dimension(125, 51));
